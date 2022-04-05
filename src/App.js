@@ -1,25 +1,47 @@
-import logo from './logo.svg';
 import './App.css';
+import React from 'react'
+import MultiStepForm from './pages/MultiStepForm';
+import InstructionPage from './pages/InstructionPage';
+class App extends React.Component {
+  constructor(props) {
+      super(props);
+  }
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  state = {
+      page: 1,
+  }
+
+  nextPage = () => {
+      const { page } = this.state
+      this.setState({
+          page : page + 1
+      })
+  }
+
+  render() {
+      const {page} = this.state;
+      const inputValues = {page};
+      var content
+      switch(page) {
+      case 1:
+          content = <MultiStepForm nextPage={this.nextPage}/>
+          break
+      case 2:
+          // content = <InstructionPage nextPage={this.nextPage}/>
+          break
+      case 3:
+          // content = <VideoPlayPage/>
+          // content = <VideoPlayUserPage/>
+          break
+      case 4:
+          break
+      }
+      return(
+          <div className="App">
+              {content}
+          </div>
+      )
+  }
 }
 
 export default App;
