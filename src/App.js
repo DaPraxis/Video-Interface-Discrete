@@ -3,13 +3,17 @@ import React from 'react'
 import MultiStepForm from './pages/MultiStepForm';
 import InstructionPage from './pages/InstructionPage';
 import VideoPlay from './Components/VideoPlay'
+import FinalPage from './pages/FinalPage';
 class App extends React.Component {
   constructor(props) {
       super(props);
   }
 
   state = {
-      page: 2,
+      page: 1,
+      videoNames:[],
+      shuffledIndex:[],
+      wl:{}
   }
 
   nextPage = () => {
@@ -17,6 +21,14 @@ class App extends React.Component {
       this.setState({
           page : page + 1
       })
+  }
+
+  getData = (videoNames, shuffledIndex, wl) => {
+    this.setState({
+      videoNames: videoNames,
+      shuffledIndex: shuffledIndex,
+      wl:wl
+    })
   }
 
   render() {
@@ -28,11 +40,10 @@ class App extends React.Component {
           content = <MultiStepForm nextPage={this.nextPage}/>
           break
       case 2:
-          content = <VideoPlay nextPage={this.nextPage}/>
+          content = <VideoPlay nextPage={this.nextPage} getData={this.getData}/>
           break
       case 3:
-          // content = <VideoPlayPage/>
-          // content = <VideoPlayUserPage/>
+          content = <FinalPage names = {this.state.videoNames} index={this.state.shuffledIndex} wl={this.state.wl}/>
           break
       case 4:
           break

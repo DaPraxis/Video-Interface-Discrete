@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import ReactPlayer from "react-player";
 import axios from 'axios'
-import { Button, Form, Row, Col, Container, FormControl, InputGroup, DropdownButton, Dropdown, Offcanvas, FloatingLabel} from "react-bootstrap";
+import { Button, Form, Row, Col, Container, FormControl, InputGroup, DropdownButton, Dropdown, Offcanvas, FloatingLabel, ProgressBar} from "react-bootstrap";
 import RangeSlider from 'react-bootstrap-range-slider';
 import FormRange from "react-bootstrap/esm/FormRange";
 
@@ -24,6 +24,7 @@ class VideoPlay extends Component{
         rangeValue:5,
         wl:{},
         canvasShow:false
+        // canvasShow:true
     }
 
     componentDidMount() {
@@ -85,12 +86,20 @@ class VideoPlay extends Component{
     handleClose = () => this.setState({canvasShow:false});
     handleShow = () => this.setState({canvasShow:true});
 
+    handleFinish = () => {
+        this.props.nextPage() 
+        this.props.getData(this.state.videoNames, this.state.shuffledIndex, this.state.wl)
+    }
+
 
     render(){
         if (this.state.videoTotal>0){
+            var progress = Math.round(((this.state.videoCounter+1)/this.state.videoTotal)*100)
+            var buttonDisable = this.state.wl[this.state.videoCounter]==""
             return(
                 <div>
                     <div style={{ width: "100%", height: "85vh" }}>
+                        <ProgressBar now={progress} label={`Rating Jobs: ${progress}%`} animated/>
                         <ReactPlayer
                             controls
                             width="100%"
@@ -138,12 +147,19 @@ class VideoPlay extends Component{
                                     <FormControl value={this.state.wl[this.state.videoCounter]} style={{width:"300px"}} readOnly/>
                                 </FloatingLabel>
                                 {this.state.videoCounter>0?
-                                <Button variant="outline-secondary" onClick={this.handleBtClickPre}>
-                                    Back
-                                </Button>:null}
-                                <Button variant="outline-secondary" onClick={this.handleBtClickNext}>
-                                    Next
-                                </Button>
+                                    <Button variant="outline-secondary" onClick={this.handleBtClickPre} disabled={buttonDisable}>
+                                        Back
+                                    </Button>:null}
+                                {this.state.videoCounter<this.state.videoTotal-1?
+                                    <Button variant="outline-secondary" onClick={this.handleBtClickNext} disabled={buttonDisable}>
+                                    {/* <Button variant="outline-secondary" onClick={this.handleBtClickNext}> */}
+                                        Next
+                                    </Button>:
+                                    <Button variant="outline-secondary" onClick={this.handleFinish} disabled={buttonDisable}>
+                                    {/* <Button variant="outline-secondary" onClick={this.handleFinish}> */}
+                                        Finish
+                                    </Button>
+                                }
                             </InputGroup>
                         </Offcanvas.Body>
                     </Offcanvas>
