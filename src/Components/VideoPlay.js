@@ -76,6 +76,13 @@ class VideoPlay extends Component{
         this.handleClose()
     }
 
+    handleBtClickRep = () =>{
+        this.setState({videoEnd:false})
+        this.setState({playing:true})
+        this.player.seekTo(0,true)
+        this.handleClose()
+    }
+
 
     buttonSelect = (e) =>{
         var mem = this.state.wl
@@ -92,6 +99,8 @@ class VideoPlay extends Component{
     }
 
 
+
+
     render(){
         if (this.state.videoTotal>0){
             var progress = Math.round(((this.state.videoCounter+1)/this.state.videoTotal)*100)
@@ -101,7 +110,8 @@ class VideoPlay extends Component{
                     <div style={{ width: "100%", height: "85vh" }}>
                         <ProgressBar now={progress} label={`Rating Jobs: ${progress}%`} animated/>
                         <ReactPlayer
-                            controls
+                            controls = "false"
+                            // loop = "true"
                             width="100%"
                             height="100%"
                             muted = "true"
@@ -122,7 +132,7 @@ class VideoPlay extends Component{
                                 rel: 0,
                                 showinfo: 0,
                                 controls: 0,
-                                autoplay:1
+                                autoplay:1,
                                 // enablejsapi: 0
                                 }
                             }
@@ -142,6 +152,7 @@ class VideoPlay extends Component{
                                     <Dropdown.Item eventKey="High Workload">High Workload</Dropdown.Item>
                                     <Dropdown.Item eventKey="Medium Workload">Medium Workload</Dropdown.Item>
                                     <Dropdown.Item eventKey="Low Workload">Low Workload</Dropdown.Item>
+                                    <Dropdown.Item eventKey="Negligible Workload">Negligible Workload</Dropdown.Item>
                                 </DropdownButton>
                                 <FloatingLabel label="Video Driving Workload Level">
                                     <FormControl value={this.state.wl[this.state.videoCounter]} style={{width:"300px"}} readOnly/>
@@ -150,6 +161,9 @@ class VideoPlay extends Component{
                                     <Button variant="outline-secondary" onClick={this.handleBtClickPre} disabled={buttonDisable}>
                                         Back
                                     </Button>:null}
+                                <Button variant="outline-secondary" onClick={this.handleBtClickRep}>
+                                    🔁Replay
+                                </Button>
                                 {this.state.videoCounter<this.state.videoTotal-1?
                                     <Button variant="outline-secondary" onClick={this.handleBtClickNext} disabled={buttonDisable}>
                                     {/* <Button variant="outline-secondary" onClick={this.handleBtClickNext}> */}
