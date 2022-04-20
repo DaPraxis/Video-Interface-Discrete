@@ -4,13 +4,14 @@ import MultiStepForm from './pages/MultiStepForm';
 import InstructionPage from './pages/InstructionPage';
 import VideoPlay from './Components/VideoPlay'
 import FinalPage from './pages/FinalPage';
+import RSMESlider from './Components/RSME_Slider';
 class App extends React.Component {
   constructor(props) {
       super(props);
   }
 
   state = {
-      page: 1,
+      page: 2,
       videoNames:[],
       shuffledIndex:[],
       wl:{}
@@ -36,17 +37,17 @@ class App extends React.Component {
       const inputValues = {page};
       var content
       switch(page) {
-      case 1:
-          content = <MultiStepForm nextPage={this.nextPage}/>
-          break
-      case 2:
-          content = <VideoPlay nextPage={this.nextPage} getData={this.getData}/>
-          break
-      case 3:
-          content = <FinalPage names = {this.state.videoNames} index={this.state.shuffledIndex} wl={this.state.wl}/>
-          break
-      case 4:
-          break
+            case 1:
+                content = <MultiStepForm nextPage={this.nextPage}/>
+                break
+            case 2:
+                content = <VideoPlay nextPage={this.nextPage} getData={this.getData}/>
+                break
+            case 3:
+                content = <FinalPage names = {this.state.videoNames} index={this.state.shuffledIndex} wl={this.state.wl}/>
+                break
+            case 4:
+                break
       }
       return(
           <div className="App">

@@ -3,7 +3,9 @@ import ReactPlayer from "react-player";
 import axios from 'axios'
 import { Button, Form, Row, Col, Container, FormControl, InputGroup, DropdownButton, Dropdown, Offcanvas, FloatingLabel, ProgressBar} from "react-bootstrap";
 import RangeSlider from 'react-bootstrap-range-slider';
+import ReactSlider from "react-slider";
 import FormRange from "react-bootstrap/esm/FormRange";
+import RSMESlider from "./RSME_Slider";
 
 
 class VideoPlay extends Component{
@@ -23,8 +25,9 @@ class VideoPlay extends Component{
         rangeMin:1,
         rangeValue:5,
         wl:{},
-        canvasShow:false
-        // canvasShow:true
+        wlValue:40,
+        // canvasShow:false
+        canvasShow:true
     }
 
     componentDidMount() {
@@ -90,6 +93,12 @@ class VideoPlay extends Component{
         this.setState({wl:mem})
     }
 
+    rangeSelect = (e) =>{
+        var mem = this.state.wl
+        mem[this.state.videoCounter] = e.target.value
+        this.setState({wl:mem, wlValue:e.target.value})
+    }
+
     handleClose = () => this.setState({canvasShow:false});
     handleShow = () => this.setState({canvasShow:true});
 
@@ -147,13 +156,16 @@ class VideoPlay extends Component{
                         </Offcanvas.Header>
                         <Offcanvas.Body style={{justifyContent: 'center',alignItems: "center"}}>
                             <InputGroup className="sm">
-                                <DropdownButton title="Workload Level" onSelect={this.buttonSelect}>
+                                {/* <DropdownButton title="Workload Level" onSelect={this.buttonSelect}>
                                     <Dropdown.Item eventKey="Extreme Workload">Extreme Workload</Dropdown.Item>
                                     <Dropdown.Item eventKey="High Workload">High Workload</Dropdown.Item>
                                     <Dropdown.Item eventKey="Medium Workload">Medium Workload</Dropdown.Item>
                                     <Dropdown.Item eventKey="Low Workload">Low Workload</Dropdown.Item>
                                     <Dropdown.Item eventKey="Negligible Workload">Negligible Workload</Dropdown.Item>
-                                </DropdownButton>
+                                </DropdownButton> */}
+                                {/* <FormRange/> */}
+                                
+                                {/* <ReactSlider/> */}
                                 <FloatingLabel label="Video Driving Workload Level">
                                     <FormControl value={this.state.wl[this.state.videoCounter]} style={{width:"300px"}} readOnly/>
                                 </FloatingLabel>
@@ -175,6 +187,17 @@ class VideoPlay extends Component{
                                     </Button>
                                 }
                             </InputGroup>
+                            <Form.Group as={Row}>
+                                <Col xs="9">
+                                    {/* <Form.Label>
+                                        Workload Level
+                                    </Form.Label> */}
+                                    <RangeSlider min={0} max={150} value={this.state.wlValue} onChange={this.rangeSelect} tooltip='on' size="lg"/>
+                                </Col>
+                                <Col xs="3">
+                                    {/* <Form.Control value={this.state.wlValue} onChange={this.rangeSelect}/> */}
+                                </Col>
+                            </Form.Group>
                         </Offcanvas.Body>
                     </Offcanvas>
                 </div>
