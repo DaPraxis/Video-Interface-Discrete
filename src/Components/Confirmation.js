@@ -14,7 +14,7 @@ export default class Confirmation extends Component{
     };
 
     render(){
-        const {inputValues: { firstName, lastName, email, city, state, zip, ageGroup, gender, driveYrs, driveFreq}} = this.props;
+        const {inputValues: { firstName, lastName, email, city, state, country, ageGroup, gender, driveYrs, driveFreq}} = this.props;
 
         return(
             <Container>
@@ -22,8 +22,8 @@ export default class Confirmation extends Component{
                 <p>Last Name: {lastName}</p>
                 <p>Email: {email}</p>
                 <p>City: {city}</p>
-                <p>State: {state}</p>
-                <p>Zip: {zip}</p>
+                <p>State/Province: {state}</p>
+                <p>Country: {country}</p>
                 <p>Age Group: {ageGroup}</p>
                 <p>Gender: {gender}</p>
                 <p>Years of Driving: {driveYrs}</p>

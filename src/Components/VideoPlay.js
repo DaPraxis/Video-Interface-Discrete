@@ -3,16 +3,11 @@ import ReactPlayer from "react-player";
 import axios from 'axios'
 import { Button, Form, Row, Col, Container, FormControl, InputGroup, DropdownButton, Dropdown, Offcanvas, FloatingLabel, ProgressBar} from "react-bootstrap";
 import RangeSlider from 'react-bootstrap-range-slider';
-import ReactSlider from "react-slider";
-import FormRange from "react-bootstrap/esm/FormRange";
-import RSMESlider from "./RSME_Slider";
-
-
 class VideoPlay extends Component{
 
     state = {
         playList:[],
-        playListId:"PLHdq35Wa7ob8T3tlhIDr3o1dtuKFnuJwV",
+        playListId:"PLHdq35Wa7ob8OqRKT-peP8R2VvBZfFFsJ",
         key:"AIzaSyDXNcHG8aLsd2AcsaKouG_tJWZQo5YVGm8",
         videoNames:[],
         videoLinks:[],
@@ -26,8 +21,8 @@ class VideoPlay extends Component{
         rangeValue:5,
         wl:{},
         wlValue:40,
-        // canvasShow:false
-        canvasShow:true
+        canvasShow:false
+        // canvasShow:true
     }
 
     componentDidMount() {
@@ -55,7 +50,6 @@ class VideoPlay extends Component{
     }
 
     handleEnd = () =>{
-        console.log('end')
         this.setState({videoEnd:true})
         this.setState({canvasShow:true})
         // this.setState({videoEnd:true, videoCounter:this.state.videoCounter+1})
@@ -107,6 +101,39 @@ class VideoPlay extends Component{
         this.props.getData(this.state.videoNames, this.state.shuffledIndex, this.state.wl)
     }
 
+    mentalEffort(wl){
+        if(wl>112){
+            return "Extreme Effort: "+wl
+        }
+        else if (wl>111){
+            return "Very Great Effort: "+wl
+        }
+        else if (wl>85){
+            return "Great Effort: "+wl
+        }
+        else if (wl>71){
+            return "Considerable Effort: "+wl
+        }
+        else if (wl>56){
+            return "Rather Much Effort: "+wl
+        }
+        else if (wl>37){
+            return "Some Effort: "+wl
+        }
+        else if (wl>25){
+            return "A Little Effort: "+wl
+        }
+        else if (wl>11){
+            return "Almost No Effort: "+wl
+        }
+        else if (typeof wl===undefined | typeof wl===null | wl==0){
+            return "Select Workload from Slider"
+        }
+        else if (wl>0){
+            return "Absolute No Effort: "+wl
+        }
+    }
+
 
 
 
@@ -116,86 +143,71 @@ class VideoPlay extends Component{
             var buttonDisable = this.state.wl[this.state.videoCounter]==""
             return(
                 <div>
-                    <div style={{ width: "100%", height: "85vh" }}>
-                        <ProgressBar now={progress} label={`Rating Jobs: ${progress}%`} animated/>
-                        <ReactPlayer
-                            controls = "false"
-                            // loop = "true"
-                            width="100%"
-                            height="100%"
-                            muted = "true"
-                            ref = {player => {
-                                this.player = player
-                            }}
-                            playing={this.state.playing}
-                            // onStart = {this.setState({videoEnd:false})}
-                            onEnded = {this.handleEnd}
-                            url={"https://youtu.be/"+this.state.videoLinks[this.state.shuffledIndex[this.state.videoCounter]]}
-                            config={{
-                            youtube: {
-                                playerVars: {
-                                // listType: "playlist",
-                                // list: "PLHdq35Wa7ob8T3tlhIDr3o1dtuKFnuJwV",
-                                iv_load_policy: 3,
-                                modestbranding: 1,
-                                rel: 0,
-                                showinfo: 0,
-                                controls: 0,
-                                autoplay:1,
-                                // enablejsapi: 0
+                    <div style={{
+                        backgroundColor:'black',
+                        width:'100%',
+                        height:'100%',
+                        position: 'absolute',
+                        zIndex:'10',
+                        pointerEvents:'none'}}>
+                        <div style={{ width: "100%", height: "85vh" }}>
+                            <ProgressBar now={progress} label={`Rating Jobs: ${progress}%`} animated/>
+                            <ReactPlayer
+                                width="100%"
+                                height="100%"
+                                muted = "true"
+                                ref = {player => {
+                                    this.player = player
+                                }}
+                                playing={this.state.playing}
+                                onEnded = {this.handleEnd}
+                                url={"https://youtu.be/"+this.state.videoLinks[this.state.shuffledIndex[this.state.videoCounter]]}
+                                config={{
+                                youtube: {
+                                    playerVars: {
+                                    iv_load_policy: 3,
+                                    modestbranding: 1,
+                                    rel: 0,
+                                    showinfo: 0,
+                                    controls: 0,
+                                    autoplay:1,
+                                    enablejsapi: 1
+                                    }
                                 }
-                            }
-                            }}
-                        />
-                    </div> 
+                                }}
+                            />
+                        </div> 
+                    </div>
                     <Offcanvas show={this.state.canvasShow} onHide={this.handleClose} 
                                 placement="bottom" backdrop={false} 
-                                style={{justifyContent: 'center',alignItems: "center",height: "45%"}}>
+                                style={{justifyContent: 'center',alignItems: "center",height: "65%",zIndex:'20'}}>
                         <Offcanvas.Header>
                             <Offcanvas.Title>Video Driving Mental Workload Rating</Offcanvas.Title>
                         </Offcanvas.Header>
                         <Offcanvas.Body style={{justifyContent: 'center',alignItems: "center"}}>
-                            <InputGroup className="sm">
-                                {/* <DropdownButton title="Workload Level" onSelect={this.buttonSelect}>
-                                    <Dropdown.Item eventKey="Extreme Workload">Extreme Workload</Dropdown.Item>
-                                    <Dropdown.Item eventKey="High Workload">High Workload</Dropdown.Item>
-                                    <Dropdown.Item eventKey="Medium Workload">Medium Workload</Dropdown.Item>
-                                    <Dropdown.Item eventKey="Low Workload">Low Workload</Dropdown.Item>
-                                    <Dropdown.Item eventKey="Negligible Workload">Negligible Workload</Dropdown.Item>
-                                </DropdownButton> */}
-                                {/* <FormRange/> */}
-                                
-                                {/* <ReactSlider/> */}
+                            <InputGroup>
                                 <FloatingLabel label="Video Driving Workload Level">
-                                    <FormControl value={this.state.wl[this.state.videoCounter]} style={{width:"300px"}} readOnly/>
+                                    <FormControl value={this.mentalEffort(this.state.wl[this.state.videoCounter])} style={{width:"300px"}} readOnly/>
                                 </FloatingLabel>
-                                {this.state.videoCounter>0?
-                                    <Button variant="outline-secondary" onClick={this.handleBtClickPre} disabled={buttonDisable}>
-                                        Back
-                                    </Button>:null}
+                                <div style={{width: 'inherit'}}>
+                                    <RangeSlider min={1} max={150} value={this.state.wlValue} onChange={this.rangeSelect} tooltip='on' size="lg"/>
+                                </div>
                                 <Button variant="outline-secondary" onClick={this.handleBtClickRep}>
                                     🔁Replay
                                 </Button>
                                 {this.state.videoCounter<this.state.videoTotal-1?
                                     <Button variant="outline-secondary" onClick={this.handleBtClickNext} disabled={buttonDisable}>
-                                    {/* <Button variant="outline-secondary" onClick={this.handleBtClickNext}> */}
                                         Next
                                     </Button>:
                                     <Button variant="outline-secondary" onClick={this.handleFinish} disabled={buttonDisable}>
-                                    {/* <Button variant="outline-secondary" onClick={this.handleFinish}> */}
                                         Finish
                                     </Button>
                                 }
                             </InputGroup>
                             <Form.Group as={Row}>
                                 <Col xs="9">
-                                    {/* <Form.Label>
-                                        Workload Level
-                                    </Form.Label> */}
-                                    <RangeSlider min={0} max={150} value={this.state.wlValue} onChange={this.rangeSelect} tooltip='on' size="lg"/>
                                 </Col>
                                 <Col xs="3">
-                                    {/* <Form.Control value={this.state.wlValue} onChange={this.rangeSelect}/> */}
                                 </Col>
                             </Form.Group>
                         </Offcanvas.Body>

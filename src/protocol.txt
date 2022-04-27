@@ -1,0 +1,25 @@
+Date: April 26th, 2022
+ 
+Dear Sir/Madam:
+ 
+Thank you for your interest in this research project. This letter has been created to provide you with the information needed so that you may decide whether or not you would like to participate in this study. Participation is voluntary and you are free to withdraw or stop at any time. Other than in the case where withdrawal occurs prior to the commencement of the main experiment, withdrawal of consent will not affect your compensation for participation.
+ 
+If at any point you feel as though any of the following details are unclear, or if you have any other questions, comments, or concerns, please feel free to contact me using the contact information at the end of this letter. If you decide that you would like to participate, please tick the checkbox below to agree on the protocol and we will keep it in our database for your reference. If you do not wish to participate there is no need to participate. You can simply close the website page without being recorded.
+ 
+The long-term goal of our research is to identify the mental workload demanding sources on-road and therefore forecast high driving workload events ahead of time. This study aims to understand what elements in the driving environments can contribute to a change in drivers’ mental workload level and quantitatively define its impact.
+ 
+The design of the experiment is as follows. All participants will participate in the experiment individually, one at a time. First, each person will be asked to fill in their demographic information, such as their age group, gender, driving experiences and etc. Next, there will be an interactive instruction page explaining the video controls and rating process, also definitions of “mental effort” and “driving mental workload”. After the participant fully understands the task, he/she will proceed to the mental workload rating page. On this page, the participants will be provided one video at a time, each [10-15 seconds] long. After the video play, there will be a popup slider for the participant to rate the driving scenario's mental workload level presented in the video. After the participant successfully inputs their rating score, a new video will be played and the participants are required to repeat the above steps until all videos are rated. During the video rating task, the participant will be granted one chance to replay each video, but he/she cannot go back to previous videos once the rating is confirmed. There will be a total of [30] videos, and participants are expected to complete rating all videos during the experiment. At the end of the experiment, after all videos are rated by a certain participant, the rating results and user demographic information collected will be displayed on the screen for him/her to confirm. The participant will have a chance to accept or reject the rating results. Accepted results will be sent to the database for further analysis and the participant will be compensated accordingly, while rejected data will be erased at once.
+
+Breaks are allowed during the rating experiment so that no one becomes fatigued, but it is recommended to complete the experiment no later than [4 hours].
+
+During the experiment, only your input data will be recorded, which includes your agreement with the study, demographic information, video rating values, and the decision to accept or withdraw your result at the end of the experiment. 
+ 
+The data we collect will be anonymized and kept in a secure database. No personal or identifying information will be included in written reports or presentations, and your confidentiality and privacy will be respected at all times. Any data and information received will be kept confidential. Any study reports and presentations will have all personal identifiers removed. Data and participant information will be kept in my possession or stored in a locked office accessible only by me and the other investigators. Electronic information will be password protected.
+
+The experiment should take between [1 and 1.5 hours] and will be held completely online. As compensation for participating in this study, you will be given compensation for your participation by the third-party partner Prolific. Everyone is free to withdraw or stop the experiment at any time without affecting baseline compensation.
+ 
+As mentioned previously, if you have any questions, you may contact me at haoyanhy.jiang@mail.utoronto.ca or 437-987-5544. Alternatively, you may call the Office of Research Ethics at ethics.review@utoronto.ca or 416-946-3273.
+ 
+Thank you for your consideration,
+
+Haoyan Jiang

@@ -15,7 +15,8 @@ class FinalPage extends React.Component{
             }
             table.push(
                 <tr>
-                    <td>{name}</td>
+                    {/* <td>{name}</td> */}
+                    <td>{i+1}</td>
                     <td>{wl}</td>
                 </tr>
             )
@@ -25,8 +26,8 @@ class FinalPage extends React.Component{
                 <Table striped bordered hover>
                     <thead>
                         <tr>
-                            <th>Video Name</th>
-                            <th>Workload</th>
+                            <th>Video Index</th>
+                            <th>Rated Workload</th>
                         </tr>
                     </thead>
                     <tbody>

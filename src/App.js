@@ -5,13 +5,15 @@ import InstructionPage from './pages/InstructionPage';
 import VideoPlay from './Components/VideoPlay'
 import FinalPage from './pages/FinalPage';
 import RSMESlider from './Components/RSME_Slider';
+import Instruction from './pages/Instruction';
+import Protocal from './pages/Protocal';
 class App extends React.Component {
   constructor(props) {
       super(props);
   }
 
   state = {
-      page: 2,
+      page: 3,
       videoNames:[],
       shuffledIndex:[],
       wl:{}
@@ -26,9 +28,9 @@ class App extends React.Component {
 
   getData = (videoNames, shuffledIndex, wl) => {
     this.setState({
-      videoNames: videoNames,
-      shuffledIndex: shuffledIndex,
-      wl:wl
+        videoNames: videoNames,
+        shuffledIndex: shuffledIndex,
+        wl:wl
     })
   }
 
@@ -38,22 +40,28 @@ class App extends React.Component {
       var content
       switch(page) {
             case 1:
-                content = <MultiStepForm nextPage={this.nextPage}/>
+                content = <Protocal nextPage={this.nextPage}/>
                 break
             case 2:
-                content = <VideoPlay nextPage={this.nextPage} getData={this.getData}/>
+                content = <MultiStepForm nextPage={this.nextPage}/>
                 break
             case 3:
-                content = <FinalPage names = {this.state.videoNames} index={this.state.shuffledIndex} wl={this.state.wl}/>
+                content = <Instruction nextPage={this.nextPage}/>
                 break
             case 4:
+                content = <VideoPlay nextPage={this.nextPage} getData={this.getData}/>
                 break
-      }
-      return(
-          <div className="App">
-              {content}
-          </div>
-      )
+            case 5:
+                content = <FinalPage names = {this.state.videoNames} index={this.state.shuffledIndex} wl={this.state.wl}/>
+                break
+            case 6:
+                break
+        }
+    return(
+        <div className="App">
+            {content}
+        </div>
+    )
   }
 }
 

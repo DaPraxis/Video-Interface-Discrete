@@ -43,8 +43,8 @@ export default class MultiStepForm extends Component {
     }
 
     render(){
-        const { step, firstName, lastName, email, city, state, zip, ageGroup, gender, driveYrs, driveFreq } = this.state;
-        const inputValues = { firstName, lastName, email, city, state, zip, ageGroup, gender, driveYrs, driveFreq};
+        const { step, firstName, lastName, email, city, state, country, ageGroup, gender, driveYrs, driveFreq } = this.state;
+        const inputValues = { firstName, lastName, email, city, state, country, ageGroup, gender, driveYrs, driveFreq};
         var content
         var title
         var marginTop
