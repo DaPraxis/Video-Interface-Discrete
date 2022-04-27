@@ -14,7 +14,14 @@ class Protocal extends React.Component {
         fetch(protocol_text)
         .then(r => r.text())
         .then(text => {
-            for (const str of text.split('\r\n')){
+            tet = text.split('\r\n')
+            if (tet.length<=2){
+                tet = text.split('\n')
+            }
+            if (tet.length<=2){
+                tet = text.split('\r')
+            }
+            for (const str of tet){
                 if (str.length>2){
                     var ssp = str.split(/\[([^\]]+)\]/)
                     var s = []
