@@ -147,8 +147,8 @@ export default class AddressDetails extends Component{
                                     <option hidden value="">
                                         Select...
                                     </option>
-                                    <option value="male">male</option>
-                                    <option value="female">female</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
                                     <option value="N.A.">Not Available</option>
                                 </Form.Control>
                             </Form.Group>

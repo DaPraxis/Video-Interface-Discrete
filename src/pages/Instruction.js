@@ -14,8 +14,13 @@ class Instruction extends React.Component {
 
     render(){
         return(
-            <Container>
-                <Carousel variant="dark">
+            <Container className="my-auto" >
+                <h5 style={{
+                margin: '1.5%',
+                justifyContent: 'center',
+                textAlign: "center",
+                }}>Experiment Instruction</h5>
+                <Carousel variant="dark" indicators={false}>
                     <Carousel.Item>
                         <img
                             className="d-block w-100"
@@ -24,7 +29,7 @@ class Instruction extends React.Component {
                         />
                         <Carousel.Caption>
                         <h5>Simulated Driving Videos</h5>
-                        <p>Next, you will watch about 30 simulated driving videos, each 10-15s long, and you are required to rate the  
+                        <p>You are required to watch 30 simulated driving videos, each 10-15s long, and you will rate the  
                             <span style={{color:'red'}}> Driving Mental Workload</span> for each driving scenario. </p>
                         </Carousel.Caption>
                     </Carousel.Item>
@@ -38,7 +43,7 @@ class Instruction extends React.Component {
                         <h5>Driving Mental Workload</h5>
                         <p><span style={{color:'red'}}> Mental Workload</span> is similar to attention, often refers to <span style={{backgroundColor:'yellow'}}> the amount of thinking and planning on a certain taskload</span>.
                         For example, you need more mental workload when mentally calculating 17x24 than 2x3. <br></br> Similarly, with the given driving scenario, we want you to rate 
-                        how much mental effort or attention you need to carry out based on your driving experiences</p>
+                        how much mental effort or attention you need to carry out based on your driving experiences.</p>
                         </Carousel.Caption>
                     </Carousel.Item>
                     <Carousel.Item>
@@ -49,7 +54,7 @@ class Instruction extends React.Component {
                         />
                         <Carousel.Caption>
                         <h5>Driving Mental Workload Rating</h5>
-                        <p>You need to change the rating with the slider ranging 1-150 that circled in yellow</p>
+                        <p>You need to rate the video using the slider ranging from 1 to 150, which is circled in yellow.</p>
                         </Carousel.Caption>
                     </Carousel.Item>
                     <Carousel.Item>
@@ -60,8 +65,8 @@ class Instruction extends React.Component {
                         />
                         <Carousel.Caption>
                         <h5>Evaluation of Rating Scale Mental Effort (<a href={"https://adasgeek.wordpress.com/2013/12/19/rsme/"}>RSME</a>)</h5>
-                        <p>We are using human factor RSME scale for the rating, with value 1-150 maps from "Absolute No Effort" to "Extreme Effort".
-                             When you change the slider value, the meaning for the value will show in the yellow highlighted area for your reference 
+                        <p>We use human factor RSME scale for the rating, with value 1-150 mapping from "Absolute No Effort" to "Extreme Effort".
+                             When you change the slider value, the corresponding interpretation of the value will show in the yellow highlighted area for your reference. 
                         </p>
                         </Carousel.Caption>
                     </Carousel.Item>
@@ -73,7 +78,7 @@ class Instruction extends React.Component {
                         />
                         <Carousel.Caption>
                         <h5>Video Replay</h5>
-                        <p>For each video, you have <span style={{color:'red'}}> only one chance </span> to replay</p>
+                        <p>For each video, you only have <span style={{color:'red'}}> one chance </span> to replay.</p>
                         </Carousel.Caption>
                     </Carousel.Item>
                     <Carousel.Item>
@@ -84,8 +89,8 @@ class Instruction extends React.Component {
                         />
                         <Carousel.Caption>
                         <h5>Next Video</h5>
-                        <p>After rating the video on the slider, you can click the "Next" button to proceed to the next video. 
-                            Noted that each video, <span style={{color:'red'}}>you only got one chance to rate</span>, and can <span style={{color:'red'}}>NEVER</span> go back. <span style={{color:'red'}}>Double check</span> your answer before click the "NEXT" button</p>
+                        <p>After rating the video with the slider, you may click the "Next" button to proceed to the next video. 
+                            Note that for each video, you only have <span style={{color:'red'}}>one chance</span> to rate, and <span style={{color:'red'}}>CANNOT</span> go back. Please <span style={{color:'red'}}>double check</span> your answer before clicking the "NEXT" button.</p>
                         </Carousel.Caption>
                     </Carousel.Item>
                     <Carousel.Item>
@@ -96,7 +101,7 @@ class Instruction extends React.Component {
                         />
                         <Carousel.Caption>
                         <h5>Video Rating Progress</h5>
-                        <p>You can check your experiment progress from the progress bar</p>
+                        <p>You may check your experiment progress from the progress bar.</p>
                         <Button variant="primary" onClick={this.props.nextPage}>Start</Button>
                         </Carousel.Caption>
                     </Carousel.Item>
