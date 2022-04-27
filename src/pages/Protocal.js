@@ -14,7 +14,7 @@ class Protocal extends React.Component {
         fetch(protocol_text)
         .then(r => r.text())
         .then(text => {
-            tet = text.split('\r\n')
+            var tet = text.split('\r\n')
             if (tet.length<=2){
                 tet = text.split('\n')
             }
