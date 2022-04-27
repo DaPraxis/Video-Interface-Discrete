@@ -27,6 +27,7 @@ class Protocal extends React.Component {
                         }
                     }
                     texts.push(<p>{s}</p>)
+                    texts.push(<br></br>)
                 }
             }
             this.setState({texts:texts})
