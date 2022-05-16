@@ -13,6 +13,12 @@ export default class Confirmation extends Component{
         this.props.nextStep();
     };
 
+    next = (e)=> {
+        e.preventDefault();
+        this.props.getData(this.props.inputValues)
+        this.props.nextPage()
+    }
+
     render(){
         const {inputValues: { firstName, lastName, email, city, state, country, ageGroup, gender, driveYrs, driveFreq}} = this.props;
 
@@ -29,7 +35,7 @@ export default class Confirmation extends Component{
                 <p>Years of Driving: {driveYrs}</p>
                 <p>Frequency of Driving: {driveFreq}</p>
                 <Button variant="secondary" onClick={this.back}>Back</Button>{' '}
-                <Button variant="primary" onClick={this.props.nextPage}>Confirm</Button>
+                <Button variant="primary" onClick={this.next}>Confirm</Button>
             </Container>
         )
     }

@@ -1,6 +1,7 @@
 import React from "react";
 import {Card, Container, Button, Col, Row} from "react-bootstrap"
 import protocol_text from "../protocol.txt"
+import Footer from "../Components/Footer"
 
 class Protocal extends React.Component {
 
@@ -62,7 +63,7 @@ class Protocal extends React.Component {
                             {this.state.texts}
                         </Card.Text>
                     </Card.Body>
-                    <Card.Footer>
+                    {/* <Card.Footer>
                         <Container>
                             <Row>
                                 <Col md={9}>
@@ -75,8 +76,22 @@ class Protocal extends React.Component {
                                 </Col>
                             </Row>
                         </Container>
-                    </Card.Footer>
+                    </Card.Footer> */}
                 </Card>
+                <Footer>
+                    <Container>
+                        <Row>
+                            <Col md={9}>
+                            <input type="checkbox" checked={this.state.checked} 
+                                onChange={(e)=>{this.setState({checked:e.target.checked})}}>
+                            </input> I certify that I agree to attend this experiment and willing to share my data to the IML Lab
+                            </Col>
+                            <Col>
+                                {this.state.checked?<Button variant="primary" onClick={this.props.nextPage}>Start Experiment</Button>:null}
+                            </Col>
+                        </Row>
+                    </Container>
+                </Footer>
             </Container>
         );
     }

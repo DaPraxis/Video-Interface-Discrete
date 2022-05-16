@@ -1,6 +1,8 @@
 import React from 'react'
 import {Table, Container, Row, Col, Button} from "react-bootstrap"
 import axios from 'axios'
+import Footer from "../Components/Footer"
+
 
 class FinalPage extends React.Component{
 
@@ -29,6 +31,27 @@ class FinalPage extends React.Component{
         }).then((response) => {
             console.log(response.data)
         });
+    }
+
+    downloadFile = async () => {
+        var newWl = {}
+        for(var i=0;i<this.props.index.length;i++){
+            var ind = this.props.index[i]
+            var name = this.props.names[ind]
+            var wl = this.props.wl[i]
+            newWl[name] = wl
+        }
+        const fileName = "file";
+        console.log(this.props.basicInfo)
+        const json = JSON.stringify({...newWl, ...this.props.basicInfo});
+        const blob = new Blob([json],{type:'application/json'});
+        const href = await URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = href;
+        link.download = fileName + ".json";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
     }
 
     constructTable(){
@@ -62,18 +85,20 @@ class FinalPage extends React.Component{
                     </tbody>
 
                 </Table>
-                <Container>
-                    <Row>
-                        <Col md={9}>
-                        <input type="checkbox" checked={this.state.checked} 
-                            onChange={(e)=>{this.setState({checked:e.target.checked})}}>
-                        </input> I certify that I agree to attend this experiment and willing to share my data to the IML Lab
-                        </Col>
-                        <Col>
-                            {this.state.checked?<Button variant="primary" onClick={this.submitOnClick}>Submit</Button>:null}
-                        </Col>
-                    </Row>
-                </Container>
+                <Footer>
+                    <Container>
+                        <Row>
+                            <Col md={9}>
+                            <input type="checkbox" checked={this.state.checked} 
+                                onChange={(e)=>{this.setState({checked:e.target.checked})}}>
+                            </input> I certify that all the information entered is correct and I am willing to share my data to the IML Lab
+                            </Col>
+                            <Col>
+                                {this.state.checked?<Button variant="primary" onClick={this.downloadFile}>Submit</Button>:null}
+                            </Col>
+                        </Row>
+                    </Container>
+                </Footer>
             </div>
         )
     }

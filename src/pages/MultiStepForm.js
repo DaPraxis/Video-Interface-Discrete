@@ -16,7 +16,7 @@ export default class MultiStepForm extends Component {
         email: '',
         city: '',
         state: '',
-        zip:'',
+        country:'',
         ageGroup:'',
         gender: '',
         driveYrs: '',
@@ -77,6 +77,7 @@ export default class MultiStepForm extends Component {
                     nextPage={this.props.nextPage}
                     prevStep={this.prevStep}
                     inputValues={inputValues}
+                    getData = {this.props.getData}
                     />
             break
         }

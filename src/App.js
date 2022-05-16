@@ -13,10 +13,11 @@ class App extends React.Component {
   }
 
   state = {
-      page: 5,
-      videoNames:[],
-      shuffledIndex:[],
-      wl:{}
+    page: 1,
+    videoNames:[],
+    shuffledIndex:[],
+    wl:{},
+    basicInfo:{}
   }
 
   nextPage = () => {
@@ -34,6 +35,12 @@ class App extends React.Component {
     })
   }
 
+  getData2 = (inputValues) =>{
+    this.setState({
+        basicInfo:inputValues
+    })
+  }
+
   render() {
       const {page} = this.state;
       const inputValues = {page};
@@ -43,7 +50,7 @@ class App extends React.Component {
                 content = <Protocal nextPage={this.nextPage}/>
                 break
             case 2:
-                content = <MultiStepForm nextPage={this.nextPage}/>
+                content = <MultiStepForm nextPage={this.nextPage} getData={this.getData2}/>
                 break
             case 3:
                 content = <Instruction nextPage={this.nextPage}/>
@@ -52,7 +59,7 @@ class App extends React.Component {
                 content = <VideoPlay nextPage={this.nextPage} getData={this.getData}/>
                 break
             case 5:
-                content = <FinalPage names = {this.state.videoNames} index={this.state.shuffledIndex} wl={this.state.wl}/>
+                content = <FinalPage names = {this.state.videoNames} index={this.state.shuffledIndex} wl={this.state.wl} basicInfo={this.state.basicInfo}/>
                 break
             case 6:
                 break
