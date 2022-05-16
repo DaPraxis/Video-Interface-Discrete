@@ -13,7 +13,7 @@ class App extends React.Component {
   }
 
   state = {
-      page: 1,
+      page: 5,
       videoNames:[],
       shuffledIndex:[],
       wl:{}
