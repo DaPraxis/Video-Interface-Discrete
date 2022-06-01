@@ -19,6 +19,7 @@ import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import GameSelectNavBar from "../navigation/GameSelectNavBar";
 import MusicSelectButton from "./MusicSelectButton";
+import DataHandler from "../../data-handler/DataHandler";
 
 let bg;
 
@@ -386,6 +387,8 @@ export default function VersionGameSelectMenuDriving(props) {
   }
 
   let titleLines = t("game-select-title").split("\n");
+
+  dataHandler.printLocalData()
 
   return (
     <div className={classes.root}>
