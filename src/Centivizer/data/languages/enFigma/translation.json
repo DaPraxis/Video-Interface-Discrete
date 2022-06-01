@@ -1,0 +1,124 @@
+{
+    "game-select-title": "What Game Would\nYou Like To Play?",
+    "start": "start",
+    "par-num": "Participant Number",
+    "invalid-par-num": "Invalid participant number",
+    "sess-num": "Session Number",
+    "invalid-sess-num": "Invalid session number",
+    "select-study": "Select study",
+    "back": "Back",
+    "next": "Next",
+    "end-sess": {
+        "end-box": "End the session",
+        "end-alert": "By clicking “Confirm”, you will exit this session and go back to Home Page. But be assured that all the play data will be saved.",
+        "end-alert-title": "End the Session",
+        "end-conf": "Confirm",
+        "end-canc": "Cancel"
+    },
+    "understand": "Are you ready to play?\nLet's try it!",
+    "try-it-out": "Try it out!",
+    "play-now": "Play Now",
+    "games": {
+        "TAG-ME": "TAG-ME",
+        "TagMeQuick": {
+            "name": "Quick",
+            "ins": "In this game, tag the moles as fast as you can. The more moles you tag, the better your score! Try it out!"
+        },
+        "TagMeOnly": {
+            "name": "Only",
+            "ins": "Tag the moles without hats or glasses as fast as you can. Be careful, if you tag the moles wearing hats and glasses, you will lose points. Try it out!"
+        },
+        "TagMeSwitch": {
+            "name": "Switch",
+            "ins": "In this game, three moles will pop up at the same time, but only one of them is the correct one.\n\nTry out different rules until you find the correct rule!\n\nWhen lightning strikes, the rule will change. Then you’ll need to find the new rule. Try it out!",
+            "colour": "The correct mole could be a specific colour:",
+            "place": "Or the correct mole could be at a specific place:",
+            "rule1": "Rule 1: Left mole is correct",
+            "rule2": "Rule 2: Middle mole is correct",
+            "rule3": "Rule 3: Right mole is correct",
+            "rule4": "Rule 4: Brown mole is correct",
+            "rule5": "Rule 5: Purple mole is correct",
+            "rule6": "Rule 6: Orange mole is correct",
+            "brown": "Brown",
+            "purple": "Purple",
+            "yellow": "Yellow",
+            "left": "Left",
+            "middle": "Middle",
+            "right": "Right"
+        },
+        "TagMeAgainEasy": {
+            "name": "Again Easy",
+            "ins": "Moles Appear One at a Time, Remember the Number!\n\nDo you remember the mole’s number??\n\nIf you remembered “1”, you are correct!\n\nTag the New Mole if it Matches the One Before\n\nDon’t Tag the New Mole if it Doesn’t Match the One Before!\n\nThe One Before wore a 2 so you do tag!"
+        },
+        "TagMeAgainMedium": {
+            "name": "Again Medium",
+            "ins": "In Easy you tagged a mole if it matched the One Before!\n\nIn Medium you need to remember numbers from Two Before!\n\nTag the New Mole if it Matches the mole Two Before!\n\nAgain, Tag the New Mole if it Matches the mole Two Before!"
+        },
+        "TagMeAgainHard": {
+            "name": "Again Hard",
+            "ins": "In Hard you need to remember numbers from Three Before!\n\nTag the New Mole if it Matches the mole Three Before!\n\nAgain, Tag the New Mole if it Matches the mole Three Before!"
+        },
+        "TagMeWhere": {
+            "name": "Where",
+            "ins": "In this game, you will see a lighting bolt followed by a mole. Most of the time, a mole pops up in the same hole as the lightning bolt appears, but sometimes a mole pops up in different holes randomly.  Try to tag all the moles as fast as you can."
+        },
+        "TagMeSame": {
+            "name": "Same",
+            "ins": "Help the mama mole find her baby. You will first see a sparkly mama mole and then two babies. Quickly tag the baby mole who has the same colour as the mama mole. Try it out!"
+        },
+        "TagMeBigger": {
+            "name": "Bigger",
+            "ins": "In this game, you will see two moles, one wearing a big number, and one wearing a small number. Always tag the mole who’s wearing the bigger number, even if he’s shorter. Go as quickly as you can. Try it out!"
+        }
+    },
+    "dialog":{
+        "button": "OK, GOT IT!",
+        "replayButton": "Play Again",
+        "playGameButton": "Play Full Game",
+        "mainMenu": "Main Menu",
+        "1b":{
+            "title": "Yikes!",
+            "text": "Only tag moles with the same number as ONE before!"
+        },
+        "2b":{
+            "title": "Yikes!",
+            "text": "Only tag moles with the same number as TWO before!"
+        },
+        "3b":{
+            "title": "Yikes!",
+            "text": "Only tag moles with the same number as THREE before!"
+        },
+        "correct":{
+            "title": "Yikes!",
+            "text": "Only tag moles with the same number as the mole before!"
+        },
+        "wrongHole":{
+            "title": "You Missed!",
+            "text": "Wrong hole!"
+        },
+        "faster":{
+            "title": "You Missed!",
+            "text": "Tag the mole faster!"
+        },
+        "tagHat":{
+            "title": "Uh-oh!",
+            "text": "Don't tag moles wearing hats!"
+        },
+        "emptyHole":{
+            "title": "Uh-oh!",
+            "text": "You tagged an empty hole!"
+        },
+        "bigger":{
+            "title": "Try Again!",
+            "text": "Remember, tag the mole wearing a bigger number!"
+        },
+        "color":{
+            "title": "Oops!",
+            "text": "Remember to tag the baby mole that is the same colour as its sparkly mom!"
+        },
+        "finishGame": {
+            "title": "Great Job!",
+            "text": "You scored _ points"
+        }
+    }
+}

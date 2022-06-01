@@ -1,0 +1,124 @@
+{
+    "game-select-title": "What Game Would\nYou Like To Play?",
+    "start": "start",
+    "par-num": "Identifiant du participant",
+    "invalid-par-num": "Invalid participant number",
+    "sess-num": "Session Number",
+    "invalid-sess-num": "Invalid session number",
+    "select-study": "Select study",
+    "back": "Back",
+    "next": "Next",
+    "end-sess": {
+        "end-box": "End the session",
+        "end-alert": "Si vous cliquez sur \"confirmer\" vous reviendrez à la page d'accueil. Toutes vos données seront enregistrées.",
+        "end-alert-title": "End the Session",
+        "end-conf": "Confirmer",
+        "end-canc": "Rester"
+    },
+    "understand": "Are you ready to play?\nLet's try it!",
+    "try-it-out": "Try it out!",
+    "play-now": "Play Now",
+    "games": {
+        "TAG-ME": "Jeu du chat",
+        "TagMeQuick": {
+            "name": "Rapide",
+            "ins": "Appuyez les taupes aussi vite que possible. Vous avez deux minutes. Plus vous appuyez, meilleurs sont vos résultats !"
+        },
+        "TagMeOnly": {
+            "name": "Seule",
+            "ins": "Appuyez sur les taupes qui ne portent pas de chapeaux ou de lunettes. Aussi vite que vous le pouvez. Mais attention, si vous touchez des taupes portant des chapeaux et des lunettes, vous perdrez des points."
+        },
+        "TagMeSwitch": {
+            "name": "Encore",
+            "ins": "Trois taupes seront à l'écran en même temps. La taupe correcte à choisir pourrait être à un endroit spécifique (gauche, milieu ou droite); ou il peut s'agir d'une couleur spécifique (marron, violet ou jaune). Une seule taupe est correcte.\nEssayez de nouvelles règles jusqu'à ce que vous trouviez la bonne règle. Faites attention! Lorsque la foudre frappe, la règle que vous avez trouvée auparavant change et vous devez maintenant trouver la nouvelle règle. Bonne chance!",
+            "colour": "The correct mole could be a specific colour:",
+            "place": "Or the correct mole could be at a specific place:",
+            "rule1": "Rule 1: Left mole is correct",
+            "rule2": "Rule 2: Middle mole is correct",
+            "rule3": "Rule 3: Right mole is correct",
+            "rule4": "Rule 4: Brown mole is correct",
+            "rule5": "Rule 5: Purple mole is correct",
+            "rule6": "Rule 6: Orange mole is correct",
+            "brown": "Brun",
+            "purple": "Violet",
+            "yellow": "Jaune",
+            "left": "Gauche",
+            "middle": "Milieu",
+            "right": "Droit"
+        },
+        "TagMeAgainEasy": {
+            "name": "Échange",
+            "ins": "Les taupes ont des numéros de 1 à 3. Appuyez sur une taupe uniquement lorsque son numéro est le même que le numéro de la dernière taupe. Si vous touchez une taupe avec un numéro différent, vous perdrez des points. Veuillez faire attention et essayer d'aller aussi vite que possible.. Bonne chance!"
+        },
+        "TagMeAgainMedium": {
+            "name": "Again Medium",
+            "ins": "In Easy you tagged a mole if it matched the One Before!\n\nIn Medium you need to remember numbers from Two Before!\n\nTag the New Mole if it Matches the mole Two Before!\n\nAgain, Tag the New Mole if it Matches the mole Two Before!"
+        },
+        "TagMeAgainHard": {
+            "name": "Again Hard",
+            "ins": "In Hard you need to remember numbers from Three Before!\n\nTag the New Mole if it Matches the mole Three Before!\n\nAgain, Tag the New Mole if it Matches the mole Three Before!"
+        },
+        "TagMeWhere": {
+            "name": "Trouvé",
+            "ins": "In this game, you will see a lighting bolt followed by a mole. Most of the time, a mole pops up in the same hole as the lightning bolt appears, but sometimes a mole pops up in different holes randomly.  Try to tag all the moles as fast as you can."
+        },
+        "TagMeSame": {
+            "name": "Le Même",
+            "ins": "Aidez la maman taupe à retrouver son bébé. Vous verrez une taupe maman entourée d'étoiles puis avec deux taupes bébé. N'oubliez pas la couleur de la taupe maman. Appuyez sur la taupe bébé qui a la même couleur que la taupe maman. Aussi vite que possible."
+        },
+        "TagMeBigger": {
+            "name": "Plus Grand",
+            "ins": "Vous verrez deux taupes. Une taupe portera un grand nombre et une taupe qui en portera un petit nombre. Appuyez sur la taupe qui porte le plus grand nombre. Pour gagner le plus de points, allez aussi vite et précisément que possible."
+        }
+    },
+    "dialog":{
+        "button": "OK, GOT IT!",
+        "replayButton": "Play Again",
+        "playGameButton": "Play Full Game",
+        "mainMenu": "Main Menu",
+        "1b":{
+            "title": "Yikes!",
+            "text": "Only tag moles with the same number as ONE before!"
+        },
+        "2b":{
+            "title": "Yikes!",
+            "text": "Only tag moles with the same number as TWO before!"
+        },
+        "3b":{
+            "title": "Yikes!",
+            "text": "Only tag moles with the same number as THREE before!"
+        },
+        "correct":{
+            "title": "Yikes!",
+            "text": "Only tag moles with the same number as the mole before!"
+        },
+        "wrongHole":{
+            "title": "You Missed!",
+            "text": "Wrong hole!"
+        },
+        "faster":{
+            "title": "You Missed!",
+            "text": "Tag the mole faster!"
+        },
+        "tagHat":{
+            "title": "Uh-oh!",
+            "text": "Don't tag moles wearing hats!"
+        },
+        "emptyHole":{
+            "title": "Uh-oh!",
+            "text": "You tagged an empty hole!"
+        },
+        "bigger":{
+            "title": "Try Again!",
+            "text": "Remember, tag the mole wearing a bigger number!"
+        },
+        "color":{
+            "title": "Oops!",
+            "text": "Remeber to tag the baby mole that is the same colour as its sparkly mom!"
+        },
+        "finishGame": {
+            "title": "Great Job!",
+            "text": "You scored _ points"
+        }
+    }
+}

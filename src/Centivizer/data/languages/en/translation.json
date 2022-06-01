@@ -1,0 +1,232 @@
+{
+  "game-select-title": "What Game Would\nYou Like To Play?",
+  "start": "start",
+  "par-num": "Participant Number",
+  "invalid-par-num": "Invalid participant number",
+  "sess-num": "Session Number",
+  "invalid-sess-num": "Invalid session number",
+  "select-study": "Select study",
+  "back": "Back",
+  "next": "Next",
+  "score": "Score",
+  "time": "Time",
+  "end-sess": {
+    "end-box": "End the session",
+    "end-alert": "By clicking “Confirm”, you will exit this session and go back to Home Page. But be assured that all the play data will be saved.",
+    "end-alert-title": "End the Session",
+    "end-conf": "Confirm",
+    "end-canc": "Cancel"
+  },
+  "understand": "Are you ready to play?\nLet's try it!",
+  "play-state": {
+    "play-again-title": "Play again?",
+    "play-again-alert": "You've already finished this game. Please confirm you will play this game again!",
+    "play-locked-title": "Game Locked",
+    "play-locked-alert": "You have to play the previous games (blue) first to unlock this game."
+  },
+  "ready": "Are you ready to play?\nLet's try it!",
+  "points": "Tag the mole as quickly and accurately as possible to gain the most points!",
+  "try-it-out": "Try it out!",
+  "play-now": "Play Now",
+  "games": {
+    "TAG-ME": "TAG-ME",
+    "TagMeMood": {
+      "name": "Mood",
+      "ins": "Welcome! My name is Moley and I am your instructor today. The trick to getting a high score in this game is to pay attention and tag as many of the correct faces as you can, without hitting any wrong faces.\n\n At the beginning of each game, I will give you some instructions. You will also do a practice round before each game. Ready? Let’s begin!\n\nThe upper 3 windows correspond with the letters ‘u’, ‘i’, ‘o’ on your keyboard.\n\nThe lower 3 holes correspond with the letters ‘j’, ‘k’, ‘l’ on your keyboard."
+    },
+    "TagMeMoodBaseline": {
+      "name": "Mood\nBaseline",
+      "ins": ""
+    },
+    "TagMeMoodAll": {
+      "name": "Mood\nAll",
+      "ins": "Welcome! My name is Moley and I am your instructor today. The trick to getting a high score in this game is to pay attention and tag as many of the correct faces as you can, without hitting any wrong faces.\n\n At the beginning of each game, I will give you some instructions. You will also do a practice round before each game. Ready? Let’s begin!\n\nThe upper 3 windows correspond with the letters ‘u’, ‘i’, ‘o’ on your keyboard.\n\nThe lower 3 holes correspond with the letters ‘j’, ‘k’, ‘l’ on your keyboard."
+    },
+    "TagMeMoodNeutral": {
+      "name": "Mood\nNeutral",
+      "ins": "Welcome! My name is Moley and I am your instructor today. The trick to getting a high score in this game is to pay attention and tag as many of the correct faces as you can, without hitting any wrong faces.\n\n At the beginning of each game, I will give you some instructions. You will also do a practice round before each game. Ready? Let’s begin!\n\nThe upper 3 windows correspond with the letters ‘u’, ‘i’, ‘o’ on your keyboard.\n\nThe lower 3 holes correspond with the letters ‘j’, ‘k’, ‘l’ on your keyboard."
+    },
+    "TagMeMoodFearful": {
+      "name": "Mood\nFearful",
+      "ins": "Welcome! My name is Moley and I am your instructor today. The trick to getting a high score in this game is to pay attention and tag as many of the correct faces as you can, without hitting any wrong faces.\n\n At the beginning of each game, I will give you some instructions. You will also do a practice round before each game. Ready? Let’s begin!\n\nThe upper 3 windows correspond with the letters ‘u’, ‘i’, ‘o’ on your keyboard.\n\nThe lower 3 holes correspond with the letters ‘j’, ‘k’, ‘l’ on your keyboard."
+    },
+    "TagMeMoodHappy": {
+      "name": "Mood\nHappy",
+      "ins": "Welcome! My name is Moley and I am your instructor today. The trick to getting a high score in this game is to pay attention and tag as many of the correct faces as you can, without hitting any wrong faces.\n\n At the beginning of each game, I will give you some instructions. You will also do a practice round before each game. Ready? Let’s begin!\n\nThe upper 3 windows correspond with the letters ‘u’, ‘i’, ‘o’ on your keyboard.\n\nThe lower 3 holes correspond with the letters ‘j’, ‘k’, ‘l’ on your keyboard."
+    },
+    "TagMeTune": {
+      "name": "Tune",
+      "ins": "A mole will appear in the middle hole, and a chord will play.\n\nThere will be two types of trials, distinguished by the symbol on the shirt of the mole in the middle.\n\nA second chord will play as a second mole appears. Does the chord played with the second mole match the expected sound?\n\nHere is an example of the two moles following the “in-tune” rule.\n\nIf you think they match, hit the mole as fast as you can! The faster you hit the mole the more points you will earn!\n\nIf you do not think they match, don’t hit the mole.\n\nHere is an example of the two moles following the “out-of-tune” rule.\n\nIf you think they match, hit the mole as fast as you can! The faster you hit the mole the more points you will earn!\n\nIf you do not think they match, don’t hit the mole.\n\nThe left and right moles correspond to the “j” and “k” keys on the keyboard.\n\nPlease put your right index and middle fingers on the “j” and “k” keys throughout the game.\n\nAt the end of each session, you will see how many points you earned based on how quickly and accurately you hit the moles."
+    },
+    "TagMeCoda": {
+      "name": "Coda",
+      "ins": "A mole will show up in the middle wearing a T-shirt with a letter. You will hear the sound of the letter twice.\n\nFor example,\n\nThe middle mole will pull up a picture of an object. Sometimes, you might hear a randomly assigned word with it.\n\nFor example,\n\nWhen the middle mole pulls the picture, two other moles will pop up on both sides.\n\nThe \"YES\" and \"NO\" moles will NOT switch sides throughout the game.\n\nWhat is the name of the object in the picture?\n\nIf the name of the object ends in the SOUND shown on the T-shirt, tag the \"YES\" mole.\n\nIf the name of the object does not end in the SOUND shown on the T-shirt, tag the “NO” mole.\n\nThe faster you tag the correct mole, the more points you earn.\n\nThe left and right moles correspond to the “j” and “k” keys on the keyboard.\n\nPlease put your right index and middle fingers on the “j” and “k” keys throughout the game.\n\nAt the end of each session,\n(1) the number of correct responses will be add to your score as bonus points.\n(2) the number of incorrect responses will be deducted from your total score.\n\nTag the mole as quickly and accurately as possible to gain the most points!\n\nHint1: Name the picture with the first object name (singular form) that comes to your mind.\n\nHint2: The word you hear with a picture will NOT be the name of the object in the picture.\n\nThe goal is to ignore the word you hear (if present) and judge if the ending sound of the pictured object matches with the sound on my T-shirt."
+    },
+    "TagMeQuick": {
+      "name": "Quick",
+      "ins": "In this game, tag the moles as fast as you can. The more moles you tag, the better your score! Try it out!\n\nThe six holes correspond to the U, I, O, J, K, L on the keyboard. Press the corresponding key to tag moles."
+    },
+    "TagMeQuick600": {
+      "name": "Quick\n(600)",
+      "ins": "In this game, tag the moles as fast as you can. The more moles you tag, the better your score! Try it out!"
+    },
+    "TagMeQuick800": {
+      "name": "Quick\n(800)",
+      "ins": "In this game, tag the moles as fast as you can. The more moles you tag, the better your score! Try it out!"
+    },
+    "TagMeOnly": {
+      "name": "Only",
+      "ins": "Tag the moles without hats or glasses as fast as you can. Be careful, if you tag the moles wearing hats and glasses, you will lose points. Try it out!\n\nThe six holes correspond to the U, I, O, J, K, L on the keyboard. Press the corresponding key to tag moles."
+    },
+    "TagMeSwitch": {
+      "name": "Switch",
+      "ins": "In this game, three moles will pop up at the same time, but only one of them is the correct one.\n\nTry out different rules until you find the correct rule!\n\nWhen lightning strikes, the rule will change. Then you’ll need to find the new rule. Try it out!\n\nThe left, middle and right holes correspond to the “J”, “K”,”L” on the keyboard. Press the corresponding key whenever you think the mole macthes the one before.",
+      "colour": "The correct mole could be a specific colour:",
+      "place": "Or the correct mole could be at a specific place:",
+      "rule1": "Rule 1: Left mole is correct",
+      "rule2": "Rule 2: Middle mole is correct",
+      "rule3": "Rule 3: Right mole is correct",
+      "rule4": "Rule 4: Brown mole is correct",
+      "rule5": "Rule 5: Purple mole is correct",
+      "rule6": "Rule 6: Orange mole is correct",
+      "brown": "Brown",
+      "purple": "Purple",
+      "yellow": "Yellow",
+      "left": "Left",
+      "orange": "Orange",
+      "middle": "Middle",
+      "right": "Right",
+      "choices": "Remaining Rule Choices",
+      "demoInsLightning": "When lightning strikes, the rule will change. Find the new rule!",
+      "demoInsTagMe": "Tag me to guess a rule!",
+      "demoInsGreat": "Great try, but not quite right.",
+      "demoInsGood": "Good! The rule could be orange or middle.",
+      "demoInsEither": "Tag either the orange or middle mole!",
+      "demoInsRuleOrange": "Great! The rule is orange.",
+      "demoInsTagOrange": "Keep tagging the orange mole until you see lightning strikes!",
+      "demoInsRuleMiddle": "The rule can't be middle, so it must be orange.",
+      "demoInsRuleBrown": "Good! The rule could be brown or right.",
+      "demoInsTagBrown": "Tag either the brown or right mole!",
+      "demoInsRuleRight": "Great! The rule is right.",
+      "demoInsTagRight": "Keep tagging the right mole until you see lightning strikes!",
+      "demoInsRuleNotBrown": "The rule can't be brown, so it must be right."
+    },
+    "TagMeAgainEasy": {
+      "name": "Again\nEasy",
+      "ins": "Moles Appear One at a Time, Remember the Number!\n\nDo you remember the mole’s number??\n\nIf you remembered “1”, you are correct!\n\nTag the New Mole if it Matches the One Before\n\nDon’t Tag the New Mole if it Doesn’t Match the One Before!\n\nThe One Before wore a 2 so you do tag!\n\nThe left, middle and right holes correspond to the “J”, “K”,”L” on the keyboard. Press the corresponding key whenever you think the mole macthes the one before.",
+      "oneBefore": "One Before",
+      "twoBefore": "Two Before",
+      "threeBefore": "Three Before"
+    },
+    "TagMeAgainMedium": {
+      "name": "Again\nMedium",
+      "ins": "Moles Appear One at a Time, Remember the Number!\n\nIn Easy you tagged a mole if it matched the One Before!\n\nIn Medium you need to remember numbers from\n\nTag the New Mole if it Matches the mole Two Before!\n\nDoes this mole match the mole two before?\n\nYes, the two before wore a “4”, so tag it!\n\nDon’t tag the next mole if it doesn’t match the mole Two Before!\n\nDoes this mole match the mole two before?\n\nNo, the two before wore a “4”, so don’t tag it!\n\nThe left, middle and right holes correspond to the “J”, “K”,”L” on the keyboard. Press the corresponding key whenever you think the mole macthes the two before.",
+      "oneBefore": "One Before",
+      "twoBefore": "Two Before",
+      "threeBefore": "Three Before"
+    },
+    "TagMeAgainHard": {
+      "name": "Again\nHard",
+      "ins": "Moles Appear One at a Time, Remember the Number!\n\nIn Easy, you tagged a mole if it matched the One Before!\n\nIn Medium, you tagged a mole if it matched the Two Before!\n\nIn Hard you need to remember numbers from\n\nTag the New Mole if it Matches the mole Three Before!\n\nDoes this mole match the mole three before?\n\nYes, the three before wore a “3”, so tag it!\n\nDon’t tag the next mole if it doesn’t  match the mole three before!\n\nDoes this mole match the mole three before?\n\nNo, the three before wore a “3”, so don’t tag it!\n\nThe left, middle and right holes correspond to the “J”, “K”,”L” on the keyboard. Press the corresponding key whenever you think the mole macthes the three before.",
+      "oneBefore": "One Before",
+      "twoBefore": "Two Before",
+      "threeBefore": "Three Before",
+      "fourBefore": "Four Before"
+    },
+    "TagMeWhere": {
+      "name": "Where",
+      "ins": "In this game, you will see a lighting bolt followed by a mole. Most of the time, a mole pops up in the same hole as the lightning bolt appears, but sometimes a mole pops up in different holes randomly.  Try to tag all the moles as fast as you can.\n\nThe six holes correspond to the U, I, O, J, K, L on the keyboard. Press the corresponding key to tag moles."
+    },
+    "TagMeWhere700": {
+      "name": "Where\n(700)",
+      "ins": "In this game, you will see a lighting bolt followed by a mole. Most of the time, a mole pops up in the same hole as the lightning bolt appears, but sometimes a mole pops up in different holes randomly.  Try to tag all the moles as fast as you can."
+    },
+    "TagMeWhere800": {
+      "name": "Where\n(800)",
+      "ins": "In this game, you will see a lighting bolt followed by a mole. Most of the time, a mole pops up in the same hole as the lightning bolt appears, but sometimes a mole pops up in different holes randomly.  Try to tag all the moles as fast as you can."
+    },
+    "TagMeSame": {
+      "name": "Same",
+      "ins": "Help the mama mole find her baby. You will first see a sparkly mama mole and then two babies. Quickly tag the baby mole who has the same colour as the mama mole. Try it out!"
+    },
+    "TagMeBigger": {
+      "name": "Bigger",
+      "ins": "In this game, you will see two moles, one wearing a big number, and one wearing a small number. Always tag the mole who’s wearing the bigger number, even if he’s shorter. Go as quickly as you can. Try it out!\n\nThe left and right holes correspond to the “J”and “K” on the keyboard. Press the corresponding key to tag moles."
+    },
+    "TagMeBigger800": {
+      "name": "Bigger\n(800)",
+      "ins": "In this game, you will see two moles, one wearing a big number, and one wearing a small number. Always tag the mole who’s wearing the bigger number, even if he’s shorter. Go as quickly as you can. Try it out!"
+    },
+    "TagMeBigger1000": {
+      "name": "Bigger\n(1000)",
+      "ins": "In this game, you will see two moles, one wearing a big number, and one wearing a small number. Always tag the mole who’s wearing the bigger number, even if he’s shorter. Go as quickly as you can. Try it out!"
+    }
+  },
+  "dialog": {
+    "button": "OK, GOT IT!",
+    "nextButton": "NEXT BLOCK",
+    "controlsButton": "VIEW CONTROLS",
+    "replayButton": "Play Again",
+    "playGameButton": "Play Full Game",
+    "mainMenu": "Main Menu",
+    "hint": "Press SPACEBAR for '_'",
+    "1b": {
+      "title": "Yikes!",
+      "text": "Only tag moles with the same number as ONE before!"
+    },
+    "2b": {
+      "title": "Yikes!",
+      "text": "Only tag moles with the same number as TWO before!"
+    },
+    "3b": {
+      "title": "Yikes!",
+      "text": "Only tag moles with the same number as THREE before!"
+    },
+    "correct": {
+      "title": "Yikes!",
+      "text": "Only tag moles with the same number as the mole before!"
+    },
+    "wrongHole": {
+      "title": "You Missed!",
+      "text": "Wrong hole!"
+    },
+    "faster": {
+      "title": "You Missed!",
+      "text": "Tag the mole faster!"
+    },
+    "tagHat": {
+      "title": "Uh-oh!",
+      "text": "Don't tag moles wearing hats!"
+    },
+    "emptyHole": {
+      "title": "Uh-oh!",
+      "text": "You tagged an empty hole!"
+    },
+    "bigger": {
+      "title": "Try Again!",
+      "text": "Remember, tag the mole wearing a bigger number!"
+    },
+    "color": {
+      "title": "Oops!",
+      "text": "Remember to tag the baby mole that is the same colour as its sparkly mom!"
+    },
+    "finishGame": {
+      "title": "Great Job!",
+      "text": "You scored _ points!"
+    },
+    "noFeedback": "There will be no feedback during the full game."
+  },
+  "questionnaire": {
+    "takeSurveyButton": "Take Survey",
+    "title":"Please rate your game experience",
+    "thanksTitle": "Thank you!",
+    "thanks": "We appreciate your feedback",
+    "incompleteSurvey": "Please answer all survey questions to proceed.",
+    "q1": {
+        "question": "What do you think of the game you just played?",
+        "color": "redToBlue",
+        "least": "",
+        "most": ""
+    }
+  }
+}

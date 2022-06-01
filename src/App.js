@@ -7,13 +7,15 @@ import FinalPage from './pages/FinalPage';
 import RSMESlider from './Components/RSME_Slider';
 import Instruction from './pages/Instruction';
 import Protocal from './pages/Protocal';
+// import Route from './Centivizer/routes'
+import GameRoutes from './Centivizer/GameRoutes'
 class App extends React.Component {
   constructor(props) {
       super(props);
   }
 
   state = {
-    page: 1,
+    page: 6,
     videoNames:[],
     shuffledIndex:[],
     wl:{},
@@ -62,6 +64,7 @@ class App extends React.Component {
                 content = <FinalPage names = {this.state.videoNames} index={this.state.shuffledIndex} wl={this.state.wl} basicInfo={this.state.basicInfo}/>
                 break
             case 6:
+                content = <GameRoutes/>
                 break
         }
     return(
