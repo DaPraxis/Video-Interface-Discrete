@@ -5,16 +5,14 @@ import GameManager from "./components/game-manager/GameManager";
 import SwitchInstructions from "./components/instructions/SwitchInstructions";
 import Home from "./components/homepage/Home";
 import VersionGameSelectMenu from "./components/gameselect/VersionGameSelectMenu";
+import VersionGameSelectMenuDriving from "./components/gameselect/VersionGameSelectMenuDriving";
+
 import AgainEasyInstructions from "./components/instructions/AgainEasyInstructions";
 import TagMeSwitchDemo from "./games/TagMeSwitchDemo";
 import audio from "./audio";
 import UserIdFrame from './components/userIdFrame';
 
 let version = new DrivingVersion();
-version.games.map((game) => {
-  console.log(game);
-});
-
 export default function GameRoutes() {
   const [volume, setVolume] = useState(0.5);
   const [currBackgroundMusicIndex, setCurrBackgroundMusicIndex] = useState(-1);
@@ -53,7 +51,7 @@ export default function GameRoutes() {
 
   return (
     <audio.volumeContext.Provider value={value}>
-      <UserIdFrame source='http://192.168.0.100:3000/standalone' />
+      {/* <UserIdFrame source='http://192.168.0.100:3000/standalone' /> */}
       <HashRouter>
         <Switch>
           {/* <Route
@@ -66,7 +64,7 @@ export default function GameRoutes() {
             path="/"
             exact
             render={(props) => (
-              <VersionGameSelectMenu {...props} version={version} setCurrBackgroundMusicIndex={setCurrBackgroundMusicIndex}/>
+              <VersionGameSelectMenuDriving {...props} version={version} setCurrBackgroundMusicIndex={setCurrBackgroundMusicIndex}/>
             )}
           />
           <Route
