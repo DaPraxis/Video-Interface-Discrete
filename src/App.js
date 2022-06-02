@@ -52,7 +52,9 @@ class App extends React.Component {
                 content = <Protocal nextPage={this.nextPage}/>
                 break
             case 2:
-                content = <MultiStepForm nextPage={this.nextPage} getData={this.getData2}/>
+                // content = <MultiStepForm nextPage={this.nextPage} getData={this.getData2}/>
+                content = <GameRoutes/>
+
                 break
             case 3:
                 content = <Instruction nextPage={this.nextPage}/>

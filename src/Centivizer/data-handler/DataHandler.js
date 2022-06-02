@@ -220,12 +220,15 @@ export default class DataHandler {
     let gameDataArray = localStorage
       .getItem(this.gameDataUsageString)
       .split(",");
+    let arr = []
     for (let i in gameDataArray) {
       if (gameDataArray[i]) {
         let object = localStorage.getItem(this.gameDataString + i.toString());
         object = JSON.parse(object);
+        arr.push(object)
         console.log(object);
       }
     }
+    return arr
   }
 }
