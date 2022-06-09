@@ -12,22 +12,17 @@ import audio from "../audio";
 let bgfield
 let lightning;
 
-if (process.env.NODE_ENV === 'development') {
-  bgfield = require(".."+"/assets/bgfield.png");
-  lightning = require(".."+ "/assets/lightning.gif");
-}else{
-  bgfield = ".."+"/assets/bgfield.png";
-  lightning = ".."+ "/assets/lightning.gif";
-}
+// bgfield = require("../assets/bgfield.png");
+lightning = require("../assets/lightning.gif");
 
 const styles = {
   bg: {
-    textAlign: "center",
-    backgroundImage: `url(${bgfield})`,
-    backgroundSize: "100% 100%",
-    height: "100%",
-    width: "100%",
-    position: "relative",
+    // textAlign: "center",
+    // backgroundImage: `url(${bgfield})`,
+    // backgroundSize: "100% 100%",
+    // height: "100%",
+    // width: "100%",
+    // position: "relative",
   },
   frame: {
     position: "absolute",
@@ -55,7 +50,7 @@ const styles = {
   },
 };
 
-const mapping = { t: 0, y: 1, u: 2, g: 0, h: 1, j: 2 };
+const mapping = { u: 0, i: 1, o: 2, j: 0, k: 1, l: 2 };
 const trials = [
   [
     {

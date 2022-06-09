@@ -18,7 +18,7 @@ const games = [
     config: {
       game: {
         mode: 1, // trial-based
-        totalTrials: 60,
+        totalTrials: 20,
         moleDuration: 1000,
         moleInterval: 2000,
         chance: 0.3,
@@ -39,7 +39,7 @@ const games = [
     config: {
       game: {
         mode: 1, // trial-based
-        totalTrials: 62,
+        totalTrials: 20,
         moleDuration: 1000,
         moleInterval: 2000,
         chance: 0.3,
@@ -62,7 +62,7 @@ const games = [
     config: {
       game: {
         mode: 0, // time-based
-        totalSeconds: 120,
+        totalSeconds: 60,
         moleDuration: 0, // infinite time
         moleInterval: 1000,
       },

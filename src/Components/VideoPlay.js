@@ -3,11 +3,12 @@ import ReactPlayer from "react-player";
 import axios from 'axios'
 import { Button, Form, Row, Col, Container, FormControl, InputGroup, DropdownButton, Dropdown, Offcanvas, FloatingLabel, ProgressBar} from "react-bootstrap";
 import RangeSlider from 'react-bootstrap-range-slider';
+import { Redirect } from "react-router-dom";
 class VideoPlay extends Component{
 
     state = {
         playList:[],
-        playListId:"PLHdq35Wa7ob8OqRKT-peP8R2VvBZfFFsJ",
+        playListId:"PLHdq35Wa7ob9uRaqjq_hONEpV-acIwrTy",
         key:"AIzaSyDXNcHG8aLsd2AcsaKouG_tJWZQo5YVGm8",
         videoNames:[],
         videoLinks:[],
@@ -21,7 +22,8 @@ class VideoPlay extends Component{
         rangeValue:5,
         wl:{},
         wlValue:40,
-        canvasShow:false
+        canvasShow:false,
+        done:false
         // canvasShow:true
     }
 
@@ -97,8 +99,9 @@ class VideoPlay extends Component{
     handleShow = () => this.setState({canvasShow:true});
 
     handleFinish = () => {
-        this.props.nextPage() 
+        // this.props.nextPage() 
         this.props.getData(this.state.videoNames, this.state.shuffledIndex, this.state.wl)
+        this.setState({done:true})
     }
 
     mentalEffort(wl){
@@ -178,6 +181,7 @@ class VideoPlay extends Component{
                             />
                         </div> 
                     </div>
+                    {this.state.done?<Redirect to={'/done'} push /> : <></>}
                     <Offcanvas show={this.state.canvasShow} onHide={this.handleClose} 
                                 placement="bottom" backdrop={false} 
                                 style={{justifyContent: 'center',alignItems: "center",height: "65%",zIndex:'20'}}>
@@ -215,6 +219,9 @@ class VideoPlay extends Component{
                     </Offcanvas>
                 </div>
             )
+        }
+        else{
+            return ("error; video not found")
         }
     }
 }

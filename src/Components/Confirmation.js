@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 import { Button, Container } from 'react-bootstrap';
+import { Redirect } from 'react-router-dom';
 
 export default class Confirmation extends Component{
+
+    state = {
+        confirm:false
+    }
 
     back  = (e) => {
         e.preventDefault();
@@ -16,7 +21,8 @@ export default class Confirmation extends Component{
     next = (e)=> {
         e.preventDefault();
         this.props.getData(this.props.inputValues)
-        this.props.nextPage()
+        // this.props.nextPage()
+        this.setState({confirm:true})
     }
 
     render(){
@@ -36,6 +42,7 @@ export default class Confirmation extends Component{
                 <p>Frequency of Driving: {driveFreq}</p>
                 <Button variant="secondary" onClick={this.back}>Back</Button>{' '}
                 <Button variant="primary" onClick={this.next}>Confirm</Button>
+                {this.state.confirm?<Redirect to={'/mainmenu'} push /> : <></>}
             </Container>
         )
     }

@@ -34,6 +34,8 @@ export default class DataHandler {
       ...gameSpecificData,
       isPractice,
     };
+    console.log("game start")
+    console.log(this.gameData)
   }
 
   logTrial(
@@ -106,7 +108,7 @@ export default class DataHandler {
   }
 
   saveGameDataLocally() {
-    if (!this.gameData.isPractice && !this.gameData.survey) return;
+    // if (!this.gameData.isPractice && !this.gameData.survey) return;
     console.log(this.gameData);
     if (this.gameData) {
       const index = this.findEmptyGameDataStorage();

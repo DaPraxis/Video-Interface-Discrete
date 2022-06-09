@@ -15,7 +15,7 @@ class App extends React.Component {
   }
 
   state = {
-    page: 6,
+    page: 1,
     videoNames:[],
     shuffledIndex:[],
     wl:{},
@@ -49,25 +49,24 @@ class App extends React.Component {
       var content
       switch(page) {
             case 1:
-                content = <Protocal nextPage={this.nextPage}/>
-                break
-            case 2:
-                // content = <MultiStepForm nextPage={this.nextPage} getData={this.getData2}/>
-                content = <GameRoutes/>
-
-                break
-            case 3:
-                content = <Instruction nextPage={this.nextPage}/>
-                break
-            case 4:
-                content = <VideoPlay nextPage={this.nextPage} getData={this.getData}/>
-                break
-            case 5:
-                content = <FinalPage names = {this.state.videoNames} index={this.state.shuffledIndex} wl={this.state.wl} basicInfo={this.state.basicInfo}/>
-                break
-            case 6:
+            //     content = <Protocal nextPage={this.nextPage}/>
+            //     break
+            // case 2:
+            //     // content = <MultiStepForm nextPage={this.nextPage} getData={this.getData2}/>
                 content = <GameRoutes/>
                 break
+            // case 3:
+            //     content = <Instruction nextPage={this.nextPage}/>
+            //     break
+            // case 4:
+            //     content = <VideoPlay nextPage={this.nextPage} getData={this.getData}/>
+            //     break
+            // case 5:
+            //     content = <FinalPage names = {this.state.videoNames} index={this.state.shuffledIndex} wl={this.state.wl} basicInfo={this.state.basicInfo}/>
+            //     break
+            // case 6:
+            //     content = <GameRoutes nextPage={this.nextPage}/>
+            //     break
         }
     return(
         <div className="App">

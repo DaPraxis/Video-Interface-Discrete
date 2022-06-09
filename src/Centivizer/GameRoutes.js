@@ -3,13 +3,16 @@ import { HashRouter, Switch, Route } from "react-router-dom";
 import DrivingVersion from "./versions/DrivingVersion";
 import GameManager from "./components/game-manager/GameManager";
 import SwitchInstructions from "./components/instructions/SwitchInstructions";
-import Home from "./components/homepage/Home";
-import VersionGameSelectMenu from "./components/gameselect/VersionGameSelectMenu";
 import VersionGameSelectMenuDriving from "./components/gameselect/VersionGameSelectMenuDriving";
 
 import AgainEasyInstructions from "./components/instructions/AgainEasyInstructions";
 import TagMeSwitchDemo from "./games/TagMeSwitchDemo";
 import audio from "./audio";
+import Protocal from "../pages/Protocal"
+import Instruction from "../pages/Instruction";
+import MultiStepForm from "../pages/MultiStepForm";
+import VideoPlay from "../Components/VideoPlay";
+import FinalPage from "../pages/FinalPage";
 import UserIdFrame from './components/userIdFrame';
 
 let version = new DrivingVersion();
@@ -18,26 +21,24 @@ export default function GameRoutes() {
   const [currBackgroundMusicIndex, setCurrBackgroundMusicIndex] = useState(-1);
 
   const value = { volume, setVolume };
+  const [videoNames, setVideoNames] = useState([])
+  const [wl, setWl] = useState([])
+  const [basicInfo, setBasicInfo] = useState({})
+  const [shuffledIndex, setShuffleIndex] = useState([])
 
-  // let route = window.location.href.split("/");
+  function getData(videoNames, shuffledIndex, wl){
+    setVideoNames(videoNames)
+    setShuffleIndex(shuffledIndex)
+    setWl(wl)
+  }
 
-  // useEffect(() => {
-  //   console.log("route: " + route);
-  //   if (
-  //     route[route.length - 1] !== "" &&
-  //     !["gameCodaDemo", "gameCoda", "gameTune", "gameTuneDemo"].includes(
-  //       route[route.length - 1]
-  //     )
-  //   ) {
-  //     audio.backgroundMusic[0].play();
-  //   }
-  // }, [route]);
+  function getData2(inputValues){
+    setBasicInfo(inputValues)
+  }
 
   useEffect(() => {
     audio.changeBackgroundMusic(currBackgroundMusicIndex);
   }, [currBackgroundMusicIndex]);
-
-
 
   useEffect(() => {
     audio.changeBackgroundMusicVolume(volume);
@@ -54,17 +55,44 @@ export default function GameRoutes() {
       {/* <UserIdFrame source='http://192.168.0.100:3000/standalone' /> */}
       <HashRouter>
         <Switch>
-          {/* <Route
+          <Route
             path="/"
             exact
-            render={(props) => <Home {...props} version={version} />}
-          /> */}
+            render={(props) => <Protocal/>}
+          />
           <Route
-            // path="/mainmenu"
-            path="/"
+            path="/demo"
+            exact
+            render={(props) => <MultiStepForm getData={getData2}/>}
+          />
+          <Route
+            path="/mainmenu"
             exact
             render={(props) => (
-              <VersionGameSelectMenuDriving {...props} version={version} setCurrBackgroundMusicIndex={setCurrBackgroundMusicIndex}/>
+              <VersionGameSelectMenuDriving {...props} version={version} 
+              // setCurrBackgroundMusicIndex={setCurrBackgroundMusicIndex}
+              />
+            )}
+          />
+          <Route
+            path="/instruction"
+            exact
+            render={(props) => (
+              <Instruction/>
+            )}
+          />
+          <Route
+            path="/video"
+            exact
+            render={(props) => (
+              <VideoPlay getData={getData}/>
+            )}
+          />
+          <Route
+            path="/done"
+            exact
+            render={(props) => (
+              <FinalPage names = {videoNames} index={shuffledIndex} wl={wl} basicInfo={basicInfo}/>
             )}
           />
           <Route

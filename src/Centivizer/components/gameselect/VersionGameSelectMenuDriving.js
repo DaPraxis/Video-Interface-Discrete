@@ -155,19 +155,6 @@ function GameButton(props) {
               )}
 
             {redirect_ss ? <Redirect to={props.instructionsUrl} push /> : <></>}
-            {/* {
-              redirect
-                ?<Card>
-                  <Card.Img variant="top" src={cardDict[props.id]['img']} />
-                    <Card.Body>
-                      <Card.Title>TAG-ME {props.name}</Card.Title>
-                      <Card.Subtitle className="mb-2 text-muted">{cardDict[props.id]['COG']}</Card.Subtitle>
-
-                      <Card.Subtitle>{cardDict[props.id]['ins']}</Card.Subtitle>
-                      <Button variant="primary" onClick = {(e)=>{e.preventDefault();setRedirect_ss(true)}}>Go somewhere</Button>
-                    </Card.Body>
-                </Card>:<></>
-            } */}
           </div>
         </ColourButton>
         <Dialog
@@ -247,6 +234,7 @@ export default function VersionGameSelectMenuDriving(props) {
   const [loadingPages, setLoadingPages] = useState(true);
   const [gameStates, setGameStates] = useState({});
   const [gameId, setGameId] = useState(-1)
+  const [isDone, setIsDone] = useState(false)
 
   async function getParticipantState() {
     try {
@@ -310,15 +298,23 @@ export default function VersionGameSelectMenuDriving(props) {
     // });
     let d = {}
     let dd = dataHandler.printLocalData()
+    let is_done = true
     // console.log(dd)
     for (count = 0; count < buttonCount && count < games.length; count++) {
       // first page can have 5 GAMES, need space at the end for next page button
       let item = games[count];
       d[item.name] = 0
-      dd.forEach((x, i)=>{if(x.name.includes(item.name)){d[item.name]=1}})
+      dd.forEach((x, i)=>{
+        if(x.name.includes(item.name)){d[item.name]=1}})
+      if (d[item.name]==0){
+        is_done = false
+      }
       buttons.push(gameToButton(item, count, data, setGameId));
     }
     setGameStates(d)
+    if(is_done && (Object.keys(d).length != 0)){
+      setIsDone(true)
+    }
 
     for (let i = 0; i < buttons.length; i += buttonCount) {
       // construct pages as pairs of rows
@@ -431,6 +427,7 @@ export default function VersionGameSelectMenuDriving(props) {
           </Card.Body>
       </Card>}
       {redirect_ss ? <Redirect to={`instructions${cardDict[gameId]['name']}`} push /> : <></>}
+      {isDone ? <Redirect to={`instruction`} push /> : <></>}
     </div>
   );
 }

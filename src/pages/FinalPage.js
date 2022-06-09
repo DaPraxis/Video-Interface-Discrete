@@ -41,6 +41,11 @@ class FinalPage extends React.Component{
             var wl = this.props.wl[i]
             newWl[name] = wl
         }
+        let num_keys_ls = localStorage.length - 2
+        for (var i=0; i<num_keys_ls; i++){
+            let game = JSON.parse(localStorage.getItem("__LOCALGAMEDATA"+i.toString()))
+            newWl["Game_"+game['name']] = game
+        }
         const fileName = "file";
         console.log(this.props.basicInfo)
         const json = JSON.stringify({...newWl, ...this.props.basicInfo});

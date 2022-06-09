@@ -93,7 +93,7 @@ class GameManager extends Component {
     this.falseAlarm=0;
 
     // create game object
-    console.log(this.props)
+    // console.log(this.props)
     this.config = this.props.isPractice
       ? this.props.config.practice
       : this.props.config.game;
@@ -576,6 +576,7 @@ class GameManager extends Component {
       console.log("print!");
       this.props.dataHandler.sendLocalData();
     }
+    console.log('Game Over, data saved')
   }
 
   /*
@@ -698,6 +699,7 @@ class GameManager extends Component {
       this.dialogQueue.push(...this.game.showDialog()); // show dialog due to game instructions, i.e. NOT due to player interaction
       if (this.game.currentTrial === this.game.totalTrials || (this.game.totalSeconds && this.game.timesUp)) {
         this.setState({ overlay: null });
+        this.endGame()
         console.log("Game Over due to times up");
         this.dialogQueue.push("game-over");
       }

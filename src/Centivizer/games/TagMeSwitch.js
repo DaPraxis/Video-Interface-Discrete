@@ -282,6 +282,12 @@ export class TimeBasedTagMeSwitch extends TimeBasedGame {
   }
 
   getGameSpecificData() {
+    console.log({
+      totalSeconds: this.totalSeconds,
+      consecutiveCount: this.consecutiveCorrect,
+      rule: this.rule,
+      ruleSwitch: this.ruleSwitch
+    })
     return {
       totalSeconds: this.totalSeconds,
       consecutiveCount: this.consecutiveCorrect,

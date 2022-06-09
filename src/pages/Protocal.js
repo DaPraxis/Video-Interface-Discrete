@@ -2,12 +2,14 @@ import React from "react";
 import {Card, Container, Button, Col, Row} from "react-bootstrap"
 import protocol_text from "../protocol.txt"
 import Footer from "../Components/Footer"
+import { Redirect } from "react-router-dom";
 
 class Protocal extends React.Component {
 
     state = {
         texts:[],
-        checked:false
+        checked:false,
+        redirect:false
     }
 
     componentDidMount(){
@@ -87,8 +89,9 @@ class Protocal extends React.Component {
                             </input> I certify that I agree to attend this experiment and willing to share my data to the IML Lab
                             </Col>
                             <Col>
-                                {this.state.checked?<Button variant="primary" onClick={this.props.nextPage}>Start Experiment</Button>:null}
+                                {this.state.checked?<Button variant="primary" onClick={(e)=>{e.preventDefault();this.setState({redirect:true})}}>Start Experiment</Button>:null}
                             </Col>
+                            {this.state.redirect?<Redirect to={'/demo'} push /> : <></>}
                         </Row>
                     </Container>
                 </Footer>

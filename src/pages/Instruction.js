@@ -7,11 +7,14 @@ import fstp4 from "../Images/4stp.png"
 import fstp5 from "../Images/5stp.png"
 import fstp6 from "../Images/6stp.png"
 import fstp11 from "../Images/11stp.png"
+import { Redirect } from "react-router-dom";
 
 
 
 class Instruction extends React.Component {
-
+    state={
+        confirm:false
+    }
     render(){
         return(
             <Container className="my-auto" >
@@ -102,7 +105,13 @@ class Instruction extends React.Component {
                         <Carousel.Caption>
                         <h5>Video Rating Progress</h5>
                         <p>You may check your experiment progress from the progress bar.</p>
-                        <Button variant="primary" onClick={this.props.nextPage}>Start</Button>
+                        <Button variant="primary" onClick={
+                            (e)=>{
+                                e.preventDefault()
+                                this.setState({confirm:true})
+                            }
+                        }>Start</Button>
+                        {this.state.confirm?<Redirect to={'/video'} push /> : <></>}
                         </Carousel.Caption>
                     </Carousel.Item>
                 </Carousel>
