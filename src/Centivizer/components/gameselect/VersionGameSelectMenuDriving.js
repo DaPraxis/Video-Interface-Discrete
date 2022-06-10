@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
+import { randomState } from "../../../drivingText";
 import {
   Button,
   Dialog,
@@ -20,7 +21,7 @@ import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import GameSelectNavBar from "../navigation/GameSelectNavBar";
 import MusicSelectButton from "./MusicSelectButton";
 import DataHandler from "../../data-handler/DataHandler";
-import {Card} from 'react-bootstrap'
+import {Card,Alert} from 'react-bootstrap'
 
 let bg;
 
@@ -42,13 +43,20 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     fontSize: "2.6rem",
-    margin: "0.5rem",
+    // marginTop: "0.3rem",
+    // color: "white",
+    // textShadow: "0px 0px 25px #285c41",
+    // fontFamily: "Superfats",
+  },
+  subtitle: {
+    fontSize: "1.6rem",
+    // margin: "0.5rem",
     // color: "white",
     // textShadow: "0px 0px 25px #285c41",
     // fontFamily: "Superfats",
   },
   titleBlock: {
-    paddingTop: "3rem",
+    paddingTop: "1.5rem",
   },
   icon: {
     paddingTop: "12px",
@@ -113,6 +121,7 @@ function GameButton(props) {
   const { t } = useTranslation();
   let [redirect, setRedirect] = useState(false);
   let [redirect_ss, setRedirect_ss] = useState(false);
+
 
   const [open, setOpen] = React.useState(false);
 
@@ -235,6 +244,9 @@ export default function VersionGameSelectMenuDriving(props) {
   const [gameStates, setGameStates] = useState({});
   const [gameId, setGameId] = useState(-1)
   const [isDone, setIsDone] = useState(false)
+  const [show, setShow] = useState(true);
+  const [doneN, setDoneN] = useState(0);
+
 
   async function getParticipantState() {
     try {
@@ -299,18 +311,20 @@ export default function VersionGameSelectMenuDriving(props) {
     let d = {}
     let dd = dataHandler.printLocalData()
     let is_done = true
+    var c = 0
     // console.log(dd)
     for (count = 0; count < buttonCount && count < games.length; count++) {
       // first page can have 5 GAMES, need space at the end for next page button
       let item = games[count];
       d[item.name] = 0
       dd.forEach((x, i)=>{
-        if(x.name.includes(item.name)){d[item.name]=1}})
+        if(x.name.includes(item.name)){d[item.name]=1;c = c+1}})
       if (d[item.name]==0){
         is_done = false
       }
       buttons.push(gameToButton(item, count, data, setGameId));
     }
+    setDoneN(c)
     setGameStates(d)
     if(is_done && (Object.keys(d).length != 0)){
       setIsDone(true)
@@ -347,6 +361,8 @@ export default function VersionGameSelectMenuDriving(props) {
   }
 
   let titleLines = t("game-select-title").split("\n");
+  let subtitleLines = t("game-select-subtitle").split("\n");
+
 
   let cardDict = {
     0:{
@@ -391,6 +407,14 @@ export default function VersionGameSelectMenuDriving(props) {
             </>
           ))}
         </span>
+        <span className={classes.subtitle}>
+          {subtitleLines.map((line) => (
+            <>
+              {line}
+              <br />
+            </>
+          ))}
+        </span>
       </div>
       <Grid
         container
@@ -411,23 +435,30 @@ export default function VersionGameSelectMenuDriving(props) {
       </Grid>
       {/* <MusicSelectButton setCurrBackgroundMusicIndex={props.setCurrBackgroundMusicIndex} /> */}
       {gameId<0?<></>:
-      <Card style={{display: 'flex', flexDirection: 'row', margin:'0 15%', maxHeight:"280px"}}>
-        <Card.Img variant="top" src={cardDict[gameId]['img']} />
-          <Card.Body>
-            <Card.Title>TAG-ME {cardDict[gameId]['n']}</Card.Title>
-            <Card.Text>{cardDict[gameId]['COG']}</Card.Text>
-            <Card.Subtitle>{cardDict[gameId]['ins']}</Card.Subtitle>
-            <br/>
-            <Button disabled={gameStates[cardDict[gameId]['name']]} variant="primary" className={classes.button2} onClick = {(e)=>{
-              e.preventDefault();
-              if(!gameStates[cardDict[gameId]['name']]){
-                setRedirect_ss(true)
-              }
-              }}>{gameStates[cardDict[gameId]['name']]?"Done":"Play!"}</Button>
-          </Card.Body>
-      </Card>}
+      <div>
+        <Card style={{display: 'flex', flexDirection: 'row', margin:'0 15%', maxHeight:"280px"}}>
+          <Card.Img variant="top" src={cardDict[gameId]['img']} />
+            <Card.Body>
+              <Card.Title>TAG-ME {cardDict[gameId]['n']}</Card.Title>
+              <Card.Text>{cardDict[gameId]['COG']}</Card.Text>
+              <Card.Subtitle>{cardDict[gameId]['ins']}</Card.Subtitle>
+              <br/>
+              <Button disabled={gameStates[cardDict[gameId]['name']]} variant="primary" className={classes.button2} onClick = {(e)=>{
+                e.preventDefault();
+                if(!gameStates[cardDict[gameId]['name']]){
+                  setRedirect_ss(true)
+                }
+                }}>{gameStates[cardDict[gameId]['name']]?"Done":"Play!"}</Button>
+            </Card.Body>
+        </Card>
+        {show?
+        <Alert variant="warning" onClose={() => setShow(false)} dismissible>
+          <Alert.Heading>Finish all games to proceed, progress {doneN}/3</Alert.Heading>
+        </Alert>:<></>}
+      </div>
+      }
       {redirect_ss ? <Redirect to={`instructions${cardDict[gameId]['name']}`} push /> : <></>}
-      {isDone ? <Redirect to={`instruction`} push /> : <></>}
+      {isDone ? <Redirect to={randomState?'instruction':'texts'} push /> : <></>}
     </div>
   );
 }

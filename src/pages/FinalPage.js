@@ -1,5 +1,5 @@
 import React from 'react'
-import {Table, Container, Row, Col, Button} from "react-bootstrap"
+import {Table, Container, Row, Col, Button, Toast, ToastContainer} from "react-bootstrap"
 import axios from 'axios'
 import Footer from "../Components/Footer"
 
@@ -39,7 +39,13 @@ class FinalPage extends React.Component{
             var ind = this.props.index[i]
             var name = this.props.names[ind]
             var wl = this.props.wl[i]
-            newWl[name] = wl
+            newWl[name+'_video'] = wl
+        }
+        for(var i=0;i<this.props.twl['name'].length;i++){
+            var ind = this.props.twl['index'][i]
+            var name = this.props.twl['name'][ind]
+            var wl = this.props.twl['wl'][i]
+            newWl[name+'_text'] = wl
         }
         let num_keys_ls = localStorage.length - 2
         for (var i=0; i<num_keys_ls; i++){
@@ -78,7 +84,7 @@ class FinalPage extends React.Component{
         }
         return(
             <div style={{justifyContent: 'center',alignItems: "center",width: "65%", margin:"0 auto", padding: '50px'}}>
-                <Table striped bordered hover>
+                {/* <Table striped bordered hover>
                     <thead>
                         <tr>
                             <th>Video Index</th>
@@ -89,7 +95,24 @@ class FinalPage extends React.Component{
                         {table}
                     </tbody>
 
-                </Table>
+                </Table> */}
+                {/* <h1>
+                    {"Congratulations, the study is done 🎉"}
+                </h1> */}
+                <ToastContainer className="p-3" position='middle-center'>
+                    <Toast>
+                        <Toast.Header closeButton={false}>
+                        {/* <img
+                            src="holder.js/20x20?text=%20"
+                            className="rounded me-2"
+                            alt=""
+                        /> */}
+                        <strong className="me-auto">IML Lab</strong>
+                        <small>1 mins ago</small>
+                        </Toast.Header>
+                        <Toast.Body>Congratulations, the study is done 🎉🎉🎉</Toast.Body>
+                    </Toast>
+                    </ToastContainer>
                 <Footer>
                     <Container>
                         <Row>

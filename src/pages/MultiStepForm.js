@@ -10,7 +10,7 @@ export default class MultiStepForm extends Component {
     }
 
     state = {
-        step: 1,
+        step: 2,
         firstName: '',
         lastName: '',
         email: '',

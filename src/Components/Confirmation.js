@@ -30,9 +30,9 @@ export default class Confirmation extends Component{
 
         return(
             <Container>
-                <p>First Name: {firstName}</p>
+                {/* <p>First Name: {firstName}</p>
                 <p>Last Name: {lastName}</p>
-                <p>Email: {email}</p>
+                <p>Email: {email}</p> */}
                 <p>City: {city}</p>
                 <p>State/Province: {state}</p>
                 <p>Country: {country}</p>

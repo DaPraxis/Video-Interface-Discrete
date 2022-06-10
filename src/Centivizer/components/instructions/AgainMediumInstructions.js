@@ -60,6 +60,9 @@ if (process.env.NODE_ENV === 'development') {
   mole_dialog = "../.." + "/assets/mole_sparkle.png";
 }
 
+arrow = require("../.." + "/assets/icons/previous.png");
+
+
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundImage: `url(${bg})`,
@@ -1181,14 +1184,14 @@ export default function AgainMediumInstructions(props) {
   return (
     <div className={classes.root}>
       {redirectAddress === "" ? <></> : <Redirect to={redirectAddress} push />}
-      <NavBar />
+      {/* <NavBar /> */}
       <Link to="/mainmenu">
         <img
           src={arrow}
           alt="back arrow"
           style={{
             position: "absolute",
-            left: "25px",
+            left: "150px",
             top: "100px",
             width: "50px",
           }}

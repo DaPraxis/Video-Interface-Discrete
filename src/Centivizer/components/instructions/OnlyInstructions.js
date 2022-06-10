@@ -26,6 +26,9 @@ if (process.env.NODE_ENV === 'development') {
   img = "../.." + "/assets/instructions/only_instructions.png";
   hole_img = "../.." + "/assets/instructions/hole_no_margin.png";
 }
+// arrow = require("../.." + "/assets/icons/arrow-circle-left-solid.png");
+arrow = require("../.." + "/assets/icons/previous.png");
+
 
 const useStyles = makeStyles((theme) => ({
   img: {
@@ -41,6 +44,7 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: "bold",
     textAlign: "center",
     fontFamily: "Open sans, sans serif",
+    marginLeft:'10%'
   },
   root: {
     backgroundImage: `url(${bg})`,
@@ -287,14 +291,14 @@ export default function OnlyInstructions(props) {
   return (
     <div className={classes.root}>
       {redirectAddress === "" ? <></> : <Redirect to={redirectAddress} push />}
-        <NavBar />
+        {/* <NavBar /> */}
         <Link to="/mainmenu">
           <img
             src={arrow}
             alt="back arrow"
             style={{
               position: "absolute",
-              left: "25px",
+              left: "150px",
               top: "100px",
               width: "50px",
             }}

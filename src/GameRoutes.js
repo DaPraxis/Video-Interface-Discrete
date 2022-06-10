@@ -1,19 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { HashRouter, Switch, Route } from "react-router-dom";
-import DrivingVersion from "./versions/DrivingVersion";
-import GameManager from "./components/game-manager/GameManager";
-import SwitchInstructions from "./components/instructions/SwitchInstructions";
-import VersionGameSelectMenuDriving from "./components/gameselect/VersionGameSelectMenuDriving";
+import DrivingVersion from "./Centivizer/versions/DrivingVersion";
+import GameManager from "./Centivizer/components/game-manager/GameManager";
+import SwitchInstructions from "./Centivizer/components/instructions/SwitchInstructions";
+import VersionGameSelectMenuDriving from "./Centivizer/components/gameselect/VersionGameSelectMenuDriving";
 
-import AgainEasyInstructions from "./components/instructions/AgainEasyInstructions";
-import TagMeSwitchDemo from "./games/TagMeSwitchDemo";
-import audio from "./audio";
-import Protocal from "../pages/Protocal"
-import Instruction from "../pages/Instruction";
-import MultiStepForm from "../pages/MultiStepForm";
-import VideoPlay from "../Components/VideoPlay";
-import FinalPage from "../pages/FinalPage";
-import UserIdFrame from './components/userIdFrame';
+import AgainEasyInstructions from "./Centivizer/components/instructions/AgainEasyInstructions";
+import TagMeSwitchDemo from "./Centivizer/games/TagMeSwitchDemo";
+import audio from "./Centivizer/audio";
+import Protocal from "./pages/Protocal"
+import Instruction from "./pages/Instruction";
+import MultiStepForm from "./pages/MultiStepForm";
+import VideoPlay from "./Components/VideoPlay";
+import FinalPage from "./pages/FinalPage";
+import Quate from "./pages/Quate"
+import UserIdFrame from './Centivizer/components/userIdFrame';
 
 let version = new DrivingVersion();
 export default function GameRoutes() {
@@ -23,6 +24,7 @@ export default function GameRoutes() {
   const value = { volume, setVolume };
   const [videoNames, setVideoNames] = useState([])
   const [wl, setWl] = useState([])
+  const [twl, setTwl] = useState([])
   const [basicInfo, setBasicInfo] = useState({})
   const [shuffledIndex, setShuffleIndex] = useState([])
 
@@ -34,6 +36,10 @@ export default function GameRoutes() {
 
   function getData2(inputValues){
     setBasicInfo(inputValues)
+  }
+
+  function getData3(inputValue){
+    setTwl(inputValue)
   }
 
   useEffect(() => {
@@ -89,10 +95,16 @@ export default function GameRoutes() {
             )}
           />
           <Route
+            path="/texts"
+            exact
+            render={(props)=>(
+              <Quate getData={getData3}/>
+            )}/>
+          <Route
             path="/done"
             exact
             render={(props) => (
-              <FinalPage names = {videoNames} index={shuffledIndex} wl={wl} basicInfo={basicInfo}/>
+              <FinalPage names = {videoNames} index={shuffledIndex} wl={wl} basicInfo={basicInfo} twl={twl}/>
             )}
           />
           <Route

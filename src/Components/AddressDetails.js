@@ -184,7 +184,7 @@ export default class AddressDetails extends Component{
                             </Form.Group>
                         </Row>
 
-                        <Button variant="secondary" style={{marginTop:"2%"}} onClick={this.back}>Back</Button>{' '}
+                        {/* <Button variant="secondary" style={{marginTop:"2%"}} onClick={this.back}>Back</Button>{' '} */}
                         <Button type="submit" variant="primary" style={{marginTop:"2%"}}>Next</Button>
                     </Form>
                 </Container>

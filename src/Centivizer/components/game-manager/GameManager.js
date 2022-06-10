@@ -564,7 +564,6 @@ class GameManager extends Component {
     this.game.timeoutManager.isRunning = false;
     this.game.timeoutManager.removeAll();
     this.props.dataHandler.logGameEnd(Date.now(), this.state.score);
-    this.props.dataHandler.saveGameDataLocally();
 
     //Also send practice data to backend
     if(this.props.isPractice){
@@ -575,6 +574,9 @@ class GameManager extends Component {
       // }
       console.log("print!");
       this.props.dataHandler.sendLocalData();
+    }
+    else{
+      this.props.dataHandler.saveGameDataLocally();
     }
     console.log('Game Over, data saved')
   }

@@ -1,14 +1,14 @@
 import './App.css';
 import React from 'react'
 import MultiStepForm from './pages/MultiStepForm';
-import InstructionPage from './pages/InstructionPage';
+// import InstructionPage from './pages/InstructionPage';
 import VideoPlay from './Components/VideoPlay'
 import FinalPage from './pages/FinalPage';
 import RSMESlider from './Components/RSME_Slider';
 import Instruction from './pages/Instruction';
 import Protocal from './pages/Protocal';
 // import Route from './Centivizer/routes'
-import GameRoutes from './Centivizer/GameRoutes'
+import GameRoutes from './GameRoutes'
 class App extends React.Component {
   constructor(props) {
       super(props);
@@ -22,26 +22,26 @@ class App extends React.Component {
     basicInfo:{}
   }
 
-  nextPage = () => {
-      const { page } = this.state
-      this.setState({
-          page : page + 1
-      })
-  }
+//   nextPage = () => {
+//       const { page } = this.state
+//       this.setState({
+//           page : page + 1
+//       })
+//   }
 
-  getData = (videoNames, shuffledIndex, wl) => {
-    this.setState({
-        videoNames: videoNames,
-        shuffledIndex: shuffledIndex,
-        wl:wl
-    })
-  }
+//   getData = (videoNames, shuffledIndex, wl) => {
+//     this.setState({
+//         videoNames: videoNames,
+//         shuffledIndex: shuffledIndex,
+//         wl:wl
+//     })
+//   }
 
-  getData2 = (inputValues) =>{
-    this.setState({
-        basicInfo:inputValues
-    })
-  }
+//   getData2 = (inputValues) =>{
+//     this.setState({
+//         basicInfo:inputValues
+//     })
+//   }
 
   render() {
       const {page} = this.state;

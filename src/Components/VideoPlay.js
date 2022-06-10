@@ -4,6 +4,7 @@ import axios from 'axios'
 import { Button, Form, Row, Col, Container, FormControl, InputGroup, DropdownButton, Dropdown, Offcanvas, FloatingLabel, ProgressBar} from "react-bootstrap";
 import RangeSlider from 'react-bootstrap-range-slider';
 import { Redirect } from "react-router-dom";
+import {randomState} from '../drivingText'
 class VideoPlay extends Component{
 
     state = {
@@ -181,7 +182,7 @@ class VideoPlay extends Component{
                             />
                         </div> 
                     </div>
-                    {this.state.done?<Redirect to={'/done'} push /> : <></>}
+                    {this.state.done?<Redirect to={randomState?'/texts':'/done'} push /> : <></>}
                     <Offcanvas show={this.state.canvasShow} onHide={this.handleClose} 
                                 placement="bottom" backdrop={false} 
                                 style={{justifyContent: 'center',alignItems: "center",height: "65%",zIndex:'20'}}>
@@ -200,7 +201,7 @@ class VideoPlay extends Component{
                                     🔁Replay
                                 </Button>
                                 {this.state.videoCounter<this.state.videoTotal-1?
-                                // {this.state.videoCounter<2?
+                                // {this.state.videoCounter<1?
                                     <Button variant="outline-secondary" onClick={this.handleBtClickNext} disabled={buttonDisable}>
                                         Next
                                     </Button>:
