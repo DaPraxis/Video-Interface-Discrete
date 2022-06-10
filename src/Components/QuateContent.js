@@ -1,4 +1,3 @@
-import { ConnectionStates } from 'mongoose';
 import React from 'react'
 import { drivingText, randomState} from '../drivingText';
 import {Card, Container, InputGroup, FloatingLabel, FormControl, Button, ProgressBar} from 'react-bootstrap'
