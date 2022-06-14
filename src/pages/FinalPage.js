@@ -2,6 +2,7 @@ import React from 'react'
 import {Table, Container, Row, Col, Button, Toast, ToastContainer} from "react-bootstrap"
 import axios from 'axios'
 import Footer from "../Components/Footer"
+import {randomState} from "../drivingText"
 
 
 class FinalPage extends React.Component{
@@ -39,7 +40,8 @@ class FinalPage extends React.Component{
             var ind = this.props.index[i]
             var name = this.props.names[ind]
             var wl = this.props.wl[i]
-            newWl[name+'_video'] = wl
+            var sug = this.props.sug[name]
+            newWl[name+'_video'] = {"workload":wl,"suggestions":sug}
         }
         for(var i=0;i<this.props.twl['name'].length;i++){
             var ind = this.props.twl['index'][i]
@@ -52,6 +54,7 @@ class FinalPage extends React.Component{
             let game = JSON.parse(localStorage.getItem("__LOCALGAMEDATA"+i.toString()))
             newWl["Game_"+game['name']] = game
         }
+        newWl["ExpRandomState"] = randomState
         const fileName = "file";
         console.log(this.props.basicInfo)
         const json = JSON.stringify({...newWl, ...this.props.basicInfo});

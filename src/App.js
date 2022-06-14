@@ -47,6 +47,7 @@ class App extends React.Component {
       const {page} = this.state;
       const inputValues = {page};
       var content
+      // console.log(isEmpty)
       switch(page) {
             case 1:
             //     content = <Protocal nextPage={this.nextPage}/>
@@ -54,6 +55,7 @@ class App extends React.Component {
             // case 2:
             //     // content = <MultiStepForm nextPage={this.nextPage} getData={this.getData2}/>
                 content = <GameRoutes/>
+                // content = <CheckBoxGroup video="3-10"/>
                 break
             // case 3:
             //     content = <Instruction nextPage={this.nextPage}/>

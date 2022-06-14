@@ -24,14 +24,17 @@ export default function GameRoutes() {
   const value = { volume, setVolume };
   const [videoNames, setVideoNames] = useState([])
   const [wl, setWl] = useState([])
+  const [sug, setSug] = useState({})
+  const [sugt, setSugt] = useState({})
   const [twl, setTwl] = useState([])
   const [basicInfo, setBasicInfo] = useState({})
   const [shuffledIndex, setShuffleIndex] = useState([])
 
-  function getData(videoNames, shuffledIndex, wl){
+  function getData(videoNames, shuffledIndex, wl, sug){
     setVideoNames(videoNames)
     setShuffleIndex(shuffledIndex)
     setWl(wl)
+    setSug(sug)
   }
 
   function getData2(inputValues){
@@ -104,7 +107,7 @@ export default function GameRoutes() {
             path="/done"
             exact
             render={(props) => (
-              <FinalPage names = {videoNames} index={shuffledIndex} wl={wl} basicInfo={basicInfo} twl={twl}/>
+              <FinalPage names = {videoNames} index={shuffledIndex} wl={wl} basicInfo={basicInfo} twl={twl} sug={sug}/>
             )}
           />
           <Route
