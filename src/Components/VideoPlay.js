@@ -398,8 +398,8 @@ class VideoPlay extends Component{
                                     <Button variant="outline-secondary" onClick={this.handleBtClickRep}>
                                         🔁Replay
                                     </Button>
-                                    {/* {this.state.videoCounter<this.state.videoTotal-1? */}
-                                    {this.state.videoCounter<1?
+                                    {this.state.videoCounter<this.state.videoTotal-1?
+                                    // {this.state.videoCounter<1?
                                         <Button variant="outline-secondary" onClick={this.handleBtClickNext} disabled={buttonDisable}>
                                             Next
                                         </Button>:

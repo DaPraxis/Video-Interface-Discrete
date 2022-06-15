@@ -54,6 +54,8 @@ class App extends React.Component {
             //     break
             // case 2:
             //     // content = <MultiStepForm nextPage={this.nextPage} getData={this.getData2}/>
+                // content = <Instruction nextPage={this.nextPage}/>
+
                 content = <GameRoutes/>
                 // content = <CheckBoxGroup video="3-10"/>
                 break

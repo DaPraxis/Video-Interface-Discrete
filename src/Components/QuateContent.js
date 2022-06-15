@@ -174,7 +174,7 @@ class QuateContent extends React.Component{
     handleFinish = () => {
         // this.props.nextPage() 
         this.recordData()
-        this.props.getData({'name':this.state.textNames, 'index':this.state.shuffledIndex, 'wl':this.state.wl})
+        this.props.getData({'name':this.state.textNames, 'index':this.state.shuffledIndex, 'wl':this.state.wl, 'cc':this.state.cc})
         this.setState({done:true})
     }
 
@@ -328,7 +328,7 @@ class QuateContent extends React.Component{
                             <Form.Group as={Row}>
                                 <Col xs="3">
                                     {this.state.textCounter<this.state.textTotal-1?
-                                    // {this.state.videoCounter<2?
+                                    // {this.state.videoCounter<3?
                                         <Button variant="outline-secondary" onClick={this.handleBtClickNext} disabled={buttonDisable}>
                                             Next
                                         </Button>:

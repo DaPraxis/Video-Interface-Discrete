@@ -3,6 +3,8 @@ import {Table, Container, Row, Col, Button, Toast, ToastContainer} from "react-b
 import axios from 'axios'
 import Footer from "../Components/Footer"
 import {randomState} from "../drivingText"
+import {db} from '../Service/Firestore'
+import { collection, addDoc } from "firebase/firestore"; 
 
 
 class FinalPage extends React.Component{
@@ -39,25 +41,28 @@ class FinalPage extends React.Component{
         for(var i=0;i<this.props.index.length;i++){
             var ind = this.props.index[i]
             var name = this.props.names[ind]
-            var wl = this.props.wl[i]
-            var sug = this.props.sug[name]
+            var wl = this.props.wl[i] || null
+            var sug = this.props.sug[name] || null
             newWl[name+'_video'] = {"workload":wl,"suggestions":sug}
         }
         for(var i=0;i<this.props.twl['name'].length;i++){
             var ind = this.props.twl['index'][i]
             var name = this.props.twl['name'][ind]
-            var wl = this.props.twl['wl'][i]
-            newWl[name+'_text'] = wl
+            var wl = this.props.twl['wl'][i] || null
+            var cc = this.props.twl['cc'][name] || null
+            newWl[name+'_text'] = {'workload':wl, 'suggestions':cc}
         }
         let num_keys_ls = localStorage.length - 2
         for (var i=0; i<num_keys_ls; i++){
             let game = JSON.parse(localStorage.getItem("__LOCALGAMEDATA"+i.toString()))
+            game.holeLayout = null
             newWl["Game_"+game['name']] = game
         }
         newWl["ExpRandomState"] = randomState
         const fileName = "file";
         console.log(this.props.basicInfo)
-        const json = JSON.stringify({...newWl, ...this.props.basicInfo});
+        var v = {...newWl, ...this.props.basicInfo}
+        const json = JSON.stringify(v);
         const blob = new Blob([json],{type:'application/json'});
         const href = await URL.createObjectURL(blob);
         const link = document.createElement('a');
@@ -66,6 +71,13 @@ class FinalPage extends React.Component{
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
+
+        try {
+            const docRef = await addDoc(collection(db, "tests"), v);
+            console.log("Document written with ID: ", docRef.id);
+          } catch (e) {
+            console.error("Error adding document: ", e);
+          }
     }
 
     constructTable(){

@@ -1,7 +1,7 @@
 import React from 'react'
 import {Button, Card, Container} from 'react-bootstrap'
 import CardHeader from 'react-bootstrap/esm/CardHeader';
-import stp from "../Images/7stp.png"
+import stp from "../Images/8stp.png"
 
 class QuateInstruction extends React.Component{
     render(){
@@ -27,8 +27,11 @@ class QuateInstruction extends React.Component{
                             how much mental effort or attention you need to carry out based on your driving experiences.
                         </Card.Text>
                         <Card.Text>
-                            We use human factor Evaluation of Rating Scale Mental Effort (<a href={"https://adasgeek.wordpress.com/2013/12/19/rsme/"}>RSME</a>) scale for the rating, with value 1-150 mapping from "Absolute No Effort" to "Extreme Effort".
+                            We use human factor Evaluation of <span style={{backgroundColor:'#00BFFF'}}>Rating Scale Mental Effort (<a href={"https://adasgeek.wordpress.com/2013/12/19/rsme/"}>RSME</a>) scale</span> for the rating, with value 1-150 mapping from "Absolute No Effort" to "Extreme Effort".
                             When you change the slider value, the corresponding interpretation of the value will show in the text area for your reference. 
+                        </Card.Text>
+                        <Card.Text>
+                            For each video, you are also required to <span style={{backgroundColor:'#90EE90'}}>identify the source of workload demanding elements on the road </span> by ticking the checkbox in the <span style={{backgroundColor:'#90EE90'}}>green area</span>, to further support your rating scores
                         </Card.Text>
                         <Button onClick={(e)=>{e.preventDefault();this.props.nextPage()}}>Start!</Button>
                     </Card.Body>
