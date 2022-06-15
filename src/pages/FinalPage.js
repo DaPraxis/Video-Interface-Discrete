@@ -12,7 +12,7 @@ class FinalPage extends React.Component{
     state = {
         checked : false,
         key:"AIzaSyBOkz_2Xy7eULTirTSMQnwYaKUF5ienzW8",
-
+        text:"Almost there! Please tick the agreement checkbox and submit your response!"
     }
 
     submitOnClick = () => {
@@ -37,6 +37,9 @@ class FinalPage extends React.Component{
     }
 
     downloadFile = async () => {
+        this.setState({
+            text:"Congratulations, the study is done 🎉🎉🎉"
+        })
         var newWl = {}
         for(var i=0;i<this.props.index.length;i++){
             var ind = this.props.index[i]
@@ -77,6 +80,9 @@ class FinalPage extends React.Component{
             console.log("Document written with ID: ", docRef.id);
           } catch (e) {
             console.error("Error adding document: ", e);
+            this.setState({
+                text:"There is a database connection error, please contact IML lab"
+            })
           }
     }
 
@@ -125,7 +131,7 @@ class FinalPage extends React.Component{
                         <strong className="me-auto">IML Lab</strong>
                         <small>1 mins ago</small>
                         </Toast.Header>
-                        <Toast.Body>Congratulations, the study is done 🎉🎉🎉</Toast.Body>
+                        <Toast.Body>{this.state.text}</Toast.Body>
                     </Toast>
                     </ToastContainer>
                 <Footer>

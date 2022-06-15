@@ -30,27 +30,27 @@ const checkBoxs = {
         "env_static":["Tunnel Light","Tunnel Curvature", "Road Width", "Road Type"]
         },
     "3-9":{
-        "dv":["Driving Speed", "Driving Smoothness", "Distance to Front Vehicle", "Distance to Road Closure"],
+        "dv":["Driving Speed", "Driving Smoothness","Driving Behaviour (Lane Change)", "Distance to Front Vehicle", "Distance to Road Closure"],
         "env_dyn":["Front Vehicle Speed", "Front Vehicle Size", "Front Vehicle Behaviour"],
         "env_static":["Road Closure","Road Curvature", "Road Width", "Road Type"]
         },
     "3-5":{
-        "dv":["Driving Speed", "Driving Smoothness", "Distance to Incomming Vehicle", "Distance to Road Closure"],
+        "dv":["Driving Speed", "Driving Smoothness","Driving Behaviour (Lane Change Avoiding Road Block)","Driving Behaviour (Lane Change Avoiding Incomming Vehicle)", "Distance to Incomming Vehicle", "Distance to Road Closure"],
         "env_dyn":["Incomming Vehicle Speed"],
-        "env_static":["Tunnel","Road Width", "Road Type"]
+        "env_static":["Tunnel","Road Width", "Road Type", "Road Block"]
         },
     "0-1-2":{
-        "dv":["Driving Speed", "Driving Smoothness", "Distance to Road Closure"],
+        "dv":["Driving Speed", "Driving Smoothness", "Distance to Road Closure", "Driving Behaviour (Lane Change)"],
         "env_dyn":["Pedestrians"],
         "env_static":["Hot Dog Stand","Road Closure", "Road Type", "Pedestrian Crossing",  "Road Width"]
         },
     "1-7-2":{
-        "dv":["Driving Speed", "Driving Smoothness", "Distance to Pedestrians"],
+        "dv":["Driving Speed", "Driving Smoothness","Driving Behaviour (Emergent Brake)", "Distance to Pedestrians"],
         "env_dyn":["Pedestrian Jaywalking", "Pedestrian Running"],
         "env_static":["Picnic Table","Car-towed Hotdog Stand", "Road Type", "Road Width"]
         },
     "3-11":{
-        "dv":["Driving Speed", "Driving Smoothness", "Distance to Front Vehicle"],
+        "dv":["Driving Speed", "Driving Smoothness", "Driving Behaviour (Emergent Brake)","Distance to Front Vehicle"],
         "env_dyn":["Front Vehicle Speed", "Front Vehicle Size","Front Vehicle Behaviour"],
         "env_static":["Road Type", "Road Width", "Road Curvature"]
         },
@@ -60,47 +60,48 @@ const checkBoxs = {
         "env_static":["Road Type", "Road Width", "Road Curvature"]
         },
     "3-14":{
-        "dv":["Driving Speed", "Driving Smoothness", "Distance to Cyclists"],
+        "dv":["Driving Speed", "Driving Smoothness", "Driving Behaviour (Slow Down At Intersection)","Distance to Cyclists"],
         "env_dyn":["Cyclists Pedalling Speed", "Cyclists Behaviour", "Pedestrians"],
         "env_static":["Road Type", "Road Width", "Road Curvature", "Road Closure"]
         },
     "3-16":{
-        "dv":["Driving Speed", "Driving Smoothness", "Distance to Incomming Vehicle (Yellow Pickup)", "Distance to Incomming Vehicle (Box Trucks)", "Distance to Road Closure 1 (Yellow Pickup)", "Distance to Road Closure 2 (Concrete Wastes)"],
+        "dv":["Driving Speed", "Driving Smoothness", "Distance to Incomming Vehicle (Yellow Pickup)", "Distance to Incomming Vehicle (Box Trucks)", "Distance to Road Closure 1 (Yellow Pickup)", "Distance to Road Closure 2 (Concrete Wastes)",
+    "Driving Behaviour (Lane Change Avoiding Road Closure 1 (Yellow Pickup)", "Driving Behaviour (Lane Change Avoiding Incomming Yellow Pickup)", "Driving Behaviour (Stop In Front of Road Closure 2 (Concrete Wastes)"],
         "env_dyn":["Incomming Vehicle (Yellow Pickup) Speed", "Incomming Vehicle (Box Trucks) Speed"],
         "env_static":["Road Type", "Road Width", "Road Curvature", "Road Closure 1 (Yellow Pickup)", "Road Closure 2 (Concrete Wastes)"]
         },
     "3-17":{
-        "dv":["Driving Speed", "Driving Smoothness", "Distance to Front Vehicle (Green SUV)", "Distance to Patio Stand"],
+        "dv":["Driving Speed", "Driving Smoothness", "Driving Behaviour (Lane Change Avoiding the Stand)","Driving Behaviour (Lane Change Avoiding Front Vehicle)", "Distance to Front Vehicle (Green SUV)", "Distance to Patio Stand"],
         "env_dyn":["Front Vehicle (Green SUV) Speed","Front Vehicle (Green SUV) Behaviour", "Pedestrian"],
-        "env_static":["Road Type", "Road Width", "Zebra Line", "Patio Stand", "Curbside Trees (left side)"]
+        "env_static":["Road Type", "Road Width", "Zebra Line", "Stand", "Curbside Trees (left side)"]
         },
     "3-18":{
-        "dv":["Driving Speed", "Driving Smoothness", "Distance to Front Vehicle (Green SUV)", "Distance to Road Closure"],
+        "dv":["Driving Speed", "Driving Smoothness","Driving Behaviour (Decelerate after SUV lane change)", "Distance to Front Vehicle (Green SUV)", "Distance to Road Closure"],
         "env_dyn":["Front Vehicle (Green SUV) Speed","Front Vehicle (Green SUV) Behaviour (Drifting)","Front Vehicle (Green SUV) Behaviour (lane change)"],
         "env_static":["Road Type", "Road Width", "Road Curvature", "Road Closure"]
         },
     "3-20":{
-        "dv":["Driving Speed", "Driving Smoothness", "Distance to Cyclists"],
+        "dv":["Driving Speed", "Driving Smoothness","Distance to Cyclists"],
         "env_dyn":["Cyclists Speed", "Cyclists Behaviour"],
-        "env_static":["Road Type (Bridge)", "Road (Bridge) Width", "Road (Bridge) Height"]
+        "env_static":["Road (Bridge) Type", "Road (Bridge) Width", "Road (Bridge) Height"]
         },
     "3-21":{
-        "dv":["Driving Speed", "Driving Smoothness", "Distance to Front Vehicle (First Truck)", "Distance to Front Vehicle (Second Truck)"],
+        "dv":["Driving Speed", "Driving Smoothness","Driving Behaviour (First Lane Merge Attempt)", "Driving Behaviour (Second Successful Lane Merge)", "Distance to Front Vehicle (First Truck)", "Distance to Front Vehicle (Second Truck)"],
         "env_dyn":["Front Vehicle (First Truck) Speed", "Front Vehicle (Second Truck) Speed"],
         "env_static":["Road Type"]
         },
     "3-22":{
-        "dv":["Driving Speed", "Driving Smoothness", "Distance to Road Vehicle (Box Truck)", "Driving Behaviour (First Lane Merge Attempt)", "Driving Behaviour (Second Successful Lane Merge)"],
+        "dv":["Driving Speed", "Driving Smoothness", "Distance to Road Vehicle (Box Truck)", "Driving Behaviour (First Lane Change Attempt)", "Driving Behaviour (Second Successful Lane Change)"],
         "env_dyn":["Road Vehicle (Box Truck) Speed"],
         "env_static":["Road Type"]
         },
     "3-23":{
-        "dv":["Driving Speed", "Driving Smoothness", "Distance to Road Vehicle (Red Sport Car)", "Distance to Road Vehicle (Green SUV)", "Distance to Road Vehicle (Box Truck)"],
+        "dv":["Driving Speed", "Driving Smoothness","Driving Behaviour (Lane Merge)", "Distance to Road Vehicle (Red Sport Car)", "Distance to Road Vehicle (Green SUV)", "Distance to Road Vehicle (Box Truck)"],
         "env_dyn":["Road Vehicle (Red Sport Car) Speed", "Road Vehicle (Green SUV) Speed", "Road Vehicle (Box Truck) Speed"],
         "env_static":["Road Type"]
         },
     "3-24":{
-        "dv":["Driving Speed", "Driving Smoothness", "Driving Behaviour", "Distance to Road Vehicle (Box Truck)"],
+        "dv":["Driving Speed", "Driving Smoothness", "Driving Behaviour (Lane Change)", "Distance to Road Vehicle (Box Truck)"],
         "env_dyn":["Road Vehicle (Box Truck) Speed"],
         "env_static":["Road Type", "Road Width"]
         },

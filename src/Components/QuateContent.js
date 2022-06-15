@@ -182,7 +182,7 @@ class QuateContent extends React.Component{
         if(wl>112){
             return "Extreme Effort: "+wl
         }
-        else if (wl>111){
+        else if (wl>102){
             return "Very Great Effort: "+wl
         }
         else if (wl>85){
