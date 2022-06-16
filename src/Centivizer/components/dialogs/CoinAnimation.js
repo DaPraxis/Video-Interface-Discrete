@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 let scorecoin;
 
-if (process.env.NODE_ENV === 'development') {
+if (true) {
   scorecoin = require("../.." + "/assets/scorecoin.png");
 }else{
   scorecoin = "../.." + "/assets/scorecoin.png";

@@ -9,7 +9,7 @@ import {Link, Redirect} from "react-router-dom";
 let bg;
 let arrow;
 
-if (process.env.NODE_ENV === 'development') {
+if (true) {
     bg = require("../.." + "/assets/bgfield.png");
     arrow = require("../.." + "/assets/icons/arrow-circle-left-solid.svg");
 }else{

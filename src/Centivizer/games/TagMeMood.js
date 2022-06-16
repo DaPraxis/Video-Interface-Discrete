@@ -5,7 +5,7 @@ import assets from "../assets/mood/assets";
 
 let wall;
 
-if (process.env.NODE_ENV === 'development') {
+if (true) {
   wall = require(".."+ "/assets/mood/bg_wall.png");
 } else {
   wall = ".."+ "/assets/mood/bg_wall.png";

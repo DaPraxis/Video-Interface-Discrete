@@ -22,7 +22,7 @@ import MusicSelectButton from "./MusicSelectButton";
 
 let bg;
 
-if (process.env.NODE_ENV === 'development') {
+if (true) {
   bg = require("../.." + "/assets/bg.png");
 }else{
   bg = "../.." + "/assets/bg.png";

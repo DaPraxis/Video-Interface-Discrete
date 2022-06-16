@@ -13,7 +13,7 @@ let keyboard_all;
 let hole_img;
 let arrow;
 
-if (process.env.NODE_ENV === 'development') {
+if (true) {
   check_mole_img = require("../.." + "/assets/checkmole.png");
   bg = require("../.." + "/assets/bgfield.png");
   arrow = require("../.." + "/assets/icons/arrow-circle-left-solid.svg");

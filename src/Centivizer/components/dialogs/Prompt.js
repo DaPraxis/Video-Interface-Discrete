@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 
 let bubble;
 
-if (process.env.NODE_ENV === 'development') {
+if (true) {
   bubble = require("../.." + "/assets/dialogs/dialog.png");
 }else{
   bubble = "../.." + "/assets/dialogs/dialog.png";

@@ -24,7 +24,7 @@ let keyboard_JKL;
 let bubble;
 let mole_dialog;
 
-if (process.env.NODE_ENV === 'development') {
+if (true) {
   bg = require("../.." + "/assets/bgfield.png");
   arrow = require("../.." + "/assets/icons/arrow-circle-left-solid.svg");
   hand = require("../.." + "/assets/hand.png");

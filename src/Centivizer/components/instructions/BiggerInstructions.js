@@ -15,7 +15,7 @@ let bg;
 let keyboard_JK;
 let hole_img; // used for the keyboard page
 
-if (process.env.NODE_ENV === 'development') {
+if (true) {
   big_mole_7 = require('../..' + "/assets/big_and_small/big_moley/bigmoley-7.png");
   small_mole_9 = require('../..' + "/assets/big_and_small/small_moley/smallmoley-9.png");
   check = require('../..' + "/assets/instructions/check.png");

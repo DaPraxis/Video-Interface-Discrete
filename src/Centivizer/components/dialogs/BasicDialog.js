@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 let mole;
 let bubble;
 
-if (process.env.NODE_ENV === 'development') {
+if (true) {
   mole = require("../.." + "/assets/normal_cut.png");
   bubble = require("../.." + "/assets/dialogs/dialog.png");
 }else{

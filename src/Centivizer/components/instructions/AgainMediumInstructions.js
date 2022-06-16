@@ -23,7 +23,7 @@ let hole_no_margin;
 let bubble;
 let mole_dialog;
 
-if (process.env.NODE_ENV === 'development') {
+if (true) {
   bg = require("../.." + "/assets/bgfield.png");
   arrow = require("../.." + "/assets/icons/arrow-circle-left-solid.svg");
   hand = require("../.." + "/assets/hand.png");
@@ -40,24 +40,6 @@ if (process.env.NODE_ENV === 'development') {
   hole_no_margin = require("../.." + "/assets/instructions/hole_no_margin.png");
   bubble = require("../.." + "/assets/instructions/dialog_skinny.png");
   mole_dialog = require("../.." + "/assets/mole_sparkle.png");
-}else{
-  bg = "../.." + "/assets/bgfield.png";
-  arrow = "../.." + "/assets/icons/arrow-circle-left-solid.svg";
-  hand = "../.." + "/assets/hand.png";
-  check = "../.." + "/assets/instructions/check.png";
-  cross = "../.." + "/assets/instructions/cross.png";
-  hand = "../.." + "/assets/hand.png";
-  correct_circle = "../.." + "/assets/instructions/correct_circle.png";
-  incorrect_circle = "../.." + "/assets/instructions/incorrect_circle.png";
-  jersey_correct_circle = "../.." + "/assets/instructions/jersey_correct_circle.png";
-  jersey_incorrect_circle = "../.." + "/assets/instructions/jersey_incorrect_circle.png";
-  mole_4 = "../.." + "/assets/big_and_small/big_moley/bigmoley-4.png";
-  mole_2 = "../.." + "/assets/big_and_small/big_moley/bigmoley-2.png";
-  keyboard_JKL = "../.." + "/assets/instructions/keyboard_JKL.png";
-  hole_img = "../.." + "/assets/hole.png";
-  hole_no_margin = "../.." + "/assets/instructions/hole_no_margin.png";
-  bubble = "../.." + "/assets/instructions/dialog_skinny.png";
-  mole_dialog = "../.." + "/assets/mole_sparkle.png";
 }
 
 arrow = require("../.." + "/assets/icons/previous.png");

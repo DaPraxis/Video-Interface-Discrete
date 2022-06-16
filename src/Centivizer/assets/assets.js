@@ -167,7 +167,7 @@ let jerseyTArms;
 let jerseyK;
 let jerseyKArms;
 
-if(process.env.NODE_ENV === 'development'){
+if(true){
   smile1 = require(".." + "/assets/UWOsurvey/Smile1.png");
   smile2 = require(".." + "/assets/UWOsurvey/Smile2.png");
   smile3 = require(".." + "/assets/UWOsurvey/Smile3.png");

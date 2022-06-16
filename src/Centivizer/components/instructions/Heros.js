@@ -7,7 +7,7 @@ import {makeStyles} from '@material-ui/core/styles';
 
 let bg;
 
-if (process.env.NODE_ENV === 'development') {
+if (true) {
     bg = require(process.env.REACT_APP_MY_URL + "/assets/bgfield.png");
 }else{
     bg = process.env.REACT_APP_MY_URL + "/assets/bg.png";

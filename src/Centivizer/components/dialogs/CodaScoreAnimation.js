@@ -8,7 +8,7 @@ let happy;
 let sad;
 let bubble;
 
-if (process.env.NODE_ENV === 'development') {
+if (true) {
   happy = require("../.." + "/assets/happy_cut.png");
   sad = require("../.." + "/assets/cry_cut.png");
   bubble = require("../.." + "/assets/dialogs/dialog.png");

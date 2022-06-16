@@ -14,7 +14,7 @@ let arrow;
 let keyboard_all;
 let hole_img;
 
-if (process.env.NODE_ENV === 'development') {
+if (true) {
   check_mole_img = require("../.." + "/assets/checkmole.png");
   lightning_hole_img = require("../.." + "/assets/lightning_hole.png");
   bg = require("../.." + "/assets/bgfield.png");

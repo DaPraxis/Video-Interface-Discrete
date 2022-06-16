@@ -7,7 +7,7 @@ import Grid from "@material-ui/core/Grid";
 let left;
 let right;
 
-if (process.env.NODE_ENV === 'development') {
+if (true) {
   left = require("../.." + "/assets/instructions/same_left.png");
   right = require("../.." + "/assets/instructions/same_right.png");
 }else{

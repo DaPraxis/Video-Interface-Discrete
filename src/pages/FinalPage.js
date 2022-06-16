@@ -2,7 +2,7 @@ import React from 'react'
 import {Table, Container, Row, Col, Button, Toast, ToastContainer} from "react-bootstrap"
 import axios from 'axios'
 import Footer from "../Components/Footer"
-import {randomState} from "../drivingText"
+import {randomState, randomIndex} from "../drivingText"
 import {db} from '../Service/Firestore'
 import { collection, addDoc } from "firebase/firestore"; 
 
@@ -61,7 +61,8 @@ class FinalPage extends React.Component{
             game.holeLayout = null
             newWl["Game_"+game['name']] = game
         }
-        newWl["ExpRandomState"] = randomState
+        newWl["RatingRandomState"] = randomState
+        newWl["BrainRandomState"] = randomIndex
         const fileName = "file";
         console.log(this.props.basicInfo)
         var v = {...newWl, ...this.props.basicInfo}
@@ -76,7 +77,7 @@ class FinalPage extends React.Component{
         document.body.removeChild(link);
 
         try {
-            const docRef = await addDoc(collection(db, "tests"), v);
+            const docRef = await addDoc(collection(db, "tests_phase2"), v);
             console.log("Document written with ID: ", docRef.id);
           } catch (e) {
             console.error("Error adding document: ", e);

@@ -8,7 +8,7 @@ import QuestionnaireButton from "./QuestionnaireButton";
 let mole;
 let bubble;
 
-if (process.env.NODE_ENV === 'development') {
+if (true) {
   mole = require("../.." + "/assets/normal_cut.png");
   bubble = require("../.." + "/assets/dialogs/dialog_big.png");
 }else{

@@ -19,7 +19,7 @@ let hole_img;
 let keyboard_JKL;
 let hole_no_margin;
 
-if (process.env.NODE_ENV === 'development') {
+if (true) {
   bg = require("../.." + "/assets/bgfield.png");
   arrow = require("../.." + "/assets/icons/arrow-circle-left-solid.svg");
   correct_circle = require("../.." + "/assets/instructions/correct_circle.png");

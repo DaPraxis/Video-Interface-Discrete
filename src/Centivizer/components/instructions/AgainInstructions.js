@@ -7,7 +7,7 @@ import Grid from "@material-ui/core/Grid";
 let correct;
 let incorrect;
 
-if (process.env.NODE_ENV === 'development') {
+if (true) {
     correct = require("../.."+ "/assets/instructions/again_instructions_correct.png");
     incorrect = require("../.."+ "/assets/instructions/again_instructions_incorrect.png");
 }else{

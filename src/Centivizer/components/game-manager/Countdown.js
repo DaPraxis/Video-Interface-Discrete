@@ -6,7 +6,7 @@ let two;
 let three;
 
 
-if (process.env.NODE_ENV === 'development') {
+if (true) {
   one = require("../.." + "/assets/count/count_1.png");
   two = require("../.." + "/assets/count/count_2.png");
   three = require("../.." + "/assets/count/count_3.png");

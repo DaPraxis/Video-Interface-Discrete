@@ -18,7 +18,7 @@ let one;
 let two;
 let three;
 
-if (process.env.NODE_ENV === 'development') {
+if (true) {
   hand = require("../.." + "/assets/hand.png");
   one = require("../.." + "/assets/count/count_1.png");
   two = require("../.." + "/assets/count/count_2.png");

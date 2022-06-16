@@ -8,7 +8,7 @@ let orange;
 let hole;
 let cross;
 
-if (process.env.NODE_ENV === 'development') {
+if (true) {
   brown = require("../.." + "/assets/basic_normal.png");
   purple = require("../.." + "/assets/purple_normal.png");
   orange = require("../.." + "/assets/orange_normal.png");

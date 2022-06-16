@@ -22,10 +22,11 @@ import GameSelectNavBar from "../navigation/GameSelectNavBar";
 import MusicSelectButton from "./MusicSelectButton";
 import DataHandler from "../../data-handler/DataHandler";
 import {Card,Alert} from 'react-bootstrap'
+import {randomIndex} from '../../../drivingText'
 
 let bg;
 
-if (process.env.NODE_ENV === 'development') {
+if (true) {
   bg = require("../.." + "/assets/bg.png");
 }else{
   bg = "../.." + "/assets/bg.png";
@@ -124,6 +125,7 @@ function GameButton(props) {
 
 
   const [open, setOpen] = React.useState(false);
+  const [disabled, setDisabled] = React.useState(true);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -132,6 +134,10 @@ function GameButton(props) {
   const handleClose = () => {
     setOpen(false);
   };
+
+  const toggleDisable = () => {
+    setDisabled(!disabled)
+  }
 
   return (
     <Paper className={classes.buttonPaper} key={props.id}>
@@ -236,7 +242,8 @@ export default function VersionGameSelectMenuDriving(props) {
   }
   let [redirect_ss, setRedirect_ss] = useState(false);
 
-
+  // const tmp_buttons = new Array(buttonCount).fill(true)
+  // tmp_buttons[0]=false
   const dataHandler = props.version.dataHandler;
   const [pages, setPages] = useState(null);
   const [error, setError] = useState(null);
@@ -246,6 +253,8 @@ export default function VersionGameSelectMenuDriving(props) {
   const [isDone, setIsDone] = useState(false)
   const [show, setShow] = useState(true);
   const [doneN, setDoneN] = useState(0);
+  const [allButtons, setAllButtons] = useState([])
+  const [buttonCount, setButtonCount] = useState(3)
 
 
   async function getParticipantState() {
@@ -271,6 +280,9 @@ export default function VersionGameSelectMenuDriving(props) {
     // if (audio.backgroundMusic.paused) {
     //   // audio.playSound(audio.backgroundMusic);
     // }
+    // var tmp_buttons = new Array(buttonCount).fill(true)
+    // tmp_buttons[0]=false
+    // setAllButtons(tmp_buttons)
     getParticipantState();
   }, []);
 
@@ -281,7 +293,7 @@ export default function VersionGameSelectMenuDriving(props) {
     setPageNum(pageNumRef.current + 1); // must use ref inside a function
   }
 
-  function gameToButton(game, count, data, setFunc) {
+  function gameToButton(game, count, data, setFunc, isDisabled) {
     // 0 = disabled and todo, 1 = playable, 2 is disabled and completed
     const status = { 0: "secondary", 1: "default", 2: "primary" };
     return (
@@ -289,7 +301,7 @@ export default function VersionGameSelectMenuDriving(props) {
         type={i18n.language === "zh" ? count + 1 + ". TAG-ME" : "TAG-ME"}
         name={t(`games.${game.translationKey}.name`)}
         color={status[data[game.translationKey]] || "default"}
-        disabled={false}
+        disabled={isDisabled}
         instructionsUrl={`instructions${game.name}`}
         id={count}
         setGameId={setFunc}
@@ -302,8 +314,6 @@ export default function VersionGameSelectMenuDriving(props) {
     let buttons = [];
     let games = props.version.games;
     let count;
-    let buttonCount = 3
-
     // in demo we want specific order, so no sorting
     // games.sort(function (a, b) {
     //   return order.indexOf(a.translationKey) - order.indexOf(b.translationKey);
@@ -312,7 +322,17 @@ export default function VersionGameSelectMenuDriving(props) {
     let dd = dataHandler.printLocalData()
     let is_done = true
     var c = 0
-    // console.log(dd)
+
+    for (var i=0; i<games.length; i++){
+      games[i].id = i
+    }
+
+    var tmp_arr=[]
+    for (const i of randomIndex){
+      tmp_arr.push(games[i])
+    }
+    games = tmp_arr
+
     for (count = 0; count < buttonCount && count < games.length; count++) {
       // first page can have 5 GAMES, need space at the end for next page button
       let item = games[count];
@@ -322,13 +342,24 @@ export default function VersionGameSelectMenuDriving(props) {
       if (d[item.name]==0){
         is_done = false
       }
-      buttons.push(gameToButton(item, count, data, setGameId));
+      var ccc;
+      if (c==count && d[item.name]==0){
+        ccc = false
+      }
+      else{
+        ccc = true
+      }
+      buttons.push(gameToButton(item, item.id, data, setGameId, ccc));
     }
+
     setDoneN(c)
     setGameStates(d)
     if(is_done && (Object.keys(d).length != 0)){
       setIsDone(true)
     }
+    var tmp_buttons = Array(buttonCount).fill(true)
+    tmp_buttons[c]=false
+    setAllButtons(tmp_buttons)
 
     for (let i = 0; i < buttons.length; i += buttonCount) {
       // construct pages as pairs of rows
@@ -437,7 +468,7 @@ export default function VersionGameSelectMenuDriving(props) {
       {gameId<0?<></>:
       <div>
         <Card style={{display: 'flex', flexDirection: 'row', margin:'0 15%', maxHeight:"280px"}}>
-          <Card.Img variant="top" src={cardDict[gameId]['img']} />
+          <Card.Img variant="top" src={cardDict[gameId]['img']} style={{maxWidth:'370px'}}/>
             <Card.Body>
               <Card.Title>TAG-ME {cardDict[gameId]['n']}</Card.Title>
               <Card.Text>{cardDict[gameId]['COG']}</Card.Text>

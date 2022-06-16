@@ -5,7 +5,7 @@ import assets from "../../assets/mood/assets"
 let openWindow;
 let closedWindow;
 
-if (process.env.NODE_ENV === 'development') {
+if (true) {
   openWindow = require("../.." + "/assets/mood/open_window.png");
   closedWindow = require("../.." + "/assets/mood/closed_window.png");
 }else{

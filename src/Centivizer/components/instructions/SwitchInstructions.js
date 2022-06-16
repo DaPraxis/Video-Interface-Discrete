@@ -20,7 +20,7 @@ let arrow;
 let hole_no_margin;
 let keyboard_JKL;
 
-if (process.env.NODE_ENV === 'development') {
+if (true) {
   bg = require("../.." + "/assets/bgfield.png");
   heads = require("../.." + "/assets/instructions/heads_brown_purple_orange.png");
   left_middle_right = require("../.." + "/assets/instructions/3_holes.png");

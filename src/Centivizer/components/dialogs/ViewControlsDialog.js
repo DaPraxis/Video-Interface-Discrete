@@ -11,7 +11,7 @@ let JKL;
 let holesTop;
 let holesBottom;
 
-if (process.env.NODE_ENV === 'development') {
+if (true) {
   mole = require("../.." + "/assets/normal_cut.png");
   bubble = require("../.." + "/assets/dialogs/dialog.png");
   UIO = require("../.." + "/assets/mood/keyboard_uio.png");

@@ -9,7 +9,7 @@ import audio from "../audio";
 let left;
 let right;
 
-if (process.env.NODE_ENV === 'development') {
+if (true) {
   left = require(".."+ "/assets/curtain/left.png");
   right = require(".."+ "/assets/curtain/right.png");
 } else{

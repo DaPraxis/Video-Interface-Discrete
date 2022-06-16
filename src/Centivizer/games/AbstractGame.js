@@ -3,7 +3,7 @@ import { TimeoutManager } from "../components/game-manager/TimeoutManager.js";
 
 let field;
 
-if (process.env.NODE_ENV === 'development') {
+if (true) {
   field = require(".."+ "/assets/bgfield.png");
 }else{
   field = ".."+ "/assets/bgfield.png";

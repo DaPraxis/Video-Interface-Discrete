@@ -7,7 +7,7 @@ import audio from "../audio";
 
 let lightning;
 
-if (process.env.NODE_ENV === 'development') {
+if (true) {
   lightning = require(".."+"/assets/lightning.gif");
 } else {
   lightning = ".."+"/assets/lightning.gif";

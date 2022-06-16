@@ -5,7 +5,7 @@ import assets from "../assets/assets.js";
 
 let lightning;
 
-if (process.env.NODE_ENV === 'development') {
+if (true) {
   lightning = require(".."+"/assets/lightning.gif");
 } else {
   lightning = ".."+"/assets/lightning.gif";

@@ -13,7 +13,7 @@ let mole_S;
 let bubble;
 let happy;
 
-if (process.env.NODE_ENV === 'development') {
+if (true) {
   bg = require(process.env.REACT_APP_MY_URL + "/assets/mood/bg_wall.png");
   arrow = require(process.env.REACT_APP_MY_URL + "/assets/icons/arrow-circle-left-solid.svg");
   mole_S = require(process.env.REACT_APP_MY_URL + "/assets/basic_normal.png");

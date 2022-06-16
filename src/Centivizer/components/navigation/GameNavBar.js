@@ -20,7 +20,7 @@ import audio from "../../audio";
 
 let logo;
 
-if (process.env.NODE_ENV === 'development') {
+if (true) {
   logo = require("../.."+"/assets/centivizer/logo_stacked_transparent.png");
 }else{
   logo = "../.."+"/assets/centivizer/logo_stacked_transparent.png";
