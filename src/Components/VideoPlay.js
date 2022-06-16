@@ -341,7 +341,7 @@ class VideoPlay extends Component{
                                     </Card.Body>
                                 </Card>
                                 <Card style={{flex: 1}}>
-                                    <Card.Header as="h5">{"Dynamic Environment"}</Card.Header>
+                                    <Card.Header as="h5">{"Other Road Users"}</Card.Header>
                                     <Card.Body>
                                         {this.state.dyn.map((d, idx) => (
                                             <div>
@@ -365,7 +365,7 @@ class VideoPlay extends Component{
                                     </Card.Body>
                                 </Card>
                                 <Card style={{flex: 1}}>
-                                    <Card.Header as="h5">{"Static Environment"}</Card.Header>
+                                    <Card.Header as="h5">{"Road Condition"}</Card.Header>
                                     <Card.Body>
                                         {this.state.static.map((d, idx) => (
                                             <div>
