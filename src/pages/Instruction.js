@@ -44,7 +44,13 @@ class Instruction extends React.Component {
                         <Card.Text>
                             <span style={{color:'red'}}>**</span>Factors which you think contribute to the mental workload
                         </Card.Text>
-                        <Button onClick={(e)=>{e.preventDefault();this.props.nextPage()}}>Start!</Button>
+                        <Button variant="primary" onClick={
+                            (e)=>{
+                                e.preventDefault()
+                                this.setState({confirm:true})
+                            }
+                        }>Start</Button>
+                        {this.state.confirm?<Redirect to={'/video'} push /> : <></>}
                     </Card.Body>
                 </Card>
             </Container>
