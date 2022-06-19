@@ -63,6 +63,8 @@ class FinalPage extends React.Component{
         }
         newWl["RatingRandomState"] = randomState
         newWl["BrainRandomState"] = randomIndex
+        newWl['VideoTime'] = this.props.videoT
+        newWl['TextTime'] = this.props.twl['time']
         const fileName = "file";
         console.log(this.props.basicInfo)
         var v = {...newWl, ...this.props.basicInfo}
@@ -77,7 +79,8 @@ class FinalPage extends React.Component{
         document.body.removeChild(link);
 
         try {
-            const docRef = await addDoc(collection(db, "tests_phase2"), v);
+            // const docRef = await addDoc(collection(db, "tests_phase2"), v);
+            const docRef = await addDoc(collection(db, "tests-phase3"), v);
             console.log("Document written with ID: ", docRef.id);
           } catch (e) {
             console.error("Error adding document: ", e);

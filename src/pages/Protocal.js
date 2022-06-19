@@ -30,7 +30,7 @@ class Protocal extends React.Component {
                     var s = []
                     for (let i=0; i<ssp.length; i++){
                         if ((i+1)%2==0){
-                            s.push(<span style={{color: "#ff0000"}}>{ssp[i]}</span>)
+                            s.push(<span style={{backgroundColor: "yellow"}}>{ssp[i]}</span>)
                         }
                         else{
                             s.push(ssp[i])
@@ -61,7 +61,7 @@ class Protocal extends React.Component {
                         <Card.Title>
                             Online Subjective Mental Workload Measurement Using Simulated Driving Videos
                         </Card.Title>
-                        <Card.Text>
+                        <Card.Text style={{fontFamily:'Calibri, sans-serif', fontSize:"20px"}}>
                             {this.state.texts}
                         </Card.Text>
                     </Card.Body>

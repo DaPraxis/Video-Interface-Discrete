@@ -174,7 +174,7 @@ class QuateContent extends React.Component{
     handleFinish = () => {
         // this.props.nextPage() 
         this.recordData()
-        this.props.getData({'name':this.state.textNames, 'index':this.state.shuffledIndex, 'wl':this.state.wl, 'cc':this.state.cc})
+        this.props.getData({'name':this.state.textNames, 'index':this.state.shuffledIndex, 'wl':this.state.wl, 'cc':this.state.cc, 'time':Date.now()})
         this.setState({done:true})
     }
 
@@ -228,16 +228,18 @@ class QuateContent extends React.Component{
                         <Card.Header>Driving Scenario Description</Card.Header>
                         <Card.Body>
                             <blockquote className="blockquote mb-0">
-                            <p>
+                            <p style={{fontFamily:'Calibri, sans-serif', fontSize:"22px"}}>
                                 {' '}
                                 {this.state.textContent[this.state.shuffledIndex[this.state.textCounter]]}
                                 {' '}
                             </p>
+                            {/* <br/> */}
                             <InputGroup>
                                 <FloatingLabel label="Driving Workload Level">
-                                    <FormControl value={this.mentalEffort(this.state.wl[this.state.textCounter])} style={{width:"300px"}} readOnly/>
+                                    <FormControl value={this.mentalEffort(this.state.wl[this.state.textCounter])} style={{width:"300px", fontSize:"20px"}} readOnly/>
                                 </FloatingLabel>
-                                <div style={{width: 'inherit'}}>
+                                {/* <br/> */}
+                                <div style={{minWidth:"700px", marginLeft:"30px"}}>
                                     <RangeSlider min={1} max={150} value={this.state.wlValue} onChange={this.rangeSelect} tooltip='on' size="lg"/>
                                 </div>
                             </InputGroup>
@@ -245,12 +247,14 @@ class QuateContent extends React.Component{
                                 Someone famous in <cite title="Source Title">Source Title</cite>
                             </footer> */}
                             </blockquote>
+                            <br/>
+
                             <Form.Group as={Row}>
                             {/* <CheckBoxGroup video={this.state.videoNames[this.state.shuffledIndex[this.state.videoCounter]]}/> */}
                                 <div style={{display: 'flex', flexDirection: 'row'}}>
                                     <Card style={{flex: 1}}>
                                         <Card.Header as="h5">{"Driver & Vehicle"}</Card.Header>
-                                        <Card.Body>
+                                        <Card.Body style={{fontFamily:'Calibri, sans-serif', fontSize:"20px"}}>
                                             {this.state.driver.map((d, idx) => (
                                                 <div>
                                                     <label>
@@ -274,7 +278,7 @@ class QuateContent extends React.Component{
                                     </Card>
                                     <Card style={{flex: 1}}>
                                         <Card.Header as="h5">{"Other Road Users"}</Card.Header>
-                                        <Card.Body>
+                                        <Card.Body style={{fontFamily:'Calibri, sans-serif', fontSize:"20px"}}>
                                             {this.state.dyn.map((d, idx) => (
                                                 <div>
                                                     <label>
@@ -298,7 +302,7 @@ class QuateContent extends React.Component{
                                     </Card>
                                     <Card style={{flex: 1}}>
                                         <Card.Header as="h5">{"Road Condition"}</Card.Header>
-                                        <Card.Body>
+                                        <Card.Body style={{fontFamily:'Calibri, sans-serif', fontSize:"20px"}}>
                                             {this.state.static.map((d, idx) => (
                                                 <div>
                                                     <label>

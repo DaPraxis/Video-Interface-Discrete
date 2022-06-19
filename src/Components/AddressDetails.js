@@ -179,7 +179,11 @@ export default class AddressDetails extends Component{
                                         <option value="Almost every day">Almost every day</option>
                                         <option value="A few days a week">A few days a week</option>
                                         <option value="A few days a month">A few days a month</option>
-                                        <option value="Never">Never</option>
+                                        <option value="A few days a year">A few days a year</option>
+                                        <option value="Less frequently">Less frequently</option>
+
+                                        {/* <input name='less' type="text" value={this.props.inputValues.less} 
+                                        onChange={this.props.handleChange}/> */}
                                     </Form.Control>
                             </Form.Group>
                         </Row>

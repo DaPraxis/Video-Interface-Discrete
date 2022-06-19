@@ -20,7 +20,8 @@ export default class Confirmation extends Component{
 
     next = (e)=> {
         e.preventDefault();
-        this.props.getData(this.props.inputValues)
+        var time={'DemogTime':Date.now()}
+        this.props.getData({...this.props.inputValues, ...time})
         // this.props.nextPage()
         this.setState({confirm:true})
     }

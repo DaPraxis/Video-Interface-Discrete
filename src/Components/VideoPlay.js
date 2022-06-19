@@ -183,7 +183,7 @@ class VideoPlay extends Component{
     handleFinish = () => {
         // this.props.nextPage() 
         this.recordData()
-        this.props.getData(this.state.videoNames, this.state.shuffledIndex, this.state.wl, this.state.cc)
+        this.props.getData(this.state.videoNames, this.state.shuffledIndex, this.state.wl, this.state.cc, Date.now())
         this.setState({done:true})
     }
 
@@ -303,16 +303,17 @@ class VideoPlay extends Component{
                         <Offcanvas.Header>
                             <Offcanvas.Title>Video Driving Mental Workload Rating</Offcanvas.Title>
                         </Offcanvas.Header>
-                        <Offcanvas.Body style={{justifyContent: 'center',alignItems: "center"}}>
+                        <Offcanvas.Body style={{justifyContent: 'center',alignItems: "center", fontFamily:'Calibri, sans-serif', fontSize:"20px"}}>
                             <InputGroup>
                                 <FloatingLabel label="Video Driving Workload Level">
-                                    <FormControl value={this.mentalEffort(this.state.wl[this.state.videoCounter])} style={{width:"300px"}} readOnly/>
+                                    <FormControl value={this.mentalEffort(this.state.wl[this.state.videoCounter])} style={{width:"300px", fontSize:"20px"}} readOnly/>
                                 </FloatingLabel>
-                                <div style={{width: 'inherit'}}>
+                                <div style={{minWidth:"700px", marginLeft:"30px"}}>
                                     <RangeSlider min={1} max={150} value={this.state.wlValue} onChange={this.rangeSelect} tooltip='on' size="lg"/>
                                 </div>
                                 
                             </InputGroup>
+                            <br/>
                             <Form.Group as={Row}>
                             {/* <CheckBoxGroup video={this.state.videoNames[this.state.shuffledIndex[this.state.videoCounter]]}/> */}
                             <div style={{display: 'flex', flexDirection: 'row'}}>

@@ -22,7 +22,7 @@ The design of the experiment is as follows. All participants will participate in
 
 * At the end of the experiment, after all videos and texts are rated by the participant, the participant will have a chance to accept or reject the rating results. Accepted results will be sent to the database for further analysis and the participant will be compensated accordingly, while rejected data will be erased at once.
 
-Breaks are allowed during the rating experiment so that no one becomes fatigued, but it is recommended to complete the experiment no later than [2 hours].
+[Breaks are allowed] during the rating experiment so that no one becomes fatigued, but it is recommended to complete the experiment no later than [2 hours].
 
 During the experiment, only your input data will be recorded, which includes your agreement with the study, demographic information, video rating values, and the decision to accept or withdraw your result at the end of the experiment. 
  
