@@ -8,6 +8,7 @@ import RSMESlider from './Components/RSME_Slider';
 import Instruction from './pages/Instruction';
 import Protocal from './pages/Protocal';
 // import Route from './Centivizer/routes'
+import Quate from './pages/Quate'
 import GameRoutes from './GameRoutes'
 class App extends React.Component {
   constructor(props) {
@@ -57,6 +58,7 @@ class App extends React.Component {
                 // content = <Instruction nextPage={this.nextPage}/>
 
                 content = <GameRoutes/>
+                // content = <Quate/>
                 // content = <CheckBoxGroup video="3-10"/>
                 break
             // case 3:

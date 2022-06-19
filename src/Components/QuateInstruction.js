@@ -1,5 +1,5 @@
 import React from 'react'
-import {Button, Card, Container} from 'react-bootstrap'
+import {Button, Card, Container, CardGroup} from 'react-bootstrap'
 import CardHeader from 'react-bootstrap/esm/CardHeader';
 import stp from "../Images/8stp.png"
 
@@ -8,34 +8,45 @@ class QuateInstruction extends React.Component{
         return(
             <Container className="my-auto" 
                     style={{
-                    padding: '1% 5%',
+                    padding: '3% 5%',
                     justifyContent: 'center',
                     alignItems: "center",
                 }}>
-                <Card>
-                    <Card.Header>Driving Scenario Workload Text Rating Instruction</Card.Header>
-                    <Card.Body>
-                    <Card.Img src={stp}/>
-
-                        <Card.Text>
-                            In this section, you will be presented with text descriptions of several driving scenarios, and you will be asked to rate the 
-                            driving workload required from the relevant driving scenarios based on your driving experiences.
-                        </Card.Text>
-                        <Card.Text>
-                            <span style={{color:'red'}}> Mental Workload</span> is similar to attention, often refers to <span style={{backgroundColor:'yellow'}}> the amount of thinking and planning on a certain taskload</span>.
-                            For example, you need more mental workload when mentally calculating 17x24 than 2x3. <br></br> Similarly, with the given driving scenario, we want you to rate 
-                            how much mental effort or attention you need to carry out based on your driving experiences.
-                        </Card.Text>
-                        <Card.Text>
-                            We use human factor Evaluation of <span style={{backgroundColor:'#00BFFF'}}>Rating Scale Mental Effort (<a href={"https://adasgeek.wordpress.com/2013/12/19/rsme/"}>RSME</a>) scale</span> for the rating, with value 1-150 mapping from "Absolute No Effort" to "Extreme Effort".
-                            When you change the slider value, the corresponding interpretation of the value will show in the text area for your reference. 
-                        </Card.Text>
-                        <Card.Text>
-                            For each video, you are also required to <span style={{backgroundColor:'#90EE90'}}>identify the source of workload demanding elements on the road </span> by ticking the checkbox in the <span style={{backgroundColor:'#90EE90'}}>green area</span>, to further support your rating scores
-                        </Card.Text>
-                        <Button onClick={(e)=>{e.preventDefault();this.props.nextPage()}}>Start!</Button>
-                    </Card.Body>
-                </Card>
+                    <CardGroup style={{display:'flex'}}>
+                        <Card style={{maxWidth:'400px'}}>
+                            <Card.Header>Driving Scenario Workload Text Rating Instruction</Card.Header>
+                            <Card.Body>
+                                <Card.Text>
+                                    1. Please read the driving scenario
+                                </Card.Text>
+                                <Card.Text>
+                                    2. Rate the mental workload<span style={{color:'red'}}>*</span> you will feel in the situation (i.e., how much attention you need pay?) using the slider (0: very low – 150: extremely high)
+                                </Card.Text>
+                                <Card.Text>
+                                    3. Select the source of the mental workload<span style={{color:'red'}}>**</span> from the options (you can choose multiple options)
+                                </Card.Text>
+                                <Card.Text>
+                                    4. Go to next one
+                                </Card.Text>
+                            </Card.Body>
+                        </Card>
+                        <Card style={{width:'70%'}}>
+                            <Card.Body>
+                            <Card.Img src={stp}/>
+                            </Card.Body>
+                        </Card>
+                    </CardGroup>
+                    <Card>
+                        <Card.Body>
+                            <Card.Text>
+                                <span style={{color:'red'}}>*</span>Mental Workload often refers to the amount of thinking and planning on a certain taskload. For example, you would feel higher mental workload when mentally calculating 17x24 than 2x3.
+                            </Card.Text>
+                            <Card.Text>
+                                <span style={{color:'red'}}>**</span>Factors which you think contribute to the mental workload
+                            </Card.Text>
+                            <Button onClick={(e)=>{e.preventDefault();this.props.nextPage()}}>Start!</Button>
+                        </Card.Body>
+                    </Card>
             </Container>
         )
     }
