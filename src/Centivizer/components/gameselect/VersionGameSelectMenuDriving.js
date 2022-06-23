@@ -127,8 +127,8 @@ function GameButton(props) {
   const [open, setOpen] = React.useState(false);
   const [disabled, setDisabled] = React.useState(true);
 
-  const handleClickOpen = () => {
-    setOpen(true);
+  const handleClickOpen = (k) => {
+    setOpen(k);
   };
 
   const handleClose = () => {
@@ -152,7 +152,12 @@ function GameButton(props) {
               setRedirect(true);
               props.setGameId(props.id);
             } else {
-              handleClickOpen();
+              if(!props.disabled){
+                handleClickOpen(true);
+              }
+              else{
+                handleClickOpen(false)
+              }
             }
           }}
         >
@@ -251,10 +256,20 @@ export default function VersionGameSelectMenuDriving(props) {
   const [gameStates, setGameStates] = useState({});
   const [gameId, setGameId] = useState(-1)
   const [isDone, setIsDone] = useState(false)
-  const [show, setShow] = useState(true);
   const [doneN, setDoneN] = useState(0);
   const [allButtons, setAllButtons] = useState([])
   const [buttonCount, setButtonCount] = useState(3)
+  const [curReady, setCurReady] = useState(()=>{
+    const saved = localStorage.getItem("gameReady");
+    const initialValue = JSON.parse(saved);
+    return initialValue || false;
+  }) // if ready to play game
+
+  const [stage, setStage] = useState(()=>{
+    const saved = localStorage.getItem("stage");
+    const initialValue = JSON.parse(saved);
+    return initialValue || 0;
+  }) // if ready to play game
 
 
   async function getParticipantState() {
@@ -284,7 +299,18 @@ export default function VersionGameSelectMenuDriving(props) {
     // tmp_buttons[0]=false
     // setAllButtons(tmp_buttons)
     getParticipantState();
-  }, []);
+    // const items = JSON.parse(localStorage.getItem('gameReady'));
+    // if (items) {
+    //   setCurReady(items);
+    // }
+    // else{
+
+    // }
+    localStorage.setItem("gameReady", JSON.stringify(curReady));
+    // if(!curReady){
+    //   localStorage.setItem("stage", JSON.stringify(stage+1));
+    // }
+  }, [curReady, stage]);
 
   function prevPage() {
     setPageNum(pageNumRef.current - 1); // must use ref inside a function
@@ -345,10 +371,18 @@ export default function VersionGameSelectMenuDriving(props) {
       var ccc;
       if (c==count && d[item.name]==0){
         ccc = false
+        localStorage.setItem("stage", JSON.stringify(count+1))
       }
       else{
         ccc = true
       }
+      // if (count==stage){
+      //   ccc = false
+      // }
+      // else{
+      //   ccc = true
+      // }
+
       buttons.push(gameToButton(item, item.id, data, setGameId, ccc));
     }
 
@@ -478,18 +512,17 @@ export default function VersionGameSelectMenuDriving(props) {
                 e.preventDefault();
                 if(!gameStates[cardDict[gameId]['name']]){
                   setRedirect_ss(true)
+                  setCurReady(true)
                 }
                 }}>{gameStates[cardDict[gameId]['name']]?"Done":"Play!"}</Button>
             </Card.Body>
         </Card>
-        {show?
-        <Alert variant="warning" onClose={() => setShow(false)} dismissible>
-          <Alert.Heading>Finish all games to proceed, progress {doneN}/3</Alert.Heading>
-        </Alert>:<></>}
       </div>
       }
       {redirect_ss ? <Redirect to={`instructions${cardDict[gameId]['name']}`} push /> : <></>}
-      {isDone ? <Redirect to={randomState?'instruction':'texts'} push /> : <></>}
+      {/* {isDone ? <Redirect to={randomState?'instruction':'texts'} push /> : <></>} */}
+      {curReady&&!redirect_ss ? <Redirect to={'/ResearchBlockInstruction'} push /> : <></>}
+
     </div>
   );
 }

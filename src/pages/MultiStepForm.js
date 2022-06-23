@@ -21,7 +21,7 @@ export default class MultiStepForm extends Component {
         gender: '',
         driveYrs: '',
         driveFreq: '',
-        less: ''
+        platform: ''
     }
 
     nextStep = () => {
@@ -44,8 +44,8 @@ export default class MultiStepForm extends Component {
     }
 
     render(){
-        const { step, firstName, lastName, email, city, state, country, ageGroup, gender, driveYrs, driveFreq, less } = this.state;
-        const inputValues = { firstName, lastName, email, city, state, country, ageGroup, gender, driveYrs, driveFreq, less};
+        const { step, firstName, lastName, email, city, state, country, ageGroup, gender, driveYrs, driveFreq, platform } = this.state;
+        const inputValues = { firstName, lastName, email, city, state, country, ageGroup, gender, driveYrs, driveFreq, platform};
         var content
         var title
         var marginTop

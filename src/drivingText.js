@@ -125,6 +125,101 @@ function shuffle(array) {
     return array;
 }
 
-    const randomIndex = shuffle([0,1,2])
+function shuffle2(array, array2) {
+    let currentIndex = array.length,  randomIndex;
 
-export {randomState, drivingText, checkBoxs, randomIndex}
+    // While there remain elements to shuffle.
+    while (currentIndex != 0) {
+
+    // Pick a remaining element.
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // And swap it with the current element.
+    [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex], array[currentIndex]];
+    [array2[currentIndex], array2[randomIndex]] = [
+        array2[randomIndex], array2[currentIndex]];
+    }
+
+    return [array, array2];
+}
+
+    const randomIndex = shuffle([0,1,2])
+    const n_videos = 16
+    // const n_videos = 4
+
+
+    const normalVIndex = [...Array(n_videos).keys()]
+    const normalTIndex = [...Array(n_videos).keys()]
+    const [snVIndex, snTIndex] = shuffle2(normalVIndex, normalTIndex)
+
+    var trials1 = []
+    for (var i=0; i<n_videos/2; i++){
+        trials1.push(snVIndex[i])
+        trials1.push(snTIndex[Math.floor(n_videos/2)+i])
+    }
+
+    var trials2 = []
+    for (var i=0; i<n_videos/4; i++){
+        trials2.push(snVIndex[Math.floor(n_videos/2)+i])
+        trials2.push(snTIndex[i])
+    }
+
+    var mem1 = {}
+    for (var i=0; i<n_videos/4; i++){
+        var ind = Math.floor(Math.random()*trials1.length)
+        var indd = Math.floor(ind/2)*2
+        while(mem1.hasOwnProperty(indd)){
+            ind = Math.floor(Math.random()*trials1.length)
+            indd = Math.floor(ind/2)*2
+        }
+        mem1[indd]=true
+        trials2.push(trials1[Math.floor(ind/2)*2])
+        trials2.push(trials1[Math.floor(ind/2)*2+1])
+    }
+
+    var trials3 = []
+    for (var i=0; i<n_videos/4; i++){
+        trials3.push(snVIndex[Math.floor(n_videos/4*3)+i])
+        trials3.push(snTIndex[Math.floor(n_videos/4)+i])
+    }
+
+    var mem = {}
+    for (var i=0; i<n_videos/8; i++){
+        var ind = Math.floor(Math.random()*trials2.length)
+        var indd = Math.floor(ind/2)*2
+        while(mem.hasOwnProperty(indd)){
+            ind = Math.floor(Math.random()*trials2.length)
+            indd = Math.floor(ind/2)*2
+        }
+        mem[indd]=true
+        trials3.push(trials2.slice(0,n_videos/2)[Math.floor(ind/2)*2])
+        trials3.push(trials2.slice(0,n_videos/2)[Math.floor(ind/2)*2+1])
+    }
+
+    // var mem = {}
+    for (var i=0; i<n_videos/8; i++){
+        var ind = Math.floor(Math.random()*trials1.length)
+        var indd = Math.floor(ind/2)*2
+        while(mem1.hasOwnProperty(indd)){
+            ind = Math.floor(Math.random()*trials1.length)
+            indd = Math.floor(ind/2)*2
+        }
+        mem1[indd]=true
+        trials3.push(trials1[Math.floor(ind/2)*2])
+        trials3.push(trials1[Math.floor(ind/2)*2+1])
+    }
+
+    const trials = {
+        '1': trials1,
+        "2": trials2,
+        "3": trials3
+    }
+
+    console.log(trials)
+
+
+
+
+export {randomState, drivingText, checkBoxs, randomIndex, trials}

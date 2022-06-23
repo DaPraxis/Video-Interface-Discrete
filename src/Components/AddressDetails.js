@@ -152,6 +152,17 @@ export default class AddressDetails extends Component{
                                     <option value="N.A.">Not Available</option>
                                 </Form.Control>
                             </Form.Group>
+                            <Form.Group as={Col} controlId="formPlatform">
+                                <Form.Label>Platform</Form.Label>
+                                <Form.Control as="select" name="platform" value={this.props.inputValues.platform} 
+                                    onChange={this.props.handleChange} required>
+                                    <option hidden value="">
+                                        Select...
+                                    </option>
+                                    <option value="Computer">Computer</option>
+                                    <option value="Tablet">Tablet</option>
+                                </Form.Control>
+                            </Form.Group>
                         </Row>
                         <Row>
                             <Form.Group as={Col} controlId="formDrivingYrs">
@@ -180,7 +191,7 @@ export default class AddressDetails extends Component{
                                         <option value="A few days a week">A few days a week</option>
                                         <option value="A few days a month">A few days a month</option>
                                         <option value="A few days a year">A few days a year</option>
-                                        <option value="Less frequently">Less frequently</option>
+                                        <option value="Very Rarely">Very Rarely</option>
 
                                         {/* <input name='less' type="text" value={this.props.inputValues.less} 
                                         onChange={this.props.handleChange}/> */}

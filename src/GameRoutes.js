@@ -14,9 +14,12 @@ import MultiStepForm from "./pages/MultiStepForm";
 import VideoPlay from "./Components/VideoPlay";
 import FinalPage from "./pages/FinalPage";
 import Quate from "./pages/Quate"
+import ResearchBlock from "./pages/ResearchBlock";
 import UserIdFrame from './Centivizer/components/userIdFrame';
+import InterTrial from './pages/InterTrial'
+import ResearchBlockInstruction from './pages/ResearchBlockInstruction'
 
-let version = new DrivingVersion();
+// let version = new DrivingVersion();
 export default function GameRoutes() {
   const [volume, setVolume] = useState(0.5);
   const [currBackgroundMusicIndex, setCurrBackgroundMusicIndex] = useState(-1);
@@ -30,6 +33,13 @@ export default function GameRoutes() {
   const [basicInfo, setBasicInfo] = useState({})
   const [shuffledIndex, setShuffleIndex] = useState([])
   const [videoTime, setVideoTime] = useState(0)
+  const [stage, getStage] = useState(()=>{
+    const saved = localStorage.getItem("stage");
+    const initialValue = JSON.parse(saved);
+    return initialValue || 0;
+  })
+  const [allWl, setAllWl] = useState({})
+  const [version, setVersion] = useState(new DrivingVersion())
 
   function getData(videoNames, shuffledIndex, wl, sug, time){
     setVideoNames(videoNames)
@@ -45,6 +55,13 @@ export default function GameRoutes() {
 
   function getData3(inputValue){
     setTwl(inputValue)
+  }
+
+  function getData4(videoNames, wl){
+    var ll = allWl;
+    setVideoNames(videoNames)
+    ll[stage]=wl
+    setAllWl(ll)
   }
 
   useEffect(() => {
@@ -106,10 +123,29 @@ export default function GameRoutes() {
               <Quate getData={getData3}/>
             )}/>
           <Route
+            path="/interTrial"
+            exact
+            render={(props)=>(
+              <InterTrial/>
+            )}/>
+          <Route
+            path="/ResearchBlock"
+            exact
+            render={(props)=>(
+              <ResearchBlock getData={getData4}/>
+            )}/>
+          <Route
+            path="/ResearchBlockInstruction"
+            exact
+            render={(props)=>(
+              <ResearchBlockInstruction/>
+            )}/>
+          <Route
             path="/done"
             exact
             render={(props) => (
-              <FinalPage names = {videoNames} index={shuffledIndex} wl={wl} basicInfo={basicInfo} twl={twl} sug={sug} videoT={videoTime}/>
+              // <FinalPage names = {videoNames} index={shuffledIndex} wl={wl} basicInfo={basicInfo} twl={twl} sug={sug} videoT={videoTime}/>
+              <FinalPage allWl={allWl} names = {videoNames} basicInfo={basicInfo}/>
             )}
           />
           <Route

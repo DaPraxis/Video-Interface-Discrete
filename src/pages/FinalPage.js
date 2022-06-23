@@ -1,164 +1,264 @@
 import React from 'react'
-import {Table, Container, Row, Col, Button, Toast, ToastContainer} from "react-bootstrap"
+import {Table, Container, Row, Col, Button, Toast, ToastContainer, InputGroup, Form, OverlayTrigger, Tooltip} from "react-bootstrap"
 import axios from 'axios'
 import Footer from "../Components/Footer"
-import {randomState, randomIndex} from "../drivingText"
+import {randomState, randomIndex, trials} from "../drivingText"
 import {db} from '../Service/Firestore'
 import { collection, addDoc } from "firebase/firestore"; 
-
 
 class FinalPage extends React.Component{
 
     state = {
+        text: "Tick the agreement checkbox below and submit to complete the experiment",
         checked : false,
-        key:"AIzaSyBOkz_2Xy7eULTirTSMQnwYaKUF5ienzW8",
-        text:"Almost there! Please tick the agreement checkbox and submit your response!"
+        show:false,
+        feedback:'',
+        submitForm:false,
+        satisfaction: '',
+        v1:'',
+        v2:'',
+        t1:'',
+        t2:'',
+        tt:{}
     }
 
-    submitOnClick = () => {
-        const test = {
-            
-        }
-        // axios.post(`https://www.googleapis.com/upload/drive/v3/files?uploadType=media&key=${this.state.key}`, JSON.stringify(this.props.wl), {
-        //     "name":"test.json"
-        // })
-        axios.post(`https://www.googleapis.com/upload/drive/v3/files?uploadType=media&key=${this.state.key}`, JSON.stringify(test), {
-            headers:{
-                "Content-Type":"application/json",
-                "Authorization":"Bearer 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"
-                // "kind": "drive#file",
-                // "id": "1mLDVuX-BwkRjVjpr12qThHzDMlQdqBtA",
-                // "name": "ppp.txt",
-                // "mimeType": "text/plain"
+    resembleResource(){
+        // var newWl = {}
+        // if (this.props.index)
+        //     {for(var i=0;i<this.props.index.length;i++){
+        //         var ind = this.props.index[i]
+        //         var name = this.props.names[ind]
+        //         var wl = this.props.wl[i] || null
+        //         var sug = this.props.sug[name] || null
+        //         newWl[name+'_video'] = {"workload":wl,"suggestions":sug}
+        //     }}
+        // if (this.props.twl)
+        //     {for(var i=0;i<this.props.twl['name'].length;i++){
+        //         var ind = this.props.twl['index'][i]
+        //         var name = this.props.twl['name'][ind]
+        //         var wl = this.props.twl['wl'][i] || null
+        //         var cc = this.props.twl['cc'][name] || null
+        //         newWl[name+'_text'] = {'workload':wl, 'suggestions':cc}
+        //     }}
+        var newWl = {}
+        newWl['workloads'] = this.props.allWl
+        newWl["video_org"] = this.props.names
+        let num_keys_ls = 3
+        for (var i=0; i<num_keys_ls; i++){
+            let game = JSON.parse(localStorage.getItem("__LOCALGAMEDATA"+i.toString()))
+            if(game){
+                game.holeLayout = null
+                newWl["Game_"+game['name']] = game
             }
-        }).then((response) => {
-            console.log(response.data)
-        });
+        }
+
+        var newTrials = {}
+        for (var k in trials){
+            var isVideo = true
+            newTrials[k] = []
+            for (var j in trials[k]){
+                if (isVideo){
+                    newTrials[k].push(this.props.names[trials[k][j]]+'_video')
+                }
+                else{
+                    newTrials[k].push(this.props.names[trials[k][j]]+'_text')
+                }
+                isVideo = !isVideo
+            }
+        }
+
+        newWl["RatingRandomState"] = newTrials
+        newWl["BrainRandomState"] = randomIndex
+        newWl["PostTestQuestions"] = this.state.tt
+        // newWl['VideoTime'] = this.props.videoT
+        // newWl['TextTime'] = this.props.twl['time']
+        console.log(this.props.basicInfo)
+        var v = {...newWl, ...this.props.basicInfo}
+        return v
     }
 
     downloadFile = async () => {
         this.setState({
             text:"Congratulations, the study is done 🎉🎉🎉"
         })
-        var newWl = {}
-        for(var i=0;i<this.props.index.length;i++){
-            var ind = this.props.index[i]
-            var name = this.props.names[ind]
-            var wl = this.props.wl[i] || null
-            var sug = this.props.sug[name] || null
-            newWl[name+'_video'] = {"workload":wl,"suggestions":sug}
-        }
-        for(var i=0;i<this.props.twl['name'].length;i++){
-            var ind = this.props.twl['index'][i]
-            var name = this.props.twl['name'][ind]
-            var wl = this.props.twl['wl'][i] || null
-            var cc = this.props.twl['cc'][name] || null
-            newWl[name+'_text'] = {'workload':wl, 'suggestions':cc}
-        }
-        let num_keys_ls = localStorage.length - 2
-        for (var i=0; i<num_keys_ls; i++){
-            let game = JSON.parse(localStorage.getItem("__LOCALGAMEDATA"+i.toString()))
-            game.holeLayout = null
-            newWl["Game_"+game['name']] = game
-        }
-        newWl["RatingRandomState"] = randomState
-        newWl["BrainRandomState"] = randomIndex
-        newWl['VideoTime'] = this.props.videoT
-        newWl['TextTime'] = this.props.twl['time']
-        const fileName = "file";
-        console.log(this.props.basicInfo)
-        var v = {...newWl, ...this.props.basicInfo}
+        
+        var v = this.resembleResource()
         const json = JSON.stringify(v);
         const blob = new Blob([json],{type:'application/json'});
         const href = await URL.createObjectURL(blob);
         const link = document.createElement('a');
         link.href = href;
+        const fileName = "file";
         link.download = fileName + ".json";
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
 
-        try {
-            // const docRef = await addDoc(collection(db, "tests_phase2"), v);
-            const docRef = await addDoc(collection(db, "tests-phase3"), v);
-            console.log("Document written with ID: ", docRef.id);
-          } catch (e) {
-            console.error("Error adding document: ", e);
-            this.setState({
-                text:"There is a database connection error, please contact IML lab"
-            })
-          }
+        // try {
+        //     const docRef = await addDoc(collection(db, "tests-phase3"), v);
+        //     console.log("Document written with ID: ", docRef.id);
+        //   } catch (e) {
+        //     console.error("Error adding document: ", e);
+        //     this.setState({
+        //         text:"There is a database connection error, please contact IML lab"
+        //     })
+        //   }
     }
 
-    constructTable(){
-        var table = []
-        for(var i=0;i<this.props.index.length;i++){
-            var ind = this.props.index[i]
-            var name = this.props.names[ind]
-            var wl = this.props.wl[i]
-            if (wl==""){
-                wl = <b><i><p style={{backgroundColor:"Tomato"}}>{"Empty"}</p></i></b>
-            }
-            table.push(
-                <tr>
-                    {/* <td>{name}</td> */}
-                    <td>{i+1}</td>
-                    <td>{wl}</td>
-                </tr>
-            )
-        }
-        return(
-            <div style={{justifyContent: 'center',alignItems: "center",width: "65%", margin:"0 auto", padding: '50px'}}>
-                {/* <Table striped bordered hover>
-                    <thead>
-                        <tr>
-                            <th>Video Index</th>
-                            <th>Rated Workload</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {table}
-                    </tbody>
-
-                </Table> */}
-                {/* <h1>
-                    {"Congratulations, the study is done 🎉"}
-                </h1> */}
-                <ToastContainer className="p-3" position='middle-center'>
-                    <Toast>
-                        <Toast.Header closeButton={false}>
-                        {/* <img
-                            src="holder.js/20x20?text=%20"
-                            className="rounded me-2"
-                            alt=""
-                        /> */}
-                        <strong className="me-auto">IML Lab</strong>
-                        <small>1 mins ago</small>
-                        </Toast.Header>
-                        <Toast.Body>{this.state.text}</Toast.Body>
-                    </Toast>
-                    </ToastContainer>
-                <Footer>
-                    <Container>
-                        <Row>
-                            <Col md={9}>
-                            <input type="checkbox" checked={this.state.checked} 
-                                onChange={(e)=>{this.setState({checked:e.target.checked})}}>
-                            </input> I certify that all the information entered is correct and I am willing to share my data to the IML Lab
-                            </Col>
-                            <Col>
-                                {this.state.checked?<Button variant="primary" onClick={this.downloadFile}>Submit</Button>:null}
-                            </Col>
-                        </Row>
-                    </Container>
-                </Footer>
-            </div>
-        )
+    handleChange = (event) => {
+        event.preventDefault()
+        this.setState({[event.target.name]: event.target.value})
+        var ne = {}
+        ne[event.target.name] = event.target.value
+        this.setState({tt:{...this.state.tt, ...ne}})
     }
-
 
     render(){
-        return (this.constructTable())
+        return (
+            <div style={{justifyContent: 'center',alignItems: "center",width: "80%", margin:"0 auto", padding: '50px'}}>
+                <Container>
+                    <Form onSubmit={(e) => {
+                        e.preventDefault();
+                        if(e.target.checkValidity()){
+                            this.setState({submitForm:true})
+                        }
+                        }}>
+                            <blockquote className="blockquote mb-0">
+                                <p style={{fontFamily:'Calibri, sans-serif', fontSize:"22px"}}>
+                                    {' '}
+                                    {'To what extent do you agree with the following statement:'}
+                                    {' '}
+                                </p>
+                            </blockquote>
+                            <br/>
+                        <Row>
+                            <Form.Group as={Col} controlId="formV1">
+                                <Form.Label> The driving videos can help me recall driving scenarios in real life </Form.Label>
+                                <Form.Control as="select" name="v1" value={this.state.v1} 
+                                    onChange={this.handleChange} required>
+                                    <option hidden value="">
+                                        Select...
+                                    </option>
+                                    <option value="Strongly agree">Strongly agree</option>
+                                    <option value="Somewhat agree">Somewhat agree</option>
+                                    <option value="Neither agree nor disagree">Neither agree nor disagree</option>
+                                    <option value="Somewhat disagree">Somewhat disagree</option>
+                                    <option value="Strongly disagree">Strongly disagree</option>
+                                </Form.Control>
+                            </Form.Group>
+                            <Form.Group as={Col} controlId="formT1">
+                                <Form.Label>The driving text descriptions can help me recall driving scenarios in real life</Form.Label>
+                                <Form.Control as="select" name="t1" value={this.state.t1} 
+                                    onChange={this.handleChange} required >
+                                    <option hidden value="">
+                                        Select...
+                                    </option>
+                                    <option value="Strongly agree">Strongly agree</option>
+                                    <option value="Somewhat agree">Somewhat agree</option>
+                                    <option value="Neither agree nor disagree">Neither agree nor disagree</option>
+                                    <option value="Somewhat disagree">Somewhat disagree</option>
+                                    <option value="Strongly disagree">Strongly disagree</option>
+                                </Form.Control>
+                            </Form.Group>
+                        </Row>
+                        <br/>
+                        <Row>
+                            <Form.Group as={Col} controlId="formV2">
+                                <Form.Label>Contents in driving videos are realistic and typical driving scenarios according to my driving experiences</Form.Label>
+                                <Form.Control as="select" name="v2" value={this.state.v2} 
+                                    onChange={this.handleChange} required>
+                                    <option hidden value="">
+                                        Select...
+                                    </option>
+                                    <option value="Strongly agree">Strongly agree</option>
+                                    <option value="Somewhat agree">Somewhat agree</option>
+                                    <option value="Neither agree nor disagree">Neither agree nor disagree</option>
+                                    <option value="Somewhat disagree">Somewhat disagree</option>
+                                    <option value="Strongly disagree">Strongly disagree</option>
+                                </Form.Control>
+                            </Form.Group>
+                            <Form.Group as={Col} controlId="formT2">
+                                
+                                <Form.Label>Contents in driving text descriptions are realistic and typical driving scenarios according to my driving experiences</Form.Label>
+                                <Form.Control as="select" name="t2" value={this.state.t2} 
+                                    onChange={this.handleChange} required>
+                                    <option hidden value="">
+                                        Select...
+                                    </option>
+                                    <option value="Strongly agree">Strongly agree</option>
+                                    <option value="Somewhat agree">Somewhat agree</option>
+                                    <option value="Neither agree nor disagree">Neither agree nor disagree</option>
+                                    <option value="Somewhat disagree">Somewhat disagree</option>
+                                    <option value="Strongly disagree">Strongly disagree</option>
+                                </Form.Control>
+                            </Form.Group>
+                        </Row>
+                        <hr/>
+                        <Row>
+                            <Form.Group as={Col} controlId="formSatisfy">
+                                    <Form.Label>How would you describe your satisfaction of our survey?</Form.Label>
+                                    <Form.Control as="select" name="satisfaction" value={this.state.satisfaction} 
+                                        onChange={this.handleChange} required>
+                                        <option hidden value="">
+                                            Select...
+                                        </option>
+                                        <option value="Very Satisfied">Very Satisfied</option>
+                                        <option value="Satisfied">Satisfied</option>
+                                        <option value="Good">Good</option>
+                                        <option value="Poor">Poor</option>
+                                        <option value="Terrible">Terrible</option>
+                                    </Form.Control>
+                            </Form.Group>
+                        </Row>
+                        <br/>
+                        <Row>
+                            <Form.Group as={Col} controlId="formFeedBack">
+                                <InputGroup>
+                                    <InputGroup.Text>Any Other Feedbacks?</InputGroup.Text>
+                                    <Form.Control as="textarea" aria-label="With textarea" value={this.state.feedback} 
+                                    onChange={(e)=>{
+                                        var t = this.state.tt
+                                        t['feedback'] = e.target.value
+                                        this.setState({
+                                            feedback: e.target.value,
+                                            tt:t
+                                        })
+                                    }}/>
+                                </InputGroup>
+                            </Form.Group>
+                        </Row>
+                        <br/>
+                        <Button type="submit" variant="primary">Submit</Button>
+                    </Form>
+
+                    <ToastContainer className="p-3" position='middle-center'>
+                        <Toast show={this.state.submitForm} onClose={()=>{this.setState({submitForm:!this.state.submitForm})}}>
+                            <Toast.Header closeButton={this.state.checked}>
+                            <strong className="me-auto">IML Lab</strong>
+                            <small>1 mins ago</small>
+                            </Toast.Header>
+                            <Toast.Body>{this.state.text}</Toast.Body>
+                        </Toast>
+                        </ToastContainer>
+                    {this.state.submitForm?
+                        <Footer>
+                        <Container>
+                            <Row>
+                                <Col md={9}>
+                                <input type="checkbox" checked={this.state.checked} 
+                                    onChange={(e)=>{this.setState({checked:e.target.checked})}}>
+                                </input> I certify that all the information entered is correct and I am willing to share my data to the IML Lab
+                                </Col>
+                                <Col>
+                                    {this.state.checked?<Button variant="primary" onClick={this.downloadFile}>Confirm</Button>:null}
+                                </Col>
+                            </Row>
+                        </Container>
+                    </Footer>:<></>}
+                </Container>
+                
+            </div>
+        )
     }
 }
 

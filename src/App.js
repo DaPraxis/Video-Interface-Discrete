@@ -10,6 +10,7 @@ import Protocal from './pages/Protocal';
 // import Route from './Centivizer/routes'
 import Quate from './pages/Quate'
 import GameRoutes from './GameRoutes'
+import ResearchBlock from './pages/ResearchBlock';
 class App extends React.Component {
   constructor(props) {
       super(props);
@@ -58,6 +59,7 @@ class App extends React.Component {
                 // content = <Instruction nextPage={this.nextPage}/>
 
                 content = <GameRoutes/>
+                // content = <ResearchBlock/>
                 // content = <Quate/>
                 // content = <CheckBoxGroup video="3-10"/>
                 break

@@ -1,8 +1,9 @@
 import React from "react";
-import {Card, Container, Button, Col, Row} from "react-bootstrap"
+import {Card, Container, Button, Col, Row, Accordion, CardGroup} from "react-bootstrap"
 import protocol_text from "../protocol.txt"
 import Footer from "../Components/Footer"
 import { Redirect } from "react-router-dom";
+import sp from '../Images/procedures.png'
 
 class Protocal extends React.Component {
 
@@ -49,37 +50,60 @@ class Protocal extends React.Component {
         return(
             <Container className="my-auto" 
                 style={{
-                padding: '5%',
+                padding: '1% 3% 10% 3%',
                 justifyContent: 'center',
                 alignItems: "center",
             }}>
-                <Card 
-                    key="light"
-                >
-                    <Card.Body>
-                        {/* <Card.Header>Experiment Consent</Card.Header> */}
-                        <Card.Title>
-                            Online Subjective Mental Workload Measurement Using Simulated Driving Videos
-                        </Card.Title>
-                        <Card.Text style={{fontFamily:'Calibri, sans-serif', fontSize:"20px"}}>
-                            {this.state.texts}
-                        </Card.Text>
-                    </Card.Body>
-                    {/* <Card.Footer>
-                        <Container>
-                            <Row>
-                                <Col md={9}>
-                                <input type="checkbox" checked={this.state.checked} 
-                                    onChange={(e)=>{this.setState({checked:e.target.checked})}}>
-                                </input> I certify that I agree to attend this experiment and willing to share my data to the IML Lab
-                                </Col>
-                                <Col>
-                                    {this.state.checked?<Button variant="primary" onClick={this.props.nextPage}>Start Experiment</Button>:null}
-                                </Col>
-                            </Row>
-                        </Container>
-                    </Card.Footer> */}
-                </Card>
+                <Accordion defaultActiveKey={['0']} alwaysOpen>
+                    <Accordion.Item eventKey="0">
+                        <Accordion.Header>Experiment Summary</Accordion.Header>
+                        <Accordion.Body>
+                            <CardGroup style={{display:'flex'}}>
+                                <Card style={{maxWidth:'550px'}}>
+                                    {/* <Card.Header>Driving Scenario Workload Video Rating Instruction</Card.Header> */}
+                                    <Card.Body>
+                                        <Card.Text>
+                                            <li>Welcome to our online study! It consists of the five steps shown in the right figure.</li>
+                                        </Card.Text>
+                                        <Card.Text>
+                                            <li>Please take a rest when you feel you need to do. </li>
+                                        </Card.Text>
+                                        <Card.Text>
+                                            <li>Total estimated time is 1-1.5 hours (including breaks). </li>
+                                        </Card.Text>
+                                        <Card.Text>
+                                            <li>Please use a computer or tablet so that you can see the video image clearly (smartphone would be too small).</li>
+                                        </Card.Text>
+                                        <Card.Text>
+                                            <li>You can find the detail of study protocol below. Please read it and check the consent box in the bottom when you agree to proceed.</li>
+                                        </Card.Text>
+                                    </Card.Body>
+                                </Card>
+                                <Card style={{width:'60%'}}>
+                                    <Card.Body>
+                                    <Card.Img src={sp}/>
+                                    </Card.Body>
+                                </Card>
+                            </CardGroup>
+                        </Accordion.Body>
+                    </Accordion.Item>
+                    <Accordion.Item eventKey="1">
+                        <Accordion.Header>Detailed Study Protocol: A Letter To Our Participants</Accordion.Header>
+                        <Accordion.Body>
+                            <Card key="light">
+                                <Card.Body>
+                                    {/* <Card.Header>Experiment Consent</Card.Header> */}
+                                    <Card.Title>
+                                        Online Subjective Mental Workload Measurement Using Simulated Driving Videos
+                                    </Card.Title>
+                                    <Card.Text style={{fontFamily:'Calibri, sans-serif', fontSize:"20px"}}>
+                                        {this.state.texts}
+                                    </Card.Text>
+                                </Card.Body>
+                            </Card>
+                        </Accordion.Body>
+                    </Accordion.Item>
+                </Accordion>
                 <Footer>
                     <Container>
                         <Row>
