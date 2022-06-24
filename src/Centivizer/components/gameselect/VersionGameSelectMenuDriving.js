@@ -312,13 +312,6 @@ export default function VersionGameSelectMenuDriving(props) {
     // }
   }, [curReady, stage]);
 
-  function prevPage() {
-    setPageNum(pageNumRef.current - 1); // must use ref inside a function
-  }
-  function nextPage() {
-    setPageNum(pageNumRef.current + 1); // must use ref inside a function
-  }
-
   function gameToButton(game, count, data, setFunc, isDisabled) {
     // 0 = disabled and todo, 1 = playable, 2 is disabled and completed
     const status = { 0: "secondary", 1: "default", 2: "primary" };

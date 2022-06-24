@@ -51,6 +51,7 @@ class ResearchBlock extends Component{
     }
 
     componentDidMount() {
+        console.log("Current Stage: "+this.state.stage)
         function shuffle(array) {
             return array.sort(() => Math.random() - 0.5);
         }
@@ -374,7 +375,7 @@ class ResearchBlock extends Component{
                                 />
                             </div> 
                         </div>
-                        {this.state.done?<Redirect to={this.state.stage>1?'/done':'/interTrial'} push /> : <></>}
+                        {this.state.done?<Redirect to={this.state.stage>3?'/done':'/interTrial'} push /> : <></>}
                         <Offcanvas show={this.state.canvasShow} onHide={this.handleClose} 
                                     placement="bottom" backdrop={false} 
                                     style={{justifyContent: 'center',alignItems: "center",height: "75%",zIndex:'20'}}>
@@ -646,7 +647,7 @@ class ResearchBlock extends Component{
                                 </Form.Group>
                             </Card.Body>
                         </Card>
-                        {this.state.done?<Redirect to={this.state.stage>1?'/done':'/interTrial'} push /> : <></>}
+                        {this.state.done?<Redirect to={this.state.stage>3?'/done':'/interTrial'} push /> : <></>}
                     </Container>
                 )
             }
