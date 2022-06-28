@@ -19,9 +19,10 @@ export default class MultiStepForm extends Component {
         country:'',
         ageGroup:'',
         gender: '',
-        driveYrs: '',
+        driveYrs: null,
         driveFreq: '',
-        platform: ''
+        platform: '',
+        skill: 2
     }
 
     nextStep = () => {
@@ -44,8 +45,8 @@ export default class MultiStepForm extends Component {
     }
 
     render(){
-        const { step, firstName, lastName, email, city, state, country, ageGroup, gender, driveYrs, driveFreq, platform } = this.state;
-        const inputValues = { firstName, lastName, email, city, state, country, ageGroup, gender, driveYrs, driveFreq, platform};
+        const { step, firstName, lastName, email, city, state, country, ageGroup, gender, driveYrs, driveFreq, platform, skill } = this.state;
+        const inputValues = { firstName, lastName, email, city, state, country, ageGroup, gender, driveYrs, driveFreq, platform, skill};
         var content
         var title
         var marginTop
@@ -68,7 +69,7 @@ export default class MultiStepForm extends Component {
                     inputValues={inputValues}
                     />
             title = "Driving Practice"
-            marginTop = "8%"
+            marginTop = "3%"
             break
         case 3:
             title = "Detail Confirmation"

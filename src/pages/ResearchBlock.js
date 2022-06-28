@@ -113,7 +113,8 @@ class ResearchBlock extends Component{
             static_c:vids['env_static'],
             driver_t:"",
             dyn_t:"",
-            static_t:""
+            static_t:"",
+            cBDisable:false
         })
     }
 
@@ -230,7 +231,7 @@ class ResearchBlock extends Component{
             return "Extreme Effort: "+wl
         }
         else if (wl>84){
-            return "Very Great Effort: "+wl
+            return "Very High Effort: "+wl
         }
         else if (wl>70){
             return "Great Effort: "+wl
@@ -258,13 +259,18 @@ class ResearchBlock extends Component{
         }
     }
 
+    getThreshold (){
+        var c = this.state.driver_c.length + this.state.dyn_c.length + this.state.static_c.length + 3
+        return Math.max(3, c/2)
+    }
+
     handleDriverChange = (idx) => (e) =>{
         const newD = this.state.driver.map((d, sidx) => {
             if (idx == sidx) return !d;
             return d
           });
         this.setState({ driver: newD });
-        if(this.countCB2(newD, this.state.dyn, this.state.static)>=3){
+        if(this.countCB2(newD, this.state.dyn, this.state.static)>=this.getThreshold()){
             this.setState({cBDisable:true})
         }
         else{
@@ -279,7 +285,7 @@ class ResearchBlock extends Component{
           });
           
           this.setState({ dyn: newD });
-        if(this.countCB2(this.state.driver,newD, this.state.static)>=3){
+        if(this.countCB2(this.state.driver,newD, this.state.static)>=this.getThreshold()){
             this.setState({cBDisable:true})
         }
         else{
@@ -295,7 +301,7 @@ class ResearchBlock extends Component{
         
         this.setState({ static: newD });
 
-        if(this.countCB2(this.state.driver, this.state.dyn, newD)>=3){
+        if(this.countCB2(this.state.driver, this.state.dyn, newD)>=this.getThreshold()){
             this.setState({cBDisable:true})
         }
         else{
@@ -334,7 +340,7 @@ class ResearchBlock extends Component{
         if (this.state.videoTotal>0){
             var progress = Math.round(((this.state.videoCounter+1)/this.state.videoTotal)*100)
             // var buttonDisable = (this.state.wl[this.state.videoCounter]=="") || (this.state.isEmpty)
-            var buttonDisable = (this.state.wl[this.getName()]=="")
+            var buttonDisable = ((this.state.wl[this.getName()]=="")||(this.countCB()<=0))
 
             // VIDEO!
             if (this.state.isVideoNow){
@@ -375,7 +381,7 @@ class ResearchBlock extends Component{
                                 />
                             </div> 
                         </div>
-                        {this.state.done?<Redirect to={this.state.stage>3?'/done':'/interTrial'} push /> : <></>}
+                        {this.state.done?<Redirect to={this.state.stage>=3?'/done':'/interTrial'} push /> : <></>}
                         <Offcanvas show={this.state.canvasShow} onHide={this.handleClose} 
                                     placement="bottom" backdrop={false} 
                                     style={{justifyContent: 'center',alignItems: "center",height: "75%",zIndex:'20'}}>
@@ -416,7 +422,7 @@ class ResearchBlock extends Component{
                                             <label> {"Others: "}
                                                 <input style={{whiteSpace:'nowarp'}}type="text" value={this.state.driver_t} onChange={(e)=>
                                                     {this.setState({driver_t:e.target.value});
-                                                    if(this.countCB3(e.target.value, this.state.dyn_t, this.state.static_t)>=3){
+                                                    if(this.countCB3(e.target.value, this.state.dyn_t, this.state.static_t)>=this.getThreshold()){
                                                         this.setState({cBDisable:true})
                                                     }
                                                     else{
@@ -446,7 +452,7 @@ class ResearchBlock extends Component{
                                             <label> {"Others: "}
                                                 <input style={{whiteSpace:'nowarp'}}type="text" value={this.state.dyn_t} onChange={(e)=>
                                                     {this.setState({dyn_t:e.target.value});
-                                                    if(this.countCB3(this.state.driver_t, e.target.value, this.state.static_t)>=3){
+                                                    if(this.countCB3(this.state.driver_t, e.target.value, this.state.static_t)>=this.getThreshold()){
                                                         this.setState({cBDisable:true})
                                                     }
                                                     else{
@@ -476,7 +482,7 @@ class ResearchBlock extends Component{
                                             <label> {"Others: "}
                                                 <input style={{whiteSpace:'nowarp'}}type="text" value={this.state.static_t} onChange={(e)=>
                                                     {this.setState({static_t:e.target.value});
-                                                    if(this.countCB3(this.state.driver_t, this.state.dyn_t, e.target.value)>=3){
+                                                    if(this.countCB3(this.state.driver_t, this.state.dyn_t, e.target.value)>=this.getThreshold()){
                                                         this.setState({cBDisable:true})
                                                     }
                                                     else{
@@ -488,7 +494,7 @@ class ResearchBlock extends Component{
                                     </Card>
                                 </div>
                                 </Form.Group>
-                                <Alert show={this.state.cBDisable}>Select up to <span style={{color:'red'}}>3</span> most important source of the mental workload from the options.</Alert>
+                                <Alert show={this.state.cBDisable}>Select up to <span style={{color:'red'}}>{this.getThreshold()}</span> most important source of the mental workload from the options.</Alert>
                                 <Form.Group as={Row}>
                                     <br/>
                                 </Form.Group>
@@ -552,88 +558,110 @@ class ResearchBlock extends Component{
     
                                 <Form.Group as={Row}>
                                 {/* <CheckBoxGroup video={this.state.videoNames[this.state.shuffledIndex[this.state.videoCounter]]}/> */}
-                                    <div style={{display: 'flex', flexDirection: 'row'}}>
-                                        <Card style={{flex: 1}}>
-                                            <Card.Header as="h5">{"Driver & Vehicle"}</Card.Header>
-                                            <Card.Body style={{fontFamily:'Calibri, sans-serif', fontSize:"20px"}}>
-                                                {this.state.driver.map((d, idx) => (
-                                                    <div>
-                                                        <label>
-                                                            <input
-                                                                type="checkbox"
-                                                                checked={d}
-                                                                onChange={this.handleDriverChange(idx)}
-                                                                // defaultChecked={false}
-                                                            />
-                                                            {this.state.driver_c[idx]}
-                                                        </label>
-                                                    </div>
-                                                ))}
-                                                <label> {"Others: "}
-                                                    <input style={{whiteSpace:'nowarp'}}type="text" value={this.state.driver_t} onChange={(e)=>
-                                                        {this.setState({driver_t:e.target.value});
-                                                            // this.props.isEmpty(this.isEmpty())
-                                                        }}/>
-                                                </label>
-                                            </Card.Body>
-                                        </Card>
-                                        <Card style={{flex: 1}}>
-                                            <Card.Header as="h5">{"Other Road Users"}</Card.Header>
-                                            <Card.Body style={{fontFamily:'Calibri, sans-serif', fontSize:"20px"}}>
-                                                {this.state.dyn.map((d, idx) => (
-                                                    <div>
-                                                        <label>
-                                                            <input
-                                                                type="checkbox"
-                                                                checked={d}
-                                                                onChange={this.handleDynChange(idx)}
-                                                                // defaultChecked={false}
-                                                            />
-                                                            {this.state.dyn_c[idx]}
-                                                        </label>
-                                                    </div>
-                                                ))}
-                                                <label> {"Others: "}
-                                                    <input style={{whiteSpace:'nowarp'}}type="text" value={this.state.dyn_t} onChange={(e)=>
-                                                        {this.setState({dyn_t:e.target.value});
-                                                            // this.props.isEmpty(this.isEmpty())
-                                                        }}/>
-                                                </label>
-                                            </Card.Body>
-                                        </Card>
-                                        <Card style={{flex: 1}}>
-                                            <Card.Header as="h5">{"Road Condition"}</Card.Header>
-                                            <Card.Body style={{fontFamily:'Calibri, sans-serif', fontSize:"20px"}}>
-                                                {this.state.static.map((d, idx) => (
-                                                    <div>
-                                                        <label>
-                                                            <input
-                                                                type="checkbox"
-                                                                checked={d}
-                                                                // defaultChecked={false}
-                                                                onChange={this.handleStaticChange(idx)}
-                                                            />
-                                                            {this.state.static_c[idx]}
-                                                        </label>
-                                                    </div>
-                                                ))}
-                                                <label> {"Others: "}
-                                                    <input style={{whiteSpace:'nowarp'}}type="text" value={this.state.static_t} onChange={(e)=>
-                                                        {this.setState({static_t:e.target.value});
-                                                            // this.props.isEmpty(this.isEmpty())
-                                                        }}/>
-                                                </label>
-                                            </Card.Body>
-                                        </Card>
-                                    </div>
+                                <div style={{display: 'flex', flexDirection: 'row'}}>
+                                    <Card style={{flex: 1}}>
+                                        <Card.Header as="h5">{"Driver & Vehicle"}</Card.Header>
+                                        <Card.Body>
+                                            {this.state.driver.map((d, idx) => (
+                                                <div>
+                                                    <label>
+                                                        <input
+                                                            type="checkbox"
+                                                            value={d}
+                                                            onChange={this.handleDriverChange(idx)}
+                                                            disabled={this.state.cBDisable&&!d}
+                                                            // defaultChecked={d}
+                                                        />
+                                                        {this.state.driver_c[idx]}
+                                                    </label>
+                                                </div>
+                                            ))}
+                                            <label> {"Others: "}
+                                                <input style={{whiteSpace:'nowarp'}}type="text" value={this.state.driver_t} onChange={(e)=>
+                                                    {this.setState({driver_t:e.target.value});
+                                                    if(this.countCB3(e.target.value, this.state.dyn_t, this.state.static_t)>=this.getThreshold()){
+                                                        this.setState({cBDisable:true})
+                                                    }
+                                                    else{
+                                                        this.setState({cBDisable:false})
+                                                    }
+                                                    }} disabled={this.state.cBDisable&&!(this.state.driver_t.length>0)}/>
+                                            </label>
+                                        </Card.Body>
+                                    </Card>
+                                    <Card style={{flex: 1}}>
+                                        <Card.Header as="h5">{"Other Road Users"}</Card.Header>
+                                        <Card.Body>
+                                            {this.state.dyn.map((d, idx) => (
+                                                <div>
+                                                    <label>
+                                                        <input
+                                                            type="checkbox"
+                                                            value={d}
+                                                            onChange={this.handleDynChange(idx)}
+                                                            // defaultChecked={d}
+                                                            disabled={this.state.cBDisable&&!d}
+                                                        />
+                                                        {this.state.dyn_c[idx]}
+                                                    </label>
+                                                </div>
+                                            ))}
+                                            <label> {"Others: "}
+                                                <input style={{whiteSpace:'nowarp'}}type="text" value={this.state.dyn_t} onChange={(e)=>
+                                                    {this.setState({dyn_t:e.target.value});
+                                                    if(this.countCB3(this.state.driver_t, e.target.value, this.state.static_t)>=this.getThreshold()){
+                                                        this.setState({cBDisable:true})
+                                                    }
+                                                    else{
+                                                        this.setState({cBDisable:false})
+                                                    }
+                                                    }} disabled={this.state.cBDisable&&!(this.state.dyn_t.length>0)}/>
+                                            </label>
+                                        </Card.Body>
+                                    </Card>
+                                    <Card style={{flex: 1}}>
+                                        <Card.Header as="h5">{"Road Condition"}</Card.Header>
+                                        <Card.Body>
+                                            {this.state.static.map((d, idx) => (
+                                                <div>
+                                                    <label>
+                                                        <input
+                                                            type="checkbox"
+                                                            value={d}
+                                                            // defaultChecked={d}
+                                                            onChange={this.handleStaticChange(idx)}
+                                                            disabled={this.state.cBDisable&&!d}
+                                                        />
+                                                        {this.state.static_c[idx]}
+                                                    </label>
+                                                </div>
+                                            ))}
+                                            <label> {"Others: "}
+                                                <input style={{whiteSpace:'nowarp'}}type="text" value={this.state.static_t} onChange={(e)=>
+                                                    {this.setState({static_t:e.target.value});
+                                                    if(this.countCB3(this.state.driver_t, this.state.dyn_t, e.target.value)>=this.getThreshold()){
+                                                        this.setState({cBDisable:true})
+                                                    }
+                                                    else{
+                                                        this.setState({cBDisable:false})
+                                                    }
+                                                    }} disabled={this.state.cBDisable&&!(this.state.static_t.length>0)}/>
+                                            </label>
+                                        </Card.Body>
+                                    </Card>
+                                </div>
                                 </Form.Group>
+                                <Alert show={this.state.cBDisable}>Select up to <span style={{color:'red'}}>{this.getThreshold()}</span> most important source of the mental workload from the options.</Alert>
                                 <Form.Group as={Row}>
                                     <br/>
                                 </Form.Group>
                                 <Form.Group as={Row}>
                                     <Col xs="3">
-                                        {/* {this.state.videoCounter<this.state.videoTotal-1? */}
-                                        {this.state.videoCounter<2?
+                                        <Button variant="outline-secondary" onClick={this.handleBtClickRep}>
+                                            🔁Replay
+                                        </Button>
+                                        {this.state.videoCounter<this.state.videoTotal-1?
+                                        // {this.state.videoCounter<1?
                                             <Button variant="outline-secondary" onClick={this.handleBtClickNext} disabled={buttonDisable}>
                                                 Next
                                             </Button>:
@@ -647,7 +675,7 @@ class ResearchBlock extends Component{
                                 </Form.Group>
                             </Card.Body>
                         </Card>
-                        {this.state.done?<Redirect to={this.state.stage>3?'/done':'/interTrial'} push /> : <></>}
+                        {this.state.done?<Redirect to={this.state.stage>=3?'/done':'/interTrial'} push /> : <></>}
                     </Container>
                 )
             }

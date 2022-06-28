@@ -23,10 +23,10 @@ class ResearchBlockInstruction extends React.Component {
                                 2. Rate the mental workload<span style={{color:'red'}}>*</span> you will feel in the situation (i.e., how much attention you need pay?) using the slider (0: no workload – 100: very great workload)
                             </Card.Text>
                             <Card.Text>
-                                3. Select up to <span style={{color:'red', fontWeight:'bold'}}>3</span> most important the source of the mental workload<span style={{color:'red'}}>**</span> from the options (you can choose multiple options)
+                                3. Select the most important factors contribute to the mental workload, the system will warn you if you select too many
                             </Card.Text>
                             <Card.Text>
-                                4. If necessary, replay the video or go to next one.
+                                4. Feel free to replay the video if you need to check some of the options
                             </Card.Text>
                         </Card.Body>
                     </Card>
@@ -39,11 +39,12 @@ class ResearchBlockInstruction extends React.Component {
                 <Card>
                     <Card.Body>
                         <Card.Text>
-                            <span style={{color:'red'}}>*</span>Mental Workload often refers to the amount of thinking and planning on a certain taskload. For example, you would feel higher mental workload when mentally calculating 17x24 than 2x3.
+                            <span style={{color:'red'}}>*</span>Mental Workload often refers to how mentally challenging a task is and how much you need to focus on it. For instance, a high mental workload
+                            scenario would be: you are driving on a busy highway, while you need to make three lane changes within 100 meters to exit.
                         </Card.Text>
-                        <Card.Text>
+                        {/* <Card.Text>
                             <span style={{color:'red'}}>**</span>Factors which you think contribute to the mental workload
-                        </Card.Text>
+                        </Card.Text> */}
                         <Button variant="primary" onClick={
                             (e)=>{
                                 e.preventDefault()

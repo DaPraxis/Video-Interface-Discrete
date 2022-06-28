@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Form, Button, Col, Container, Row } from 'react-bootstrap';
+import RangeSlider from 'react-bootstrap-range-slider';
 
 
 export default class AddressDetails extends Component{
@@ -11,7 +12,7 @@ export default class AddressDetails extends Component{
 
     saveAndContinue = (e) => {
         e.preventDefault();
-        if(e.target.checkValidity()){
+        if(e.target.checkValidity() && !(this.props.inputValues.driveYrs>100)){
             this.props.nextStep();
         }
     };
@@ -164,38 +165,43 @@ export default class AddressDetails extends Component{
                                 </Form.Control>
                             </Form.Group>
                         </Row>
+                        <br/>
                         <Row>
                             <Form.Group as={Col} controlId="formDrivingYrs">
-                                    <Form.Label>How many years have you been driving (from the year you got your driving license)?</Form.Label>
-                                    <Form.Control as="select" name="driveYrs" value={this.props.inputValues.driveYrs} 
-                                        onChange={this.props.handleChange} required>
-                                        <option hidden value="">
-                                            Select...
-                                        </option>
-                                        <option value="&le;5">&le;5 years</option>
-                                        <option value="6-10 years">6-10 years</option>
-                                        <option value="10-20 years">10-20 years</option>
-                                        <option value=">20 years">&gt;20 years</option>
-                                    </Form.Control>
+                                <Form.Label>How many years have you been driving (from the year you got your driving license)?</Form.Label>
+                                <Form.Control type='number' name="driveYrs" value={this.props.inputValues.driveYrs} 
+                                isInvalid={this.props.inputValues.driveYrs>100}
+                                    onChange={this.props.handleChange} required/>
+                                <Form.Control.Feedback type="invalid">
+                                    Please provide a valid year
+                                </Form.Control.Feedback>
                             </Form.Group>
                         </Row>
+                        <br/>
                         <Row>
                             <Form.Group as={Col} controlId="formDrivingFreq">
-                                    <Form.Label>How frequent do you drive?</Form.Label>
-                                    <Form.Control as="select" name="driveFreq" value={this.props.inputValues.driveFreq} 
-                                        onChange={this.props.handleChange} required>
-                                        <option hidden value="">
-                                            Select...
-                                        </option>
-                                        <option value="Almost every day">Almost every day</option>
-                                        <option value="A few days a week">A few days a week</option>
-                                        <option value="A few days a month">A few days a month</option>
-                                        <option value="A few days a year">A few days a year</option>
-                                        <option value="Very Rarely">Very Rarely</option>
-
-                                        {/* <input name='less' type="text" value={this.props.inputValues.less} 
-                                        onChange={this.props.handleChange}/> */}
-                                    </Form.Control>
+                                <Form.Label>How frequent do you drive?</Form.Label>
+                                <Form.Control as="select" name="driveFreq" value={this.props.inputValues.driveFreq} 
+                                    onChange={this.props.handleChange} required>
+                                    <option hidden value="">
+                                        Select...
+                                    </option>
+                                    <option value="Almost every day">Almost every day</option>
+                                    <option value="A few days a week">A few days a week</option>
+                                    <option value="A few days a month">A few days a month</option>
+                                    <option value="A few days a year">A few days a year</option>
+                                    <option value="Very Rarely">Very Rarely</option>
+                                </Form.Control>
+                            </Form.Group>
+                        </Row>
+                        <br/>
+                        <Row>
+                            <Form.Group as={Col} controlId="formSkill">
+                                <Form.Label>What is your driving skill?</Form.Label>
+                                <RangeSlider min={1} max={10} name='skill' value={this.props.inputValues.skill} 
+                                onChange={this.props.handleChange} tooltip='on' size="lg"/>
+                                <Form.Label>I don't trust myself</Form.Label>
+                                <Form.Label style={{float:'right'}}>I am the best</Form.Label>
                             </Form.Group>
                         </Row>
 

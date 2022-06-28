@@ -194,8 +194,8 @@ function shuffle2(array, array2) {
             indd = Math.floor(ind/2)*2
         }
         mem[indd]=true
-        trials3.push(trials2.slice(0,n_videos/2)[Math.floor(ind/2)*2])
-        trials3.push(trials2.slice(0,n_videos/2)[Math.floor(ind/2)*2+1])
+        trials3.push(trials2[Math.floor(ind/2)*2])
+        trials3.push(trials2[Math.floor(ind/2)*2+1])
     }
 
     // var mem = {}

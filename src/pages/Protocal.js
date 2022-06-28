@@ -1,9 +1,25 @@
 import React from "react";
-import {Card, Container, Button, Col, Row, Accordion, CardGroup} from "react-bootstrap"
+import {Card, Container, Button, Col, Row, Accordion, CardGroup, useAccordionButton} from "react-bootstrap"
 import protocol_text from "../protocol.txt"
 import Footer from "../Components/Footer"
 import { Redirect } from "react-router-dom";
 import sp from '../Images/procedures.png'
+
+function CustomToggle({ children, eventKey }) {
+    const decoratedOnClick = useAccordionButton(eventKey, () =>
+      console.log('totally custom!'),
+    );
+  
+    return (
+      <button
+        type="button"
+        style={{ margin: '0px 10px' }}
+        onClick={decoratedOnClick}
+      >
+        {children}
+      </button>
+    );
+  }
 
 class Protocal extends React.Component {
 
@@ -54,7 +70,7 @@ class Protocal extends React.Component {
                 justifyContent: 'center',
                 alignItems: "center",
             }}>
-                <Accordion defaultActiveKey={['0']} alwaysOpen>
+                <Accordion defaultActiveKey={['0']}>
                     <Accordion.Item eventKey="0">
                         <Accordion.Header>Experiment Summary</Accordion.Header>
                         <Accordion.Body>
@@ -66,16 +82,18 @@ class Protocal extends React.Component {
                                             <li>Welcome to our online study! It consists of the five steps shown in the right figure.</li>
                                         </Card.Text>
                                         <Card.Text>
-                                            <li>Please take a rest when you feel you need to do. </li>
+                                            <li>Please take a break when you feel you need to do. </li>
                                         </Card.Text>
                                         <Card.Text>
-                                            <li>Total estimated time is 1-1.5 hours (including breaks). </li>
+                                            <li>This experiment should take a little lower than one hour. </li>
                                         </Card.Text>
                                         <Card.Text>
-                                            <li>Please use a computer or tablet so that you can see the video image clearly (smartphone would be too small).</li>
+                                            <li>Please use a computer or tablet (not a smartphone) to watch videos during the experiment.</li>
                                         </Card.Text>
                                         <Card.Text>
-                                            <li>You can find the detail of study protocol below. Please read it and check the consent box in the bottom when you agree to proceed.</li>
+                                            <li>Expand the tab below or click on the next button to find the detail of study protocol below. Please read it and check the consent box in the bottom when you agree to proceed. 
+                                                <CustomToggle eventKey="1">Next</CustomToggle>
+                                            </li>
                                         </Card.Text>
                                     </Card.Body>
                                 </Card>

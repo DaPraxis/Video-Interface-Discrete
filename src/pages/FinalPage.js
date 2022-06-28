@@ -1,5 +1,5 @@
 import React from 'react'
-import {Table, Container, Row, Col, Button, Toast, ToastContainer, InputGroup, Form, OverlayTrigger, Tooltip} from "react-bootstrap"
+import {Table, Container, Row, Col, Button, Toast, ToastContainer, InputGroup, Form, OverlayTrigger, Tooltip, FloatingLabel} from "react-bootstrap"
 import axios from 'axios'
 import Footer from "../Components/Footer"
 import {randomState, randomIndex, trials} from "../drivingText"
@@ -19,6 +19,7 @@ class FinalPage extends React.Component{
         v2:'',
         t1:'',
         t2:'',
+        v3:'',
         tt:{}
     }
 
@@ -133,63 +134,83 @@ class FinalPage extends React.Component{
                             <br/>
                         <Row>
                             <Form.Group as={Col} controlId="formV1">
-                                <Form.Label> The driving videos can help me recall driving scenarios in real life </Form.Label>
+                                <Form.Label> The driving videos are realistic and provide me the experience of what would happen in 
+                                    that situation when I was actually driving </Form.Label>
                                 <Form.Control as="select" name="v1" value={this.state.v1} 
                                     onChange={this.handleChange} required>
                                     <option hidden value="">
                                         Select...
                                     </option>
-                                    <option value="Strongly agree">Strongly agree</option>
-                                    <option value="Somewhat agree">Somewhat agree</option>
-                                    <option value="Neither agree nor disagree">Neither agree nor disagree</option>
-                                    <option value="Somewhat disagree">Somewhat disagree</option>
                                     <option value="Strongly disagree">Strongly disagree</option>
+                                    <option value="Somewhat disagree">Somewhat disagree</option>
+                                    <option value="Neither agree nor disagree">Neither agree nor disagree</option>
+                                    <option value="Somewhat agree">Somewhat agree</option>
+                                    <option value="Strongly agree">Strongly agree</option>
                                 </Form.Control>
                             </Form.Group>
                             <Form.Group as={Col} controlId="formT1">
-                                <Form.Label>The driving text descriptions can help me recall driving scenarios in real life</Form.Label>
+                                <Form.Label>After reading each driving description text, I can imagine what it would be like to experience
+                                    that actual situation while driving
+                                </Form.Label>
                                 <Form.Control as="select" name="t1" value={this.state.t1} 
                                     onChange={this.handleChange} required >
                                     <option hidden value="">
                                         Select...
                                     </option>
-                                    <option value="Strongly agree">Strongly agree</option>
-                                    <option value="Somewhat agree">Somewhat agree</option>
-                                    <option value="Neither agree nor disagree">Neither agree nor disagree</option>
-                                    <option value="Somewhat disagree">Somewhat disagree</option>
                                     <option value="Strongly disagree">Strongly disagree</option>
+                                    <option value="Somewhat disagree">Somewhat disagree</option>
+                                    <option value="Neither agree nor disagree">Neither agree nor disagree</option>
+                                    <option value="Somewhat agree">Somewhat agree</option>
+                                    <option value="Strongly agree">Strongly agree</option>
                                 </Form.Control>
                             </Form.Group>
                         </Row>
                         <br/>
                         <Row>
                             <Form.Group as={Col} controlId="formV2">
-                                <Form.Label>Contents in driving videos are realistic and typical driving scenarios according to my driving experiences</Form.Label>
+                                <Form.Label>The situations shown in the videos like real driving situation that I could imagine experiencing while driving</Form.Label>
                                 <Form.Control as="select" name="v2" value={this.state.v2} 
                                     onChange={this.handleChange} required>
                                     <option hidden value="">
                                         Select...
                                     </option>
-                                    <option value="Strongly agree">Strongly agree</option>
-                                    <option value="Somewhat agree">Somewhat agree</option>
-                                    <option value="Neither agree nor disagree">Neither agree nor disagree</option>
-                                    <option value="Somewhat disagree">Somewhat disagree</option>
                                     <option value="Strongly disagree">Strongly disagree</option>
+                                    <option value="Somewhat disagree">Somewhat disagree</option>
+                                    <option value="Neither agree nor disagree">Neither agree nor disagree</option>
+                                    <option value="Somewhat agree">Somewhat agree</option>
+                                    <option value="Strongly agree">Strongly agree</option>
                                 </Form.Control>
                             </Form.Group>
                             <Form.Group as={Col} controlId="formT2">
                                 
-                                <Form.Label>Contents in driving text descriptions are realistic and typical driving scenarios according to my driving experiences</Form.Label>
+                                <Form.Label>The situations shown in the driving description texts seem like real driving situation that I could imagine experiencing while driving</Form.Label>
                                 <Form.Control as="select" name="t2" value={this.state.t2} 
                                     onChange={this.handleChange} required>
                                     <option hidden value="">
                                         Select...
                                     </option>
-                                    <option value="Strongly agree">Strongly agree</option>
-                                    <option value="Somewhat agree">Somewhat agree</option>
-                                    <option value="Neither agree nor disagree">Neither agree nor disagree</option>
-                                    <option value="Somewhat disagree">Somewhat disagree</option>
                                     <option value="Strongly disagree">Strongly disagree</option>
+                                    <option value="Somewhat disagree">Somewhat disagree</option>
+                                    <option value="Neither agree nor disagree">Neither agree nor disagree</option>
+                                    <option value="Somewhat agree">Somewhat agree</option>
+                                    <option value="Strongly agree">Strongly agree</option>
+                                </Form.Control>
+                            </Form.Group>
+                        </Row>
+                        <br/>
+                        <Row>
+                            <Form.Group as={Col} controlId="formV3">
+                                <Form.Label>I feel like this experiment is neither too long nor too difficult</Form.Label>
+                                <Form.Control as="select" name="v3" value={this.state.v3} 
+                                    onChange={this.handleChange} required>
+                                    <option hidden value="">
+                                        Select...
+                                    </option>
+                                    <option value="Strongly disagree">Strongly disagree</option>
+                                    <option value="Somewhat disagree">Somewhat disagree</option>
+                                    <option value="Neither agree nor disagree">Neither agree nor disagree</option>
+                                    <option value="Somewhat agree">Somewhat agree</option>
+                                    <option value="Strongly agree">Strongly agree</option>
                                 </Form.Control>
                             </Form.Group>
                         </Row>
@@ -213,18 +234,19 @@ class FinalPage extends React.Component{
                         <br/>
                         <Row>
                             <Form.Group as={Col} controlId="formFeedBack">
-                                <InputGroup>
-                                    <InputGroup.Text>Any Other Feedbacks?</InputGroup.Text>
+                                <FloatingLabel label={'Is there anything else you would like to tell us about your experience in this experiment?'}>
                                     <Form.Control as="textarea" aria-label="With textarea" value={this.state.feedback} 
-                                    onChange={(e)=>{
-                                        var t = this.state.tt
-                                        t['feedback'] = e.target.value
-                                        this.setState({
-                                            feedback: e.target.value,
-                                            tt:t
-                                        })
-                                    }}/>
-                                </InputGroup>
+                                    placeholder={'leave a comment here'}
+                                    style={{minHeight:'100px'}}
+                                        onChange={(e)=>{
+                                            var t = this.state.tt
+                                            t['feedback'] = e.target.value
+                                            this.setState({
+                                                feedback: e.target.value,
+                                                tt:t
+                                            })
+                                        }}/>
+                                </FloatingLabel>
                             </Form.Group>
                         </Row>
                         <br/>

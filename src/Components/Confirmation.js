@@ -27,7 +27,7 @@ export default class Confirmation extends Component{
     }
 
     render(){
-        const {inputValues: { firstName, lastName, email, city, state, country, ageGroup, gender, driveYrs, driveFreq, platform}} = this.props;
+        const {inputValues: { firstName, lastName, email, city, state, country, ageGroup, gender, driveYrs, driveFreq, platform, skill}} = this.props;
 
         return(
             <Container>
@@ -42,6 +42,7 @@ export default class Confirmation extends Component{
                 <p>Years of Driving: {driveYrs}</p>
                 <p>Frequency of Driving: {driveFreq}</p>
                 <p>Survey Platform: {platform}</p>
+                <p>Driving Skill: {skill}/10</p>
                 <Button variant="secondary" onClick={this.back}>Back</Button>{' '}
                 <Button variant="primary" onClick={this.next}>Confirm</Button>
                 {this.state.confirm?<Redirect to={'/interTrial'} push /> : <></>}
