@@ -33,7 +33,7 @@ export default function GameRoutes() {
   const [basicInfo, setBasicInfo] = useState({})
   const [shuffledIndex, setShuffleIndex] = useState([])
   const [videoTime, setVideoTime] = useState(0)
-  const [stage, getStage] = useState(()=>{
+  const [stage, setStage] = useState(()=>{
     const saved = localStorage.getItem("stage");
     const initialValue = JSON.parse(saved);
     return initialValue || 0;
@@ -60,7 +60,9 @@ export default function GameRoutes() {
   function getData4(videoNames, wl){
     var ll = allWl;
     setVideoNames(videoNames)
-    ll[stage]=wl
+    const saved = localStorage.getItem("stage");
+    const stages_tt = JSON.parse(saved) || 0;
+    ll[stages_tt]=wl
     setAllWl(ll)
   }
 

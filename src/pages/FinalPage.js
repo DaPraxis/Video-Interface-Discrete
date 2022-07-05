@@ -95,15 +95,15 @@ class FinalPage extends React.Component{
         link.click();
         document.body.removeChild(link);
 
-        // try {
-        //     const docRef = await addDoc(collection(db, "tests-phase3"), v);
-        //     console.log("Document written with ID: ", docRef.id);
-        //   } catch (e) {
-        //     console.error("Error adding document: ", e);
-        //     this.setState({
-        //         text:"There is a database connection error, please contact IML lab"
-        //     })
-        //   }
+        try {
+            const docRef = await addDoc(collection(db, "tests-pilot"), v);
+            console.log("Document written with ID: ", docRef.id);
+          } catch (e) {
+            console.error("Error adding document: ", e);
+            this.setState({
+                text:"There is a database connection error, please contact IML lab"
+            })
+          }
     }
 
     handleChange = (event) => {

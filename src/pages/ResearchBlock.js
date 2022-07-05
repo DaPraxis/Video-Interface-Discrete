@@ -261,7 +261,7 @@ class ResearchBlock extends Component{
 
     getThreshold (){
         var c = this.state.driver_c.length + this.state.dyn_c.length + this.state.static_c.length + 3
-        return Math.max(3, c/2)
+        return Math.max(3, Math.ceil(c/2))  
     }
 
     handleDriverChange = (idx) => (e) =>{
@@ -381,7 +381,7 @@ class ResearchBlock extends Component{
                                 />
                             </div> 
                         </div>
-                        {this.state.done?<Redirect to={this.state.stage>=3?'/done':'/interTrial'} push /> : <></>}
+                        {this.state.done?<Redirect to={this.state.stage>3?'/done':'/interTrial'} push /> : <></>}
                         <Offcanvas show={this.state.canvasShow} onHide={this.handleClose} 
                                     placement="bottom" backdrop={false} 
                                     style={{justifyContent: 'center',alignItems: "center",height: "75%",zIndex:'20'}}>
@@ -657,9 +657,9 @@ class ResearchBlock extends Component{
                                 </Form.Group>
                                 <Form.Group as={Row}>
                                     <Col xs="3">
-                                        <Button variant="outline-secondary" onClick={this.handleBtClickRep}>
+                                        {/* <Button variant="outline-secondary" onClick={this.handleBtClickRep}>
                                             🔁Replay
-                                        </Button>
+                                        </Button> */}
                                         {this.state.videoCounter<this.state.videoTotal-1?
                                         // {this.state.videoCounter<1?
                                             <Button variant="outline-secondary" onClick={this.handleBtClickNext} disabled={buttonDisable}>
@@ -675,7 +675,7 @@ class ResearchBlock extends Component{
                                 </Form.Group>
                             </Card.Body>
                         </Card>
-                        {this.state.done?<Redirect to={this.state.stage>=3?'/done':'/interTrial'} push /> : <></>}
+                        {this.state.done?<Redirect to={this.state.stage>3?'/done':'/interTrial'} push /> : <></>}
                     </Container>
                 )
             }

@@ -79,22 +79,22 @@ class Protocal extends React.Component {
                                     {/* <Card.Header>Driving Scenario Workload Video Rating Instruction</Card.Header> */}
                                     <Card.Body>
                                         <Card.Text>
-                                            <li>Welcome to our online study! It consists of the five steps shown in the right figure.</li>
+                                            <li>Welcome to our online study. It consists of the five steps shown on the right.</li>
                                         </Card.Text>
                                         <Card.Text>
                                             <li>Please take a break when you feel you need to do. </li>
                                         </Card.Text>
                                         <Card.Text>
-                                            <li>This experiment should take a little lower than one hour. </li>
+                                            <li>This experiment should take around one hour. </li>
                                         </Card.Text>
                                         <Card.Text>
                                             <li>Please use a computer or tablet (not a smartphone) to watch videos during the experiment.</li>
                                         </Card.Text>
                                         <Card.Text>
                                             <li>Expand the tab below or click on the next button to find the detail of study protocol below. Please read it and check the consent box in the bottom when you agree to proceed. 
-                                                <CustomToggle eventKey="1">Next</CustomToggle>
                                             </li>
                                         </Card.Text>
+                                            <li><CustomToggle eventKey="1">Next</CustomToggle></li>
                                     </Card.Body>
                                 </Card>
                                 <Card style={{width:'60%'}}>
@@ -119,24 +119,29 @@ class Protocal extends React.Component {
                                     </Card.Text>
                                 </Card.Body>
                             </Card>
+                            <Footer>
+                                <Container>
+                                    <Row>
+                                        {/* <Col md={9}>
+                                        <input type="checkbox" checked={this.state.checked} 
+                                            onChange={(e)=>{this.setState({checked:e.target.checked})}}>
+                                        </input> I certify that I agree to attend this experiment and willing to share my data to the IML Lab
+                                        </Col>
+                                        <Col>
+                                            {this.state.checked?<Button variant="primary" onClick={(e)=>{e.preventDefault();this.setState({redirect:true})}}>Start Experiment</Button>:null}
+                                        </Col> */}
+                                        <Col>
+                                            <Button variant="primary" onClick={(e)=>{e.preventDefault();this.setState({redirect:true})}}>I Consent</Button>
+                                        </Col>
+                                        <Col md={9}>
+                                        </Col>
+                                        {this.state.redirect?<Redirect to={'/demo'} push /> : <></>}
+                                    </Row>
+                                </Container>
+                            </Footer>  
                         </Accordion.Body>
                     </Accordion.Item>
                 </Accordion>
-                <Footer>
-                    <Container>
-                        <Row>
-                            <Col md={9}>
-                            <input type="checkbox" checked={this.state.checked} 
-                                onChange={(e)=>{this.setState({checked:e.target.checked})}}>
-                            </input> I certify that I agree to attend this experiment and willing to share my data to the IML Lab
-                            </Col>
-                            <Col>
-                                {this.state.checked?<Button variant="primary" onClick={(e)=>{e.preventDefault();this.setState({redirect:true})}}>Start Experiment</Button>:null}
-                            </Col>
-                            {this.state.redirect?<Redirect to={'/demo'} push /> : <></>}
-                        </Row>
-                    </Container>
-                </Footer>
             </Container>
         );
     }
