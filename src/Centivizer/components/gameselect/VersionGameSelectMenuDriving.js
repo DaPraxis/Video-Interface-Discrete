@@ -306,7 +306,7 @@ export default function VersionGameSelectMenuDriving(props) {
     // else{
 
     // }
-    localStorage.setItem("gameReady", JSON.stringify(curReady));
+    // localStorage.setItem("gameReady", JSON.stringify(curReady));
     // if(!curReady){
     //   localStorage.setItem("stage", JSON.stringify(stage+1));
     // }
@@ -364,7 +364,7 @@ export default function VersionGameSelectMenuDriving(props) {
       var ccc;
       if (c==count && d[item.name]==0){
         ccc = false
-        localStorage.setItem("stage", JSON.stringify(count+1))
+        // localStorage.setItem("stage", JSON.stringify(count+1))
       }
       else{
         ccc = true

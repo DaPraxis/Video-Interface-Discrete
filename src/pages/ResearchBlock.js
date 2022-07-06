@@ -121,7 +121,6 @@ class ResearchBlock extends Component{
     handleEnd = () =>{
         this.setState({videoEnd:true})
         this.setState({canvasShow:true})
-        this.setState({videoReq:0})
         // this.setState({videoEnd:true, videoCounter:this.state.videoCounter+1})
     }
 
@@ -178,6 +177,7 @@ class ResearchBlock extends Component{
         this.initCheckBoxG(this.state.videoNames[this.state.shuffledIndex[cur]])
         // console.log(this.state.wl)
         this.setState({isVideoNow:!this.state.isVideoNow})
+        this.setState({videoReq:0})
     }
 
     handleBtClickRep = () =>{
@@ -220,6 +220,9 @@ class ResearchBlock extends Component{
         this.recordData()
         this.props.getData(this.state.videoNames, this.state.cc)
         this.setState({done:true})
+        localStorage.setItem('gameReady', JSON.stringify(true))
+        console.log('gamedata',this.state.cc)
+
     }
 
     setIsEmpty = (empty) =>{
@@ -381,7 +384,7 @@ class ResearchBlock extends Component{
                                 />
                             </div> 
                         </div>
-                        {this.state.done?<Redirect to={this.state.stage>3?'/done':'/interTrial'} push /> : <></>}
+                        {this.state.done?<Redirect to={this.state.stage>=3?'/done':'/interTrial'} push /> : <></>}
                         <Offcanvas show={this.state.canvasShow} onHide={this.handleClose} 
                                     placement="bottom" backdrop={false} 
                                     style={{justifyContent: 'center',alignItems: "center",height: "75%",zIndex:'20'}}>
@@ -675,7 +678,7 @@ class ResearchBlock extends Component{
                                 </Form.Group>
                             </Card.Body>
                         </Card>
-                        {this.state.done?<Redirect to={this.state.stage>3?'/done':'/interTrial'} push /> : <></>}
+                        {this.state.done?<Redirect to={this.state.stage>=3?'/done':'/interTrial'} push /> : <></>}
                     </Container>
                 )
             }

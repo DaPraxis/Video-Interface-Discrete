@@ -7,13 +7,21 @@ class InterTrial extends React.Component{
 
     state = {
         checked : false,
-        session: 1
+        session: 0
     }
 
     componentDidMount(){
-        localStorage.setItem('gameReady', JSON.stringify(false))
+        var r = JSON.parse(localStorage.getItem('gameReady')) || false
         var s = JSON.parse(localStorage.getItem('stage')) || 1
-        this.setState({session:s})
+        localStorage.setItem('stage', JSON.stringify(s))
+        if (r){
+            this.setState({session:s+1})
+            localStorage.setItem('stage', JSON.stringify(s+1))
+        }
+        else{
+            this.setState({session:s})
+        }
+        localStorage.setItem('gameReady', JSON.stringify(false))
     }
 
     handleClick = (e) => {
