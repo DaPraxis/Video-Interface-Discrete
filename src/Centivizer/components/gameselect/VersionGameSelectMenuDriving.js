@@ -259,17 +259,17 @@ export default function VersionGameSelectMenuDriving(props) {
   const [doneN, setDoneN] = useState(0);
   const [allButtons, setAllButtons] = useState([])
   const [buttonCount, setButtonCount] = useState(3)
-  const [curReady, setCurReady] = useState(()=>{
-    const saved = localStorage.getItem("gameReady");
+  const [curGame, setCurGame] = useState(()=>{
+    const saved = localStorage.getItem("gameGameReady");
     const initialValue = JSON.parse(saved);
     return initialValue || false;
   }) // if ready to play game
 
-  const [stage, setStage] = useState(()=>{
-    const saved = localStorage.getItem("stage");
-    const initialValue = JSON.parse(saved);
-    return initialValue || 0;
-  }) // if ready to play game
+  // const [stage, setStage] = useState(()=>{
+  //   const saved = localStorage.getItem("stage");
+  //   const initialValue = JSON.parse(saved);
+  //   return initialValue || 0;
+  // }) // if ready to play game
 
 
   async function getParticipantState() {
@@ -306,11 +306,11 @@ export default function VersionGameSelectMenuDriving(props) {
     // else{
 
     // }
-    // localStorage.setItem("gameReady", JSON.stringify(curReady));
+    localStorage.setItem("gameGameReady", JSON.stringify(curGame));
     // if(!curReady){
     //   localStorage.setItem("stage", JSON.stringify(stage+1));
     // }
-  }, [curReady, stage]);
+  }, [curGame]);
 
   function gameToButton(game, count, data, setFunc, isDisabled) {
     // 0 = disabled and todo, 1 = playable, 2 is disabled and completed
@@ -364,7 +364,6 @@ export default function VersionGameSelectMenuDriving(props) {
       var ccc;
       if (c==count && d[item.name]==0){
         ccc = false
-        // localStorage.setItem("stage", JSON.stringify(count+1))
       }
       else{
         ccc = true
@@ -505,7 +504,8 @@ export default function VersionGameSelectMenuDriving(props) {
                 e.preventDefault();
                 if(!gameStates[cardDict[gameId]['name']]){
                   setRedirect_ss(true)
-                  setCurReady(true)
+                  // setCurReady(true)
+                  setCurGame(true)
                 }
                 }}>{gameStates[cardDict[gameId]['name']]?"Done":"Play!"}</Button>
             </Card.Body>
@@ -514,7 +514,7 @@ export default function VersionGameSelectMenuDriving(props) {
       }
       {redirect_ss ? <Redirect to={`instructions${cardDict[gameId]['name']}`} push /> : <></>}
       {/* {isDone ? <Redirect to={randomState?'instruction':'texts'} push /> : <></>} */}
-      {curReady&&!redirect_ss ? <Redirect to={'/ResearchBlockInstruction'} push /> : <></>}
+      {curGame&&!redirect_ss ? <Redirect to={'/ResearchBlockInstruction'} push /> : <></>}
 
     </div>
   );

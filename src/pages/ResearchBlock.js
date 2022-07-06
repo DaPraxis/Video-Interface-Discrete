@@ -221,6 +221,7 @@ class ResearchBlock extends Component{
         this.props.getData(this.state.videoNames, this.state.cc)
         this.setState({done:true})
         localStorage.setItem('gameReady', JSON.stringify(true))
+        localStorage.setItem('gameGameReady', JSON.stringify(false))
         console.log('gamedata',this.state.cc)
 
     }
