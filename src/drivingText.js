@@ -27,11 +27,11 @@ const checkBoxs = {
     "3-10":{
         "dv":["Driving Speed", "Distance to Incoming Vehicle", "Distance to Cyclists"],
         "env_dyn":["Cyclist Speed", "Incoming Vehicle Speed"],
-        "env_static":["Tunnel Light","Tunnel Curvature", "Road Width", "Road Type"]
+        "env_static":["Tunnel Curvature", "Road Width", "Road Type"]
         },
     "3-9":{
         "dv":["Driving Speed", "Driving Behaviour (Lane Change)", "Distance to Front Vehicle", "Distance to Road Closure"],
-        "env_dyn":["Front Vehicle Speed", "Front Vehicle Size", "Front Vehicle Behaviour"],
+        "env_dyn":["Front Vehicle Speed", "Front Vehicle Size", "Front Vehicle Behaviour (Lane Change Avoiding Road Block)"],
         "env_static":["Required Lane Change By Road Closure","Road Curvature", "Road Width", "Road Type"]
         },
     "3-5":{
@@ -103,7 +103,7 @@ const checkBoxs = {
     "3-24":{
         "dv":["Driving Speed", "Driving Behaviour (Lane Change)", "Distance to Road Vehicle (Box Truck)"],
         "env_dyn":["Road Vehicle (Box Truck) Speed"],
-        "env_static":["Required Lane Change","Road Type", "Road Width"]
+        "env_static":["Required Lane Change By Road Closure","Road Type", "Road Width"]
         },
 }
 

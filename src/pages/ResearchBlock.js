@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import ReactPlayer from "react-player";
 import axios from 'axios'
-import { Card, Button, Form, Row, Col, Container, FormControl, InputGroup, Alert, Dropdown, Offcanvas, FloatingLabel, ProgressBar} from "react-bootstrap";
+import { Card, Button, Form, Row, Col, Container, FormControl, InputGroup, Alert, Dropdown, Offcanvas, FloatingLabel, ProgressBar, Toast, ToastContainer} from "react-bootstrap";
 import RangeSlider from 'react-bootstrap-range-slider';
 import { Redirect } from "react-router-dom";
 import {randomState, checkBoxs, trials, drivingText} from '../drivingText'
@@ -30,6 +30,8 @@ class ResearchBlock extends Component{
         isEmpty:true,
         stage:JSON.parse(localStorage.getItem('stage')),
         videoReq:0, // number of replay clicked
+        isBuffer:false, // if video is buffered
+        keys:0, // rerender the videos
         // canvasShow:true
 
         //video CheckBoxs
@@ -186,6 +188,7 @@ class ResearchBlock extends Component{
         this.player.seekTo(0,true)
         this.handleClose()
         this.setState({videoReq:this.state.videoReq+1})
+        this.setState({keys:this.state.keys+1})
     }
 
     getName(){
@@ -345,11 +348,26 @@ class ResearchBlock extends Component{
             var progress = Math.round(((this.state.videoCounter+1)/this.state.videoTotal)*100)
             // var buttonDisable = (this.state.wl[this.state.videoCounter]=="") || (this.state.isEmpty)
             var buttonDisable = ((this.state.wl[this.getName()]=="")||(this.countCB()<=0))
+            console.log(this.state.isBuffer)
 
             // VIDEO!
             if (this.state.isVideoNow){
                 return(
                     <div>
+                        <ToastContainer className="p-3" position='middle-center' style={{zIndex:'30'}}>
+                        <Toast show={this.state.isBuffer} style={{zIndex:'30'}}>
+                            <Toast.Header closeButton={false}>
+                            {/* <img
+                                src="holder.js/20x20?text=%20"
+                                className="rounded me-2"
+                                alt=""
+                            /> */}
+                            <strong className="me-auto">📶 Experiencing Poor Wifi?</strong>
+                            {/* <small>11 mins ago</small> */}
+                            </Toast.Header>
+                            <Toast.Body>DON'T Refresh now, try   <Button variant="outline-secondary" onClick={this.handleBtClickRep}>Reload Video</Button></Toast.Body>
+                        </Toast>
+                        </ToastContainer>
                         <div style={{
                             backgroundColor:'black',
                             width:'100%',
@@ -363,9 +381,12 @@ class ResearchBlock extends Component{
                                     width="100%"
                                     height="100%"
                                     muted = "true"
+                                    onBuffer={() => this.setState({ isBuffer: true })}
+                                    onPlay={() => this.setState({ isBuffer: false })}
                                     ref = {player => {
                                         this.player = player
                                     }}
+                                    key={this.state.keys}
                                     playing={this.state.playing}
                                     onEnded = {this.handleEnd}
                                     url={"https://youtu.be/"+this.state.videoLinks[this.state.shuffledIndex[this.state.videoCounter]]}

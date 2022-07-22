@@ -27,6 +27,7 @@ class VideoPlay extends Component{
         canvasShow:false,
         done:false,
         isEmpty:true,
+        isBuffer:false,
         // canvasShow:true
 
         //video CheckBoxs
@@ -256,6 +257,7 @@ class VideoPlay extends Component{
             var progress = Math.round(((this.state.videoCounter+1)/this.state.videoTotal)*100)
             // var buttonDisable = (this.state.wl[this.state.videoCounter]=="") || (this.state.isEmpty)
             var buttonDisable = (this.state.wl[this.state.videoCounter]=="")
+            console.log(this.state.isBuffer)
 
             // console.log(this.state.cc)
 
@@ -270,7 +272,9 @@ class VideoPlay extends Component{
                         pointerEvents:'none'}}>
                         <div style={{ width: "100%", height: "85vh" }}>
                             <ProgressBar now={progress} label={`Rating Jobs: ${progress}%`} animated/>
-                            <ReactPlayer
+                            <React
+                                onBuffer={() => this.setState({ isBuffer: true })}
+                                onPlay={() => this.setState({ isBuffer: false })}
                                 width="100%"
                                 height="100%"
                                 muted = "true"
