@@ -18,6 +18,7 @@ import ResearchBlock from "./pages/ResearchBlock";
 import UserIdFrame from './Centivizer/components/userIdFrame';
 import InterTrial from './pages/InterTrial'
 import ResearchBlockInstruction from './pages/ResearchBlockInstruction'
+import TestPage from "./pages/TestPage";
 
 // let version = new DrivingVersion();
 export default function GameRoutes() {
@@ -89,6 +90,11 @@ export default function GameRoutes() {
             path="/"
             exact
             render={(props) => <Protocal/>}
+          />
+          <Route
+            path="/test"
+            exact
+            render={(props) => <TestPage/>}
           />
           <Route
             path="/demo"
