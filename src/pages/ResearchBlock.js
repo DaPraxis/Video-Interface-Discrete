@@ -568,7 +568,7 @@ class ResearchBlock extends Component{
                                 </p> */}
                                 {/* <br/> */}
                                 {console.log(this.state.videoNames[this.state.shuffledIndex[this.state.videoCounter]])}
-                                <StoryBoard video={this.state.videoNames[this.state.shuffledIndex[this.state.videoCounter]]} width={2}/>
+                                <StoryBoard video={this.state.videoNames[this.state.shuffledIndex[this.state.videoCounter]]} width={1}/>
                                 <InputGroup>
                                     <FloatingLabel label="Driving Workload Level">
                                         <FormControl value={this.mentalEffort(this.state.wlValue)} style={{width:"300px", fontSize:"20px"}} readOnly/>

@@ -1,19 +1,19 @@
-Thank you for your interest in this research. Please read the information below to ensure that you would like to participate in this study before giving your consent. Participation is voluntary and you are free to withdraw or stop at any time.  
- 
+Thank you for your interest in this research. Please read the information below to ensure that you would like to participate in this study before giving your consent. Participation is voluntary and you are free to withhold your consent, or to withdraw from the study at any time, even if you have given your consent previously.
+
 After reading this information, if you decide that you would like to participate, please click on the [I Consent] button below. If you do not wish to participate simply close this web page.
- 
-The long-term goal of our research is to identify what aspects of the driving task require focused attention and increase driver workload. You will first be asked to provide some background information that will help us interpret the results (your age, sex, years of driving experience, the frequency with which your drive, your self-rated driving skill, and the state or province that you live in. 
 
-The main part of the experiment will involve making judgments about the difficulty of driving situations (shown in videos or presented as a text description) and playing whack-a-mole games that are specially designed to measure the cognitive functions of response inhibition, working memory, and cognitive flexibility. Further information about these games can be found at https://intro.braintagger.com/. You should finish playing each game before continuing to the next part of the experiment, and you will be able to practice each game before actually playing it.
+The long-term goal of our research is to identify what aspects of the driving task require focused attention and increase driver workload. You will first be asked to provide some background information that will help us interpret the results (your age, sex, years of driving experience, the frequency with which your drive, your self-rated driving skill, and the state or province that you live in).
 
-After completing the first whack-a-mole game you will then rate driving situations. You will then play a second game, followed by a rating of more driving situations. Finally, you will play the third game followed by rating driving situations again. When you rate the driving situations sometimes you will be shown a video of the situation and sometimes you will see text that describes the situation. In addition to rating the amount of workload in a driving situation using a slider, you will also be asked to pick the most difficult parts of the driving situation from a list of options.  When you make your judgment on the video you can play the 10-15 second video as many times as you want but you cannot go back to a previous video once it has been given a rating by you. You will see a total of 24 videos and 24 text descriptions across the whole experiment.  
+The main part of the experiment will involve making judgments about the difficulty of driving situations (shown in videos or presented as a text description).  You will also be asked to play whack-a-mole games that are specially designed to measure response inhibition, working memory, and cognitive flexibility. Further information about these games can be found at https://intro.braintagger.com/. You should finish playing each game before continuing to the next part of the experiment, and you will be able to practice each game before actually playing it.
 
-At the end of the experiment, you will be asked to provide any feedback you have about the experiment. You can take breaks during the experiment but the total time for completing the experiment, including breaks, should be no more than two hours. 
- 
-The data we collect will be anonymized and kept in a secure database. No personal or identifying information will be included in written reports or presentations, and your confidentiality and privacy will be respected at all times. Any data and information received will be kept confidential. Any study reports and presentations will have all personal identifiers removed. 
+After completing the first whack-a-mole game you will then rate 8 driving situations. You will then play a second whack-a-mole game, followed by rating of 8 more driving situations. Finally, you will play the third whack-a-mole game followed by rating of 8 driving situations. When you rate the driving situations you will be sometimes see a video of the situation and sometimes see a storyboard that describes the situation. In addition to rating the amount of workload in a driving situation using a slider, you will also be asked to pick the most difficult parts of the driving situation from a list of options. When you make your judgment on the video you can play the 10-15 second video as many times as you want but you cannot go back to a previous video once it has been given a rating by you. You will see a total of 12 videos and 12 storyboards across the whole experiment.
 
-The experiment should take around an hour or so and participation is completely online. You will be given compensation for your participation by Prolific. You are free to withdraw or stop the experiment at any time without affecting baseline compensation.
- 
+At the end of the experiment, you will be asked to provide any feedback or thoughts that you have about the experiment. You can take breaks during the experiment but the total time for completing the experiment, including breaks, should take around 45 -50 minutes.
+
+The data we collect will be anonymized and kept in a secure database. No personal or identifying information will be stored and only summaries of group data will be included in written reports or presentations based on this research. Any data or information received will be kept confidential. 
+
+You will be given compensation for your participation by Prolific. You are free to withdraw or stop the experiment at any time.
+
 If you have any questions, you may contact me at haoyanhy.jiang@mail.utoronto.ca or 437-987-5544. If you have any concerns about the experiment you may contact the Office of Research Ethics at ethics.review@utoronto.ca or 416-946-3273.
- 
-If you consent to participate in this experiment please click the [I Consent] button below. 
+
+If you consent to participate in this experiment please click the [I Consent] button below.

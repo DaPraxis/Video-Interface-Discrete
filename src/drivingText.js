@@ -275,7 +275,8 @@ function shuffle2(array, array2) {
 }
 
     const randomIndex = shuffle([0,1,2])
-    const n_videos = 16
+
+function repOrder(n_videos){
     // const n_videos = 4
 
 
@@ -339,6 +340,41 @@ function shuffle2(array, array2) {
         trials3.push(trials1[Math.floor(ind/2)*2])
         trials3.push(trials1[Math.floor(ind/2)*2+1])
     }
+    return [trials1, trials2, trials3]
+}
+
+function nonRepOrder(n_videos){
+    const normalIndex = [...Array(n_videos).keys()]
+    const snIndex= shuffle(normalIndex)
+    var trials1 = []
+    for (var i=0; i<n_videos/2; i++){
+        trials1.push(snIndex[i])
+    }
+
+    var trials2 = []
+    for (var i=0; i<n_videos/4; i++){
+        trials2.push(snIndex[Math.floor(n_videos/2)+i])
+    }
+
+    trials2.push(trials1[0])
+    trials2.push(trials1[3])
+    trials2.push(trials1[4])
+    trials2.push(trials1[7])
+
+    var trials3 = []
+    for (var i=0; i<n_videos/4; i++){
+        trials3.push(snIndex[Math.floor(n_videos/4*3)+i])
+    }
+
+    trials3.push(trials1[2])
+    trials3.push(trials1[5])
+    trials3.push(trials2[0])
+    trials3.push(trials2[3])
+
+    return [trials1, trials2, trials3]
+}
+
+var [trials1, trials2, trials3] = nonRepOrder(16)
 
     const trials = {
         '1': trials1,

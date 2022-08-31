@@ -17,7 +17,7 @@ class ResearchBlockInstruction extends React.Component {
                         <Card.Header>Driving Scenario Workload Video Rating Instruction</Card.Header>
                         <Card.Body>
                             <Card.Text>
-                                1. Please watch/read the driving scenario (There are 16 scenarios).
+                                1. Please watch/read the driving scenario (There are 8 scenarios).
                             </Card.Text>
                             <Card.Text>
                                 2. Rate the mental workload<span style={{color:'red'}}>*</span> you will feel in the situation (i.e., how much attention you need pay?) using the slider (0: no workload – 100: very great workload)
