@@ -24,23 +24,6 @@ class FinalPage extends React.Component{
     }
 
     resembleResource(){
-        // var newWl = {}
-        // if (this.props.index)
-        //     {for(var i=0;i<this.props.index.length;i++){
-        //         var ind = this.props.index[i]
-        //         var name = this.props.names[ind]
-        //         var wl = this.props.wl[i] || null
-        //         var sug = this.props.sug[name] || null
-        //         newWl[name+'_video'] = {"workload":wl,"suggestions":sug}
-        //     }}
-        // if (this.props.twl)
-        //     {for(var i=0;i<this.props.twl['name'].length;i++){
-        //         var ind = this.props.twl['index'][i]
-        //         var name = this.props.twl['name'][ind]
-        //         var wl = this.props.twl['wl'][i] || null
-        //         var cc = this.props.twl['cc'][name] || null
-        //         newWl[name+'_text'] = {'workload':wl, 'suggestions':cc}
-        //     }}
         var newWl = {}
         newWl['workloads'] = this.props.allWl
         newWl["video_org"] = this.props.names
