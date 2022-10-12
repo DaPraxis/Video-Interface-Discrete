@@ -397,7 +397,12 @@ class GameManager extends Component {
         for (let i = 0; i < 6; i++) {
           this.buttonSchemas[schema[i]] = i;
         }
-      }
+      } else if (this.game.numHoles === 1) {
+        for (let i = 0; i < schema.length; i++) {
+          this.buttonSchemas[schema[i]] = 0;
+        }
+        this.buttonSchemas[" "] = 0;
+     }
     }
     if (
       this.props.name === "AgainEasyOne" ||

@@ -12,7 +12,7 @@ export default class AbstractVersion {
     langs,
     studies,
     loginConfig = defaultLoginConfig,
-    buttonSchemas = [["t", "y", "u", "g", "h", "j"]]
+    buttonSchemas = [["q", "w", "e", "a", "s", "d"]]
   ) {
     this.games = games;
     this.languages = langs;

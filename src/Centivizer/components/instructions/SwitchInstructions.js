@@ -482,7 +482,7 @@ export default function SwitchInstructions(props) {
     <div className={classes.root}>
       {redirectAddress === "" ? <></> : <Redirect to={redirectAddress} push />}
       {/* <NavBar /> */}
-      <Link to="/mainmenu">
+      {/* <Link to="/mainmenu">
         <img
           src={arrow}
           alt="back arrow"
@@ -493,7 +493,7 @@ export default function SwitchInstructions(props) {
             width: "50px",
           }}
         />
-      </Link>
+      </Link> */}
       <div className={classes.frame}>
         <div className={classes.whiteBg}>
           <div className={classes.padding}>{pages[pageNum]}</div>
