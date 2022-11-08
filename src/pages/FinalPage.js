@@ -5,6 +5,7 @@ import Footer from "../Components/Footer"
 import {randomState, randomIndex, trials} from "../drivingText"
 import {db} from '../Service/Firestore'
 import { collection, addDoc } from "firebase/firestore"; 
+import { Redirect } from "react-router-dom";
 
 class FinalPage extends React.Component{
 
@@ -20,7 +21,8 @@ class FinalPage extends React.Component{
         t1:'',
         t2:'',
         v3:'',
-        tt:{}
+        tt:{},
+        success: "not start"
     }
 
     resembleResource(){
@@ -67,26 +69,30 @@ class FinalPage extends React.Component{
         })
         
         var v = this.resembleResource()
-        const json = JSON.stringify(v);
-        const blob = new Blob([json],{type:'application/json'});
-        const href = await URL.createObjectURL(blob);
-        const link = document.createElement('a');
-        link.href = href;
-        const fileName = "file";
-        link.download = fileName + ".json";
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+        // const json = JSON.stringify(v);
+        // const blob = new Blob([json],{type:'application/json'});
+        // const href = await URL.createObjectURL(blob);
+        // const link = document.createElement('a');
+        // link.href = href;
+        // const fileName = "file";
+        // link.download = fileName + ".json";
+        // document.body.appendChild(link);
+        // link.click();
+        // document.body.removeChild(link);
 
         try {
             const docRef = await addDoc(collection(db, "tests-alphatest-before-40"), v);
             console.log("Document written with ID: ", docRef.id);
+            this.setState({
+                success:'success'
+            })
           } catch (e) {
             console.error("Error adding document: ", e);
             this.setState({
-                text:"There is a database connection error, please contact IML lab"
+                text:"There is a database connection error, please contact IML lab",
+                success:'fail'
             })
-          }
+          } 
     }
 
     handleChange = (event) => {
@@ -98,6 +104,17 @@ class FinalPage extends React.Component{
     }
 
     render(){
+        const renderAuthButton = () => {
+        if (this.state.success == 'not start') {
+            return <></>
+        } else if (this.state.success == 'fail') {
+            return "Fail to store to dataset, please contact the research team"
+        }
+        else{
+            window.location.replace('https://app.prolific.co/submissions/complete?cc=C1EVQSUF');
+            // return <Redirect to="https://app.prolific.co/submissions/complete?cc=C1EVQSUF" push />
+        }
+        }
         return (
             <div style={{justifyContent: 'center',alignItems: "center",width: "80%", margin:"0 auto", padding: '50px'}}>
                 <Container>
@@ -260,6 +277,9 @@ class FinalPage extends React.Component{
                             </Row>
                         </Container>
                     </Footer>:<></>}
+                    {
+                        renderAuthButton()
+                    }
                 </Container>
                 
             </div>

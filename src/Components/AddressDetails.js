@@ -154,15 +154,14 @@ export default class AddressDetails extends Component{
                                 </Form.Control>
                             </Form.Group>
                             <Form.Group as={Col} controlId="formPlatform">
-                                <Form.Label>Platform</Form.Label>
-                                <Form.Control as="select" name="platform" value={this.props.inputValues.platform} 
-                                    onChange={this.props.handleChange} required>
-                                    <option hidden value="">
-                                        Select...
-                                    </option>
-                                    <option value="Computer">Computer</option>
-                                    <option value="Tablet">Tablet</option>
-                                </Form.Control>
+                                <Form.Label>Prolific ID</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        defaultValue={this.props.inputValues.platform}
+                                        name="platform"
+                                        required
+                                        onChange={this.props.handleChange}
+                                    />
                             </Form.Group>
                         </Row>
                         <br/>

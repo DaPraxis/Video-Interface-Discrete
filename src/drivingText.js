@@ -274,8 +274,8 @@ function shuffle2(array, array2) {
     return [array, array2];
 }
 
-    // const randomIndex = shuffle([0,1,2])
-    const randomIndex = [1,0,2]
+    const randomIndex = shuffle([0,1,2])
+    // const randomIndex = [1,0,2]
 
 function repOrder(n_videos){
     // const n_videos = 4

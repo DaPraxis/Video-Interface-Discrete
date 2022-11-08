@@ -11,7 +11,7 @@ class ResearchBlock extends Component{
 
     state = {
         playList:[],
-        playListId:"PLHdq35Wa7ob9uRaqjq_hONEpV-acIwrTy",
+        playListId:"PLHdq35Wa7ob_n4uMmIJ1bA221rjV_Q85j",
         key:"AIzaSyDXNcHG8aLsd2AcsaKouG_tJWZQo5YVGm8",
         videoNames:[],
         videoLinks:[],
@@ -67,12 +67,15 @@ class ResearchBlock extends Component{
                 var link=[]
                 var mem={}
                 for (let i=0; i<len;i++){
-                    name.push(playList.items[i].snippet.title)
+                    var n = playList.items[i].snippet.title
+                    if (n.split(' ').length>1){
+                        var t = n.split(' ')[0]+'-'+n.split(' ')[1]
+                        n = t
+                    }
+                    name.push(n)
                     link.push(playList.items[i].snippet.resourceId.videoId)
-                    var k = playList.items[i].snippet.title
-                    mem[k+'_video'] = "";
-                    mem[k+'_text'] = "";
-
+                    mem[n+'_video'] = "";
+                    mem[n+'_text'] = "";
                 }
                 // var arr = shuffle([...Array(len).keys()])
                 var arr = trials[localStorage.getItem('stage')]
@@ -94,6 +97,7 @@ class ResearchBlock extends Component{
     }
 
     initCheckBoxG(videoName){
+        console.log(videoName)
         var driver_init = []
         var dyn = []
         var stat = []
