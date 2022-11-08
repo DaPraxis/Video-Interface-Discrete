@@ -68,8 +68,12 @@ class ResearchBlock extends Component{
                 var mem={}
                 for (let i=0; i<len;i++){
                     var n = playList.items[i].snippet.title
-                    if (n.split(' ').length>1){
+                    if (n.split(' ').length==2){
                         var t = n.split(' ')[0]+'-'+n.split(' ')[1]
+                        n = t
+                    }
+                    else if (n.split(' ').length==3){
+                        var t = n.split(' ')[0]+'-'+n.split(' ')[1]+'-'+n.split(' ')[2]
                         n = t
                     }
                     name.push(n)

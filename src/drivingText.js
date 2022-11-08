@@ -357,20 +357,20 @@ function nonRepOrder(n_videos){
         trials2.push(snIndex[Math.floor(n_videos/2)+i])
     }
 
-    trials2.push(trials1[0])
-    trials2.push(trials1[3])
-    trials2.push(trials1[4])
+    trials2.push(trials1[1])
+    trials2.push(trials1[2])
     trials2.push(trials1[7])
+    trials2.push(trials1[4])
 
     var trials3 = []
     for (var i=0; i<n_videos/4; i++){
         trials3.push(snIndex[Math.floor(n_videos/4*3)+i])
     }
 
-    trials3.push(trials1[2])
+    trials3.push(trials1[0])
     trials3.push(trials1[5])
-    trials3.push(trials2[0])
     trials3.push(trials2[3])
+    trials3.push(trials2[0])
 
     return [trials1, trials2, trials3]
 }
