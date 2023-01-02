@@ -2,12 +2,16 @@ import React from "react";
 import {Carousel, Container, Button, Card, CardGroup} from "react-bootstrap"
 import stp from "../Images/13stp.png"
 import { Redirect } from "react-router-dom";
+import {stage, incrementStage} from "../drivingText"
 
 
 
 class ResearchBlockInstruction extends React.Component {
     state={
         confirm:false
+    }
+    componentDidMount(){
+        incrementStage()
     }
     render(){
         return(

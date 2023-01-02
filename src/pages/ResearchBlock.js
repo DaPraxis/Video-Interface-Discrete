@@ -2,16 +2,24 @@ import React, {Component} from "react";
 import ReactPlayer from "react-player";
 import axios from 'axios'
 import { Card, Button, Form, Row, Col, Container, FormControl, InputGroup, Alert, Dropdown, Offcanvas, FloatingLabel, ProgressBar, Toast, ToastContainer} from "react-bootstrap";
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Tooltip from 'react-bootstrap/Tooltip';
 import RangeSlider from 'react-bootstrap-range-slider';
 import { Redirect } from "react-router-dom";
-import {randomState, checkBoxs, trials, drivingText} from '../drivingText'
+import {randomState, checkBoxs, trials, drivingText, video_names, stage} from '../drivingText'
 import StoryBoard from "../Components/StoryBoard";
 import CheckBoxGroup from "../Components/CheckBoxGroup";
+import ThreeQuestions from "../Components/ThreeQuestions";
 class ResearchBlock extends Component{
+
+    constructor(props) {
+        super(props)
+        this.myRef = React.createRef()   // Create a ref object 
+    }
 
     state = {
         playList:[],
-        playListId:"PLHdq35Wa7ob_n4uMmIJ1bA221rjV_Q85j",
+        playListId:"PLHdq35Wa7ob-bcruP22LxlRhuIyMPcEFt",
         key:"AIzaSyDXNcHG8aLsd2AcsaKouG_tJWZQo5YVGm8",
         videoNames:[],
         videoLinks:[],
@@ -49,16 +57,23 @@ class ResearchBlock extends Component{
         cBDisable:false,
 
         // combinator with texts
-        isVideoNow:true,
-        textContent:{}
+        isVideoNow:(randomState+1==stage),
+        textContent:{},
+
+        // three sliders questions
+        Q1:4,
+        Q2:5,
+        Q3:6,
+        Qs:{},
     }
 
     componentDidMount() {
-        console.log("Current Stage: "+this.state.stage)
+        console.log("Current Stage: "+stage+" current state: "+(randomState+1))
         function shuffle(array) {
             return array.sort(() => Math.random() - 0.5);
         }
-        axios.get(`https://www.googleapis.com/youtube/v3/playlistItems?playlistId=${this.state.playListId}&part=id,snippet&key=${this.state.key}&maxResults=50`)
+        if (this.state.isVideoNow){
+            axios.get(`https://www.googleapis.com/youtube/v3/playlistItems?playlistId=${this.state.playListId}&part=id,snippet&key=${this.state.key}&maxResults=50`)
             .then(res => {
                 const playList = res.data;
                 var len = playList.items.length;
@@ -66,6 +81,7 @@ class ResearchBlock extends Component{
                 var name=[]
                 var link=[]
                 var mem={}
+                var mem2 = {}
                 for (let i=0; i<len;i++){
                     var n = playList.items[i].snippet.title
                     if (n.split(' ').length==2){
@@ -79,14 +95,11 @@ class ResearchBlock extends Component{
                     name.push(n)
                     link.push(playList.items[i].snippet.resourceId.videoId)
                     mem[n+'_video'] = "";
-                    mem[n+'_text'] = "";
+                    mem2[n+'_video'] = {};
+                    // mem[n+'_text'] = "";
                 }
                 // var arr = shuffle([...Array(len).keys()])
-                var arr = trials[localStorage.getItem('stage')]
-                this.setState({videoNames:name, videoLinks:link, videoTotal:arr.length})
-
-                this.setState({shuffledIndex:arr})
-                this.setState({wl:mem})
+                var arr = trials[stage-1]
                 this.initCheckBoxG(name[arr[0]])
 
                 // text
@@ -97,7 +110,42 @@ class ResearchBlock extends Component{
                     }
                 })
                 this.setState({textContent:d})
-        })
+
+                console.log(name[arr[0]])
+                this.setState({videoNames:name, videoLinks:link, videoTotal:arr.length})
+                this.setState({shuffledIndex:arr})
+                this.setState({wl:mem})
+                this.setState({Qs:mem2})
+            })
+        }
+        else{
+            // var arr = shuffle([...Array(video_names.length).keys()])
+            var arr = trials[stage-1]
+            this.setState({videoNames:video_names, videoTotal:video_names.length})
+            this.initCheckBoxG(video_names[arr[0]])
+            // text
+            var d = {}
+            drivingText.map((data, keyi)=>{
+                for (var k in data){
+                    d[k] = data[k]
+                }
+            })
+            this.setState({textContent:d})
+            this.setState({shuffledIndex:arr})
+            var mem={}
+            for (let i=0; i<video_names.length;i++){
+                var n = video_names[i]
+                mem[n+'_text'] = "";
+            }
+            var mem2={}
+            for (let i=0; i<video_names.length;i++){
+                var n = video_names[i]
+                mem2[n+'_text'] = {};
+            }
+            this.setState({wl:mem})
+            this.setState({Qs:mem2})
+        }
+        
     }
 
     initCheckBoxG(videoName){
@@ -106,6 +154,7 @@ class ResearchBlock extends Component{
         var dyn = []
         var stat = []
         var vids = checkBoxs[videoName]
+        console.log(vids)
         vids['dv'].map((k, i)=>{
             driver_init.push(false)
         })
@@ -165,7 +214,8 @@ class ResearchBlock extends Component{
             sugg_static.push(this.state.static_t)
         }
         mem[this.getName()] = 
-        {'driver':sugg_driver,'dyn':sugg_dyn, 'static':sugg_static, 'time':Date.now(), 'wl':this.state.wlValue}
+        {'driver':sugg_driver,'dyn':sugg_dyn, 'static':sugg_static, 'time':Date.now(), 
+        'wl':this.state.wlValue, 'Questions':this.state.Qs[this.getName()]}
         if (this.state.isVideoNow){
             mem[this.getName()]['rep'] = this.state.videoReq
         }
@@ -173,6 +223,8 @@ class ResearchBlock extends Component{
         this.setState({
             cc:mem
         })
+
+        console.log(this.state.cc)
     }
 
     handleBtClickNext = () =>{
@@ -185,10 +237,15 @@ class ResearchBlock extends Component{
         this.handleClose()
         this.setState({isEmpty:true})
         this.recordData()
+        console.log(this.state.driver)
         this.initCheckBoxG(this.state.videoNames[this.state.shuffledIndex[cur]])
         // console.log(this.state.wl)
-        this.setState({isVideoNow:!this.state.isVideoNow})
+        // this.setState({isVideoNow:!this.state.isVideoNow})
         this.setState({videoReq:0})
+        console.log(this.state.cc)
+        console.log(this.state.driver)
+        this.handleScroll()
+
     }
 
     handleBtClickRep = () =>{
@@ -281,6 +338,7 @@ class ResearchBlock extends Component{
     }
 
     handleDriverChange = (idx) => (e) =>{
+        console.log(this.state.driver)
         const newD = this.state.driver.map((d, sidx) => {
             if (idx == sidx) return !d;
             return d
@@ -307,6 +365,24 @@ class ResearchBlock extends Component{
         else{
             this.setState({cBDisable:false})
         }
+    }
+
+    handleScroll = () => {
+        const { index, selected } = this.props
+        if (index === selected) {
+        setTimeout(() => {
+            this.myRef.current.scrollIntoView({ behavior: 'smooth' })
+        }, 500)
+        }
+    }
+
+    handleChange = (event) => {
+        console.log(this.state.Qs)
+        event.preventDefault()
+        var mem = this.state.Qs
+        mem[this.getName()][event.target.name] = event.target.value
+        this.setState({Qs:mem})
+        this.setState({[event.target.name]: event.target.value})
     }
 
     handleStaticChange = (idx) => (e) =>{
@@ -353,16 +429,18 @@ class ResearchBlock extends Component{
     }
 
     render(){
+        const {Q1, Q2, Q3} = this.state
+        const inputValues = {Q1, Q2, Q3}
         if (this.state.videoTotal>0){
             var progress = Math.round(((this.state.videoCounter+1)/this.state.videoTotal)*100)
             // var buttonDisable = (this.state.wl[this.state.videoCounter]=="") || (this.state.isEmpty)
-            var buttonDisable = ((this.state.wl[this.getName()]=="")||(this.countCB()<=0))
-            console.log(this.state.isBuffer)
+            var buttonDisable = ((this.state.wl[this.getName()]=="")||(this.countCB()<=0)||(Object.keys(this.state.Qs[this.getName()]).length<3))
+            console.log(this.state.isBuffer, this.getName())
 
             // VIDEO!
             if (this.state.isVideoNow){
                 return(
-                    <div>
+                    <div ref={this.myRef}>
                         <ToastContainer className="p-3" position='middle-center' style={{zIndex:'30'}}>
                         <Toast show={this.state.isBuffer} style={{zIndex:'30'}}>
                             <Toast.Header closeButton={false}>
@@ -415,7 +493,7 @@ class ResearchBlock extends Component{
                                 />
                             </div> 
                         </div>
-                        {this.state.done?<Redirect to={this.state.stage>=3?'/done':'/interTrial'} push /> : <></>}
+                        {this.state.done?<Redirect to={stage>=2?'/done':'/ResearchBlockInstruction'} push /> : <></>}
                         <Offcanvas show={this.state.canvasShow} onHide={this.handleClose} 
                                     placement="bottom" backdrop={false} 
                                     style={{justifyContent: 'center',alignItems: "center",height: "75%",zIndex:'20'}}>
@@ -532,6 +610,7 @@ class ResearchBlock extends Component{
                                 <Form.Group as={Row}>
                                     <br/>
                                 </Form.Group>
+                                <ThreeQuestions handleChange={this.handleChange} inputValues={inputValues}/>
                                 <Form.Group as={Row}>
                                     <Col xs="3">
                                         <Button variant="outline-secondary" onClick={this.handleBtClickRep}>
@@ -539,9 +618,18 @@ class ResearchBlock extends Component{
                                         </Button>
                                         {this.state.videoCounter<this.state.videoTotal-1?
                                         // {this.state.videoCounter<1?
-                                            <Button variant="outline-secondary" onClick={this.handleBtClickNext} disabled={buttonDisable}>
-                                                Next
-                                            </Button>:
+                                        <OverlayTrigger 
+                                        overlay={
+                                        <Tooltip id="tooltip-disabled"
+                                        show={buttonDisable}
+                                        >{buttonDisable?'Please Answer All Questions & Ratings Before Precede':'Good!'}</Tooltip>}>
+                                            <span className="d-inline-block">
+                                                <Button variant="outline-secondary" onClick={this.handleBtClickNext} disabled={buttonDisable}>
+                                                    Next
+                                                </Button>
+                                            </span>
+                                        </OverlayTrigger>
+                                            :
                                             <Button variant="outline-secondary" onClick={this.handleFinish} disabled={buttonDisable}>
                                                 Finish
                                             </Button>
@@ -559,6 +647,7 @@ class ResearchBlock extends Component{
             else{
                 return(
                     <Container className="my-auto" 
+                    ref={this.myRef}
                         style={{
                         padding: '5%',
                         justifyContent: 'center',
@@ -603,7 +692,7 @@ class ResearchBlock extends Component{
                                                     <label>
                                                         <input
                                                             type="checkbox"
-                                                            value={d}
+                                                            checked={d}
                                                             onChange={this.handleDriverChange(idx)}
                                                             disabled={this.state.cBDisable&&!d}
                                                             // defaultChecked={d}
@@ -633,7 +722,7 @@ class ResearchBlock extends Component{
                                                     <label>
                                                         <input
                                                             type="checkbox"
-                                                            value={d}
+                                                            checked={d}
                                                             onChange={this.handleDynChange(idx)}
                                                             // defaultChecked={d}
                                                             disabled={this.state.cBDisable&&!d}
@@ -663,7 +752,7 @@ class ResearchBlock extends Component{
                                                     <label>
                                                         <input
                                                             type="checkbox"
-                                                            value={d}
+                                                            checked={d}
                                                             // defaultChecked={d}
                                                             onChange={this.handleStaticChange(idx)}
                                                             disabled={this.state.cBDisable&&!d}
@@ -691,6 +780,7 @@ class ResearchBlock extends Component{
                                 <Form.Group as={Row}>
                                     <br/>
                                 </Form.Group>
+                                <ThreeQuestions handleChange={this.handleChange} inputValues={inputValues}/>
                                 <Form.Group as={Row}>
                                     <Col xs="3">
                                         {/* <Button variant="outline-secondary" onClick={this.handleBtClickRep}>
@@ -698,9 +788,18 @@ class ResearchBlock extends Component{
                                         </Button> */}
                                         {this.state.videoCounter<this.state.videoTotal-1?
                                         // {this.state.videoCounter<1?
-                                            <Button variant="outline-secondary" onClick={this.handleBtClickNext} disabled={buttonDisable}>
-                                                Next
-                                            </Button>:
+                                        <OverlayTrigger 
+                                        overlay={
+                                        <Tooltip id="tooltip-disabled"
+                                        show={buttonDisable}
+                                        >{buttonDisable?'Please Answer All Questions & Ratings Before Precede':'Good!'}</Tooltip>}>
+                                            <span className="d-inline-block">
+                                                <Button variant="outline-secondary" onClick={this.handleBtClickNext} disabled={buttonDisable}>
+                                                    Next
+                                                </Button>
+                                            </span>
+                                        </OverlayTrigger>
+                                            :
                                             <Button variant="outline-secondary" onClick={this.handleFinish} disabled={buttonDisable}>
                                                 Finish
                                             </Button>
@@ -711,7 +810,7 @@ class ResearchBlock extends Component{
                                 </Form.Group>
                             </Card.Body>
                         </Card>
-                        {this.state.done?<Redirect to={this.state.stage>=3?'/done':'/interTrial'} push /> : <></>}
+                        {this.state.done?<Redirect to={stage>=2?'/done':'/ResearchBlockInstruction'} push /> : <></>}
                     </Container>
                 )
             }

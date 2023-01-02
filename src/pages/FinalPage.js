@@ -69,19 +69,19 @@ class FinalPage extends React.Component{
         })
         
         var v = this.resembleResource()
-        // const json = JSON.stringify(v);
-        // const blob = new Blob([json],{type:'application/json'});
-        // const href = await URL.createObjectURL(blob);
-        // const link = document.createElement('a');
-        // link.href = href;
-        // const fileName = "file";
-        // link.download = fileName + ".json";
-        // document.body.appendChild(link);
-        // link.click();
-        // document.body.removeChild(link);
+        const json = JSON.stringify(v);
+        const blob = new Blob([json],{type:'application/json'});
+        const href = await URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = href;
+        const fileName = "file";
+        link.download = fileName + ".json";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
 
         try {
-            const docRef = await addDoc(collection(db, "Data-40"), v);
+            const docRef = await addDoc(collection(db, "test-pilot-phase2"), v);
             console.log("Document written with ID: ", docRef.id);
             this.setState({
                 success:'success'

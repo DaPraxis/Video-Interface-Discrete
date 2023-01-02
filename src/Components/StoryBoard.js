@@ -10,6 +10,7 @@ export default class StoryBoard extends Component{
 
     componentDidMount(){
         // this.setState({video:this.props.video})
+        console.log(this.props.video)
     }
 
     render(){

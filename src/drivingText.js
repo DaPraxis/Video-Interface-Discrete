@@ -375,17 +375,31 @@ function nonRepOrder(n_videos){
     return [trials1, trials2, trials3]
 }
 
-var [trials1, trials2, trials3] = nonRepOrder(16)
+function twoBlockRepOrder(n_videos){
+    const normalIndex = [...Array(n_videos).keys()]
+    const normalIndex2 = [...Array(n_videos).keys()]
+    const snIndex= shuffle(normalIndex)
+    const snIndex2= shuffle(normalIndex2)
 
-    const trials = {
-        '1': trials1,
-        "2": trials2,
-        "3": trials3
-    }
+    return [snIndex, snIndex2]
+}
 
-    console.log(trials)
+var [trials1, trials2] = twoBlockRepOrder(12)
+
+const trials = {
+    0: trials1,
+    1: trials2,
+}
+    
+console.log(trials)
+
+const video_names = ['3-20', '3-21', '3-17', '3-9', '3-24', '3-14', '3-5', '3-16', '3-18', '3-11', '3-22', '3-12']
+
+var stage = 0
+
+function incrementStage(){
+    stage +=1
+}
 
 
-
-
-export {randomState, drivingText, checkBoxs, randomIndex, trials, storyCollection}
+export {randomState, drivingText, checkBoxs, randomIndex, trials, storyCollection, video_names, stage, incrementStage}

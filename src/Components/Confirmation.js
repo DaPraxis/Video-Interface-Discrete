@@ -23,6 +23,7 @@ export default class Confirmation extends Component{
         var time={'DemogTime':Date.now()}
         this.props.getData({...this.props.inputValues, ...time})
         // this.props.nextPage()
+        localStorage.setItem('stage',0)
         this.setState({confirm:true})
     }
 
@@ -45,7 +46,7 @@ export default class Confirmation extends Component{
                 <p>Driving Skill: {skill}/10</p>
                 <Button variant="secondary" onClick={this.back}>Back</Button>{' '}
                 <Button variant="primary" onClick={this.next}>Confirm</Button>
-                {this.state.confirm?<Redirect to={'/interTrial'} push /> : <></>}
+                {this.state.confirm?<Redirect to={'/ResearchBlockInstruction'} push /> : <></>}
             </Container>
         )
     }
