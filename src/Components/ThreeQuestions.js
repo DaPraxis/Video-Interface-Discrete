@@ -16,10 +16,10 @@ export default class ThreeQuestions extends Component{
                     </Card.Header>
                     <Card.Body>
                         <Card.Title>
-                            <Badge bg="primary" style={{margin:'10px'}}>{1}</Badge>Would you feel comfortable receiving a message notification (with a short notification <b>sound</b> 🔊) in this scenario? (respond with yes or no?)
+                            <Badge bg="primary" style={{margin:'10px'}}>{1}</Badge>Would you feel comfortable receiving a message notification (with a short notification <b>sound</b> 🔊) in this scenario? (respond with yes or no)
                             </Card.Title>
                         <Row>
-                            <Form.Group as={Col} controlId="FormQ1">
+                            <Form.Group as={Col} controlId="FormQ1" style={{maxWidth:'1000px'}}>
                                 {/* <Form.Label>What is your driving skill?</Form.Label> */}
                                 <RangeSlider min={1} max={10} name='Q1' 
                                 value={this.props.inputValues.Q1} 
@@ -35,7 +35,7 @@ export default class ThreeQuestions extends Component{
                             <Badge bg="primary" style={{margin:'10px'}}>{2}</Badge> Would you feel comfortable to <b>hear</b> 🦻 message read out to you in this scenario (e.g., a short email or text message)?
                             </Card.Title>
                         <Row>
-                            <Form.Group as={Col} controlId="FormQ2">
+                            <Form.Group as={Col} controlId="FormQ2" style={{maxWidth:'1000px'}}>
                                 {/* <Form.Label>What is your driving skill?</Form.Label> */}
                                 <RangeSlider min={1} max={10} name='Q2' 
                                 value={this.props.inputValues.Q2} 
@@ -48,10 +48,10 @@ export default class ThreeQuestions extends Component{
                     </Card.Body>
                     <Card.Body>
                         <Card.Title>
-                            <Badge bg="primary" style={{margin:'10px'}}>{3}</Badge>Would you feel comfortable making a <b>verbal</b> 🗣️ response to the message in this scenario (e.g., someone sent you birthday wishes, and you spoke a response saying thank you and asking them how they are doing)?
+                            <Badge bg="primary" style={{margin:'10px'}}>{3}</Badge>Would you feel comfortable making a <b>verbal</b> 🗣️ response to a message in this scenario (e.g., someone sent you birthday wishes, and you spoke a response saying thank you and asking them how they are doing)?
                             </Card.Title>
                             <Row>
-                        <Form.Group as={Col} controlId="FormQ3">
+                        <Form.Group as={Col} controlId="FormQ3" style={{maxWidth:'1000px'}}>
                                 {/* <Form.Label>What is your driving skill?</Form.Label> */}
                                 <RangeSlider min={1} max={10} name='Q3' 
                                 value={this.props.inputValues.Q3} 

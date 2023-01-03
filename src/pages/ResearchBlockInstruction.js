@@ -1,14 +1,18 @@
 import React from "react";
 import {Carousel, Container, Button, Card, CardGroup} from "react-bootstrap"
 import stp from "../Images/13stp.png"
+import videoIns from "../Images/video-ins.png"
+import storyboardIns from "../Images/storyboard-ins.png"
+
 import { Redirect } from "react-router-dom";
-import {stage, incrementStage} from "../drivingText"
+import {stage, incrementStage, randomState} from "../drivingText"
 
 
 
 class ResearchBlockInstruction extends React.Component {
     state={
-        confirm:false
+        confirm:false,
+        isVideo:stage==randomState
     }
     componentDidMount(){
         incrementStage()
@@ -17,11 +21,11 @@ class ResearchBlockInstruction extends React.Component {
         return(
             <Container className="my-auto d-grid gap-3" style={{width:'70%', justifyContent:'space-between', padding:"3% 0%"}} >
                 <CardGroup style={{display:'flex'}}>
-                    <Card style={{maxWidth:'400px'}}>
-                        <Card.Header>Driving Scenario Workload Video Rating Instruction</Card.Header>
+                    <Card style={{maxWidth:'800px'}}>
+                        <Card.Header>Driving Scenario Workload {this.state.isVideo?'Video':'Storyboard'} Rating Instruction</Card.Header>
                         <Card.Body>
                             <Card.Text>
-                                1. Please watch/read the driving scenario (There are 8 scenarios).
+                                1. Please watch/read the driving {this.state.isVideo?'Video':'Storyboard'} (There are 12 scenarios).
                             </Card.Text>
                             <Card.Text>
                                 2. Rate the mental workload<span style={{color:'red'}}>*</span> you will feel in the situation (i.e., how much attention you need pay?) using the slider (0: no workload – 100: very great workload)
@@ -30,13 +34,16 @@ class ResearchBlockInstruction extends React.Component {
                                 3. Select the most important factors contribute to the mental workload, the system will warn you if you select too many
                             </Card.Text>
                             <Card.Text>
-                                4. Feel free to replay the video if you need to check some of the options
+                                4. Give ratings to the following questions
+                            </Card.Text>
+                            <Card.Text>
+                                5. Feel free to replay the video if you need to check some of the options
                             </Card.Text>
                         </Card.Body>
                     </Card>
-                    <Card style={{width:'70%'}}>
+                    <Card style={{width:'50%'}}>
                         <Card.Body>
-                        <Card.Img src={stp}/>
+                        <Card.Img src={this.state.isVideo?videoIns:storyboardIns} style={{maxHeight:'600px',height:'auto', width:'auto'}}/>
                         </Card.Body>
                     </Card>
                 </CardGroup>

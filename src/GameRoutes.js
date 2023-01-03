@@ -20,6 +20,8 @@ import InterTrial from './pages/InterTrial'
 import ResearchBlockInstruction from './pages/ResearchBlockInstruction'
 import TestPage from "./pages/TestPage";
 
+import {stage} from './drivingText'
+
 // let version = new DrivingVersion();
 export default function GameRoutes() {
   const [volume, setVolume] = useState(0.5);
@@ -34,11 +36,11 @@ export default function GameRoutes() {
   const [basicInfo, setBasicInfo] = useState({})
   const [shuffledIndex, setShuffleIndex] = useState([])
   const [videoTime, setVideoTime] = useState(0)
-  const [stage, setStage] = useState(()=>{
-    const saved = localStorage.getItem("stage");
-    const initialValue = JSON.parse(saved);
-    return initialValue || 0;
-  })
+  // const [stage, setStage] = useState(()=>{
+  //   const saved = localStorage.getItem("stage");
+  //   const initialValue = JSON.parse(saved);
+  //   return initialValue || 0;
+  // })
   const [allWl, setAllWl] = useState({})
   const [version, setVersion] = useState(new DrivingVersion())
 
@@ -61,8 +63,7 @@ export default function GameRoutes() {
   function getData4(videoNames, wl){
     var ll = allWl;
     setVideoNames(videoNames)
-    const saved = localStorage.getItem("stage");
-    const stages_tt = JSON.parse(saved) || 0;
+    const stages_tt = stage || 0;
     ll[stages_tt]=wl
     setAllWl(ll)
   }

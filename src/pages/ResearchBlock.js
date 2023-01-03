@@ -110,8 +110,6 @@ class ResearchBlock extends Component{
                     }
                 })
                 this.setState({textContent:d})
-
-                console.log(name[arr[0]])
                 this.setState({videoNames:name, videoLinks:link, videoTotal:arr.length})
                 this.setState({shuffledIndex:arr})
                 this.setState({wl:mem})
@@ -154,7 +152,6 @@ class ResearchBlock extends Component{
         var dyn = []
         var stat = []
         var vids = checkBoxs[videoName]
-        console.log(vids)
         vids['dv'].map((k, i)=>{
             driver_init.push(false)
         })
@@ -223,8 +220,6 @@ class ResearchBlock extends Component{
         this.setState({
             cc:mem
         })
-
-        console.log(this.state.cc)
     }
 
     handleBtClickNext = () =>{
@@ -237,13 +232,12 @@ class ResearchBlock extends Component{
         this.handleClose()
         this.setState({isEmpty:true})
         this.recordData()
-        console.log(this.state.driver)
+        this.props.getData(this.state.videoNames, this.state.cc)
         this.initCheckBoxG(this.state.videoNames[this.state.shuffledIndex[cur]])
         // console.log(this.state.wl)
         // this.setState({isVideoNow:!this.state.isVideoNow})
         this.setState({videoReq:0})
         console.log(this.state.cc)
-        console.log(this.state.driver)
         this.handleScroll()
 
     }
@@ -338,7 +332,6 @@ class ResearchBlock extends Component{
     }
 
     handleDriverChange = (idx) => (e) =>{
-        console.log(this.state.driver)
         const newD = this.state.driver.map((d, sidx) => {
             if (idx == sidx) return !d;
             return d
@@ -377,7 +370,7 @@ class ResearchBlock extends Component{
     }
 
     handleChange = (event) => {
-        console.log(this.state.Qs)
+        // console.log(this.state.Qs)
         event.preventDefault()
         var mem = this.state.Qs
         mem[this.getName()][event.target.name] = event.target.value
@@ -496,7 +489,7 @@ class ResearchBlock extends Component{
                         {this.state.done?<Redirect to={stage>=2?'/done':'/ResearchBlockInstruction'} push /> : <></>}
                         <Offcanvas show={this.state.canvasShow} onHide={this.handleClose} 
                                     placement="bottom" backdrop={false} 
-                                    style={{justifyContent: 'center',alignItems: "center",height: "75%",zIndex:'20'}}>
+                                    style={{justifyContent: 'center',alignItems: "center",height: "75%",zIndex:'20', padding:'0 5%'}}>
                             <Offcanvas.Header>
                                 <Offcanvas.Title>Video Driving Mental Workload Rating</Offcanvas.Title>
                             </Offcanvas.Header>

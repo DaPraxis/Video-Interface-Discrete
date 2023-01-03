@@ -4,6 +4,10 @@ import protocol_text from "../protocol.txt"
 import Footer from "../Components/Footer"
 import { Redirect } from "react-router-dom";
 import sp from '../Images/procedures.png'
+import videoIll from '../Images/video-ill.png'
+import storyIll from '../Images/storyboard-ill.png'
+
+import { randomState } from "../drivingText";
 
 function CustomToggle({ children, eventKey }) {
     const decoratedOnClick = useAccordionButton(eventKey, () =>
@@ -99,7 +103,7 @@ class Protocal extends React.Component {
                                 </Card>
                                 <Card style={{width:'60%'}}>
                                     <Card.Body>
-                                    <Card.Img src={sp}/>
+                                    <Card.Img src={randomState?storyIll:videoIll}/>
                                     </Card.Body>
                                 </Card>
                             </CardGroup>
@@ -112,7 +116,7 @@ class Protocal extends React.Component {
                                 <Card.Body>
                                     {/* <Card.Header>Experiment Consent</Card.Header> */}
                                     <Card.Title>
-                                        Online Subjective Mental Workload Measurement Using Simulated Driving Videos
+                                        Online Subjective Mental Workload Measurement Using Simulated Driving Scenarios
                                     </Card.Title>
                                     <Card.Text style={{fontFamily:'Calibri, sans-serif', fontSize:"20px"}}>
                                         {this.state.texts}
