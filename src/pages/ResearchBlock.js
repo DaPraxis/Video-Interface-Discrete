@@ -237,6 +237,11 @@ class ResearchBlock extends Component{
         // console.log(this.state.wl)
         // this.setState({isVideoNow:!this.state.isVideoNow})
         this.setState({videoReq:0})
+        this.setState({
+            Q1:9,
+            Q2:9,
+            Q3:9
+        })
         console.log(this.state.cc)
         this.handleScroll()
 
@@ -494,19 +499,22 @@ class ResearchBlock extends Component{
                                 <Offcanvas.Title>Video Driving Mental Workload Rating</Offcanvas.Title>
                             </Offcanvas.Header>
                             <Offcanvas.Body style={{justifyContent: 'center',alignItems: "center", fontFamily:'Calibri, sans-serif', fontSize:"20px"}}>
-                                <InputGroup>
-                                    <FloatingLabel label="Video Driving Workload Level">
-                                        <FormControl value={this.mentalEffort(this.state.wlValue)} style={{width:"300px", fontSize:"20px"}} readOnly/>
-                                    </FloatingLabel>
-                                    <div style={{minWidth:"700px", marginLeft:"30px"}}>
-                                        <RangeSlider min={1} max={100} value={this.state.wlValue} onChange={this.rangeSelect} tooltip='on' size="lg"/>
-                                        {this.state.wl[this.getName()]==""?<Badge bg="danger">*Required Changes</Badge>:<></>}
-                                    </div>
-                                    
-                                </InputGroup>
+                                <Card style={{padding:'20px 2px'}}>
+                                    <InputGroup>
+                                        <FloatingLabel label="Video Driving Workload Level">
+                                            <FormControl value={this.mentalEffort(this.state.wlValue)} style={{width:"300px", fontSize:"20px"}} readOnly/>
+                                        </FloatingLabel>
+                                        <div style={{minWidth:"700px", marginLeft:"30px"}}>
+                                            <RangeSlider min={1} max={100} value={this.state.wlValue} onChange={this.rangeSelect} tooltip='on' size="lg"/>
+                                            {this.state.wl[this.getName()]==""?<Badge bg="danger">*Required Changes</Badge>:<></>}
+                                        </div>
+                                        
+                                    </InputGroup>
+                                </Card>
                                 <br/>
                                 <Form.Group as={Row}>
                                 {/* <CheckBoxGroup video={this.state.videoNames[this.state.shuffledIndex[this.state.videoCounter]]}/> */}
+                                <h5>Please select all the demanding element in the scenario {this.countCB()<=0?<Badge bg="danger">*Required Changes</Badge>:<></>}</h5> 
                                 <div style={{display: 'flex', flexDirection: 'row'}}>
                                     <Card style={{flex: 1}}>
                                         <Card.Header as="h5">{"Driver & Vehicle"}</Card.Header>
@@ -598,7 +606,7 @@ class ResearchBlock extends Component{
                                             </label>
                                         </Card.Body>
                                     </Card>
-                                {this.countCB()<=0?<Badge bg="danger">*Required Changes</Badge>:<></>}
+                                {/* {this.countCB()<=0?<Badge bg="danger">*Required Changes</Badge>:<></>} */}
                                 </div>
                                 </Form.Group>
                                 <Alert show={this.state.cBDisable}>Select up to <span style={{color:'red'}}>{this.getThreshold()}</span> most important source of the mental workload from the options.</Alert>
@@ -661,16 +669,19 @@ class ResearchBlock extends Component{
                                 {/* <br/> */}
                                 {console.log(this.state.videoNames[this.state.shuffledIndex[this.state.videoCounter]])}
                                 <StoryBoard video={this.state.videoNames[this.state.shuffledIndex[this.state.videoCounter]]} width={1}/>
-                                <InputGroup>
-                                    <FloatingLabel label="Driving Workload Level">
-                                        <FormControl value={this.mentalEffort(this.state.wlValue)} style={{width:"300px", fontSize:"20px"}} readOnly/>
-                                    </FloatingLabel>
-                                    {/* <br/> */}
-                                    <div style={{minWidth:"700px", marginLeft:"30px"}}>
-                                        <RangeSlider min={1} max={100} value={this.state.wlValue} onChange={this.rangeSelect} tooltip='on' size="lg"/>
-                                        {this.state.wl[this.getName()]==""?<Badge bg="danger">*Required Changes</Badge>:<></>}
-                                    </div>
-                                </InputGroup>
+                                
+                                <Card style={{padding:'20px 2px'}}>
+                                    <InputGroup>
+                                        <FloatingLabel label="Driving Workload Level">
+                                            <FormControl value={this.mentalEffort(this.state.wlValue)} style={{width:"300px", fontSize:"20px"}} readOnly/>
+                                        </FloatingLabel>
+                                        {/* <br/> */}
+                                        <div style={{minWidth:"700px", marginLeft:"30px"}}>
+                                            <RangeSlider min={1} max={100} value={this.state.wlValue} onChange={this.rangeSelect} tooltip='on' size="lg"/>
+                                            {this.state.wl[this.getName()]==""?<Badge bg="danger">*Required Changes</Badge>:<></>}
+                                        </div>
+                                    </InputGroup>
+                                </Card>
                                 {/* <footer className="blockquote-footer">
                                     Someone famous in <cite title="Source Title">Source Title</cite>
                                 </footer> */}
@@ -679,6 +690,8 @@ class ResearchBlock extends Component{
     
                                 <Form.Group as={Row}>
                                 {/* <CheckBoxGroup video={this.state.videoNames[this.state.shuffledIndex[this.state.videoCounter]]}/> */}
+                                <h5>Please select all the demanding element in the scenario {this.countCB()<=0?<Badge bg="danger">*Required Changes</Badge>:<></>}</h5> 
+
                                 <div style={{display: 'flex', flexDirection: 'row'}}>
                                     <Card style={{flex: 1}}>
                                         <Card.Header as="h5">{"Driver & Vehicle"}</Card.Header>
@@ -770,7 +783,6 @@ class ResearchBlock extends Component{
                                             </label>
                                         </Card.Body>
                                     </Card>
-                                {this.countCB()<=0?<Badge bg="danger">*Required Changes</Badge>:<></>}
                                 </div>
                                 </Form.Group>
                                 <Alert show={this.state.cBDisable}>Select up to <span style={{color:'red'}}>{this.getThreshold()}</span> most important source of the mental workload from the options.</Alert>

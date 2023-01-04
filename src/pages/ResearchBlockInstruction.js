@@ -37,7 +37,7 @@ class ResearchBlockInstruction extends React.Component {
                                 4. Give ratings to the following questions
                             </Card.Text>
                             <Card.Text>
-                                5. Feel free to replay the video if you need to check some of the options
+                                5. {this.state.isVideo?'Feel free to replay the video if you need to check some of the options, ':'Please '}precede to the next {this.state.isVideo?'video':'storyboard'} with the Next button
                             </Card.Text>
                         </Card.Body>
                     </Card>
