@@ -137,7 +137,7 @@ export default class AddressDetails extends Component{
                                     <option value="36­-45">36­-45 years</option>
                                     <option value="46­-55">46­-55 years</option>
                                     <option value="56­-65">56­-65 years</option>
-                                    <option value=">66"> &gt;66 years</option>
+                                    <option value=">65"> &gt;65 years</option>
                                 </Form.Control>
                             </Form.Group>
                             

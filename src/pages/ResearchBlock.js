@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import ReactPlayer from "react-player";
 import axios from 'axios'
-import { Card, Button, Form, Row, Col, Container, FormControl, InputGroup, Alert, Dropdown, Offcanvas, FloatingLabel, ProgressBar, Toast, ToastContainer} from "react-bootstrap";
+import { Badge,Card, Button, Form, Row, Col, Container, FormControl, InputGroup, Alert, Dropdown, Offcanvas, FloatingLabel, ProgressBar, Toast, ToastContainer} from "react-bootstrap";
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
 import RangeSlider from 'react-bootstrap-range-slider';
@@ -500,6 +500,7 @@ class ResearchBlock extends Component{
                                     </FloatingLabel>
                                     <div style={{minWidth:"700px", marginLeft:"30px"}}>
                                         <RangeSlider min={1} max={100} value={this.state.wlValue} onChange={this.rangeSelect} tooltip='on' size="lg"/>
+                                        {this.state.wl[this.getName()]==""?<Badge bg="danger">*Required Changes</Badge>:<></>}
                                     </div>
                                     
                                 </InputGroup>
@@ -597,13 +598,14 @@ class ResearchBlock extends Component{
                                             </label>
                                         </Card.Body>
                                     </Card>
+                                {this.countCB()<=0?<Badge bg="danger">*Required Changes</Badge>:<></>}
                                 </div>
                                 </Form.Group>
                                 <Alert show={this.state.cBDisable}>Select up to <span style={{color:'red'}}>{this.getThreshold()}</span> most important source of the mental workload from the options.</Alert>
                                 <Form.Group as={Row}>
                                     <br/>
                                 </Form.Group>
-                                <ThreeQuestions handleChange={this.handleChange} inputValues={inputValues}/>
+                                <ThreeQuestions handleChange={this.handleChange} inputValues={inputValues} Qs={this.state.Qs[this.getName()]}/>
                                 <Form.Group as={Row}>
                                     <Col xs="3">
                                         <Button variant="outline-secondary" onClick={this.handleBtClickRep}>
@@ -666,6 +668,7 @@ class ResearchBlock extends Component{
                                     {/* <br/> */}
                                     <div style={{minWidth:"700px", marginLeft:"30px"}}>
                                         <RangeSlider min={1} max={100} value={this.state.wlValue} onChange={this.rangeSelect} tooltip='on' size="lg"/>
+                                        {this.state.wl[this.getName()]==""?<Badge bg="danger">*Required Changes</Badge>:<></>}
                                     </div>
                                 </InputGroup>
                                 {/* <footer className="blockquote-footer">
@@ -767,13 +770,14 @@ class ResearchBlock extends Component{
                                             </label>
                                         </Card.Body>
                                     </Card>
+                                {this.countCB()<=0?<Badge bg="danger">*Required Changes</Badge>:<></>}
                                 </div>
                                 </Form.Group>
                                 <Alert show={this.state.cBDisable}>Select up to <span style={{color:'red'}}>{this.getThreshold()}</span> most important source of the mental workload from the options.</Alert>
                                 <Form.Group as={Row}>
                                     <br/>
                                 </Form.Group>
-                                <ThreeQuestions handleChange={this.handleChange} inputValues={inputValues}/>
+                                <ThreeQuestions handleChange={this.handleChange} inputValues={inputValues} Qs={this.state.Qs[this.getName()]}/>
                                 <Form.Group as={Row}>
                                     <Col xs="3">
                                         {/* <Button variant="outline-secondary" onClick={this.handleBtClickRep}>

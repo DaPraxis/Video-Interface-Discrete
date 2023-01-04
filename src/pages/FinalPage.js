@@ -111,7 +111,8 @@ class FinalPage extends React.Component{
             return "Fail to store to dataset, please contact the research team"
         }
         else{
-            window.location.replace('https://app.prolific.co/submissions/complete?cc=C1EVQSUF');
+            // window.location.replace('https://app.prolific.co/submissions/complete?cc=C1EVQSUF');
+            window.location.replace('https://app.prolific.co/submissions/complete?cc=CX2YXEOU');
             // return <Redirect to="https://app.prolific.co/submissions/complete?cc=C1EVQSUF" push />
         }
         }
