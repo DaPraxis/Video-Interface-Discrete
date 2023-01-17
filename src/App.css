@@ -55,3 +55,7 @@
   color: #11998e;
   font-weight: 700;
 }
+
+input[type="checkbox"] {
+  margin-right:3px
+}

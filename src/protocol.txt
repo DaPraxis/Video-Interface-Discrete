@@ -1,3 +1,4 @@
+
 Thank you for your interest in this research. Please read the information below before deciding whether you want to give your consent to participate in this study. Participation is voluntary and you are free to withhold your consent, or to withdraw from the study at any time, even after you have given your consent.
  
 After reading this information, if you decide that you would like to participate, please click on the [I Consent] button below. If you do not wish to participate simply close this web page.
@@ -8,7 +9,7 @@ The main part of the experiment will involve making judgments about the difficul
  
 When you rate driving situations during the experiment, you will sometimes see a video of the situation, and sometimes you will see a storyboard (with text and pictures) that describes the situation. You will either see all the storyboard driving situations first, followed by all the video driving situations, or you will see the video driving situations first. For each driving situation shown to you, you are required to do three things: 1. Rate the amount of workload you think you would experience (from 0 to 100) in that driving situation using a slider; 2. Pick the most difficult features of the driving situation (that will tend to increase workload) from a list of options; 3. Give 10-point Likert scale ratings to three questions regarding your willingness to interact with your phone (in each of three different ways) in this situation. When you make your judgment on the video you can play the 10-15 second video as many times as you want but you cannot go back to a previous video once you have finished giving the ratings for that video. You will see a total of 12 videos and 12 storyboards across the whole experiment.
  
-At the end of the experiment, you will be asked to provide any feedback or thoughts that you have about the experiment. You can take breaks during the experiment but the total time for completing the experiment, including breaks, should take around 40-50 minutes.
+At the end of the experiment, you will be asked to provide any feedback or thoughts that you have about the experiment. You can take breaks during the experiment but the total time for completing the experiment, including breaks, should take around 30-45 minutes.
  
 The data we collect will be anonymized and kept in a secure database. No personal or identifying information will be stored and only summaries of group data will be included in written reports or presentations based on this research. Any data or information received will be kept confidential.
  

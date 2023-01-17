@@ -83,13 +83,13 @@ class Protocal extends React.Component {
                                     {/* <Card.Header>Driving Scenario Workload Video Rating Instruction</Card.Header> */}
                                     <Card.Body>
                                         <Card.Text>
-                                            <li>Welcome to our online study. It consists of the five steps shown on the right.</li>
+                                            <li>Welcome to our online study. It consists of the four steps shown on the right.</li>
                                         </Card.Text>
                                         <Card.Text>
                                             <li>Please take a break when you feel you need to do. </li>
                                         </Card.Text>
                                         <Card.Text>
-                                            <li>This experiment should take around one hour. </li>
+                                            <li>This experiment should take around 30-45 minutes. </li>
                                         </Card.Text>
                                         <Card.Text>
                                             <li>Please use a computer or tablet (not a smartphone) to watch videos during the experiment.</li>

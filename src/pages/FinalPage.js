@@ -81,7 +81,7 @@ class FinalPage extends React.Component{
         document.body.removeChild(link);
 
         try {
-            const docRef = await addDoc(collection(db, "test-pilot-phase2"), v);
+            const docRef = await addDoc(collection(db, "Data-40-Stage2"), v);
             console.log("Document written with ID: ", docRef.id);
             this.setState({
                 success:'success'
