@@ -1,14 +1,12 @@
-## Read Me
+# Online Rating Tool
 
-This is the branch for Online DMWL Tool web platform experiment phase 2.
+This module contains the source code of the survey tool collecting driver's mental workload. [Link](https://iml-driving-rating.netlify.app/)
 
-This platforms collects --/40 participants, with following components:
+### Content
+This repo contains three major components:
+* `Web Page Structure`: The `pages` folder contains the layouts and designs for each pages; `GameRoutes.js` define the structure and workflow of the survey
+* `Video Contents & Experiment Details`: `drivingText.js` contains the descriptions and checkboxes for each driving video, can be changed interactively; `protocol.txt` contains the participant protocol and guideline for this research
+* `Web Page Components`: The `Components` folder contains all the sub-components in the website, that can be customized and reused
 
-- Demographics
-- Driving Scenarios Ratings (Video & Storyboard) | 12 unique scenarios
-    * Mental workload ratings
-    * Demanding sources identification
-    * Three questions related to SDN
-- Post-exp questions
-
-No game -> Two blocks -> Rand[(12 Storyboard Rand) + (12 video Rand)] -> 24 trials
+### Contact
+Please contact [Haoyan Jiang](haoyanhy.jiang@mail.utoronto.ca) for questions or raise issue in this repo
