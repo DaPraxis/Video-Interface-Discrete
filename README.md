@@ -1,4 +1,4 @@
-# Online Rating Tool
+# Online Rating Tool: Mental Workload & Notification Receptivity Assessment from Simulated Driving Videos
 
 This module contains the source code of the survey tool collecting driver's mental workload. [Link](https://iml-driving-rating.netlify.app/)
 
